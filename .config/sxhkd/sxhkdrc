@@ -1,0 +1,45 @@
+XFi86Audio{Prev,Next}
+	playerctl {prev,next}
+
+# terminal (alacritty) 
+super + Return
+	alacritty
+
+# dmenu
+super + d
+	j4-dmenu-desktop
+
+# close and kill
+super + shift + c
+	bspc node -c
+
+# set the window state
+super + {t,space,f}
+	bspc node -t {tiled,floating,fullscreen}
+
+# focus or move (with shift) the node in the given direction
+super + {_,shift + } {Up,Left,Down,Right}
+	bspc node -{f,s} {north,west,south,east}
+
+# resize window
+super + ctrl + {Left, Down, Up, Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# send to desktop
+#super + shift + {1-9,0}
+    bspc node -d '^{1-9,10}' --follow
+
+# preselect the direction
+super + {h,v}
+	bspc node -p {east,south}
+
+# cancel the preselection for the focused desktop
+super + Escape
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+super + l
+	betterlockscreen -l -b
