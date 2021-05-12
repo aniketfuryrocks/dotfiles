@@ -18,8 +18,7 @@
 #define base0F #ff5370
 
 foreground:   base05
-background:   #ea212121
-background:   base00
+background:   #dd212121
 cursorColor:  base05
 
 color0:       base00
