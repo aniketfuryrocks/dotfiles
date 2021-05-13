@@ -9,18 +9,31 @@
 #xrandr --output eDP-1-1 --mode 1600x900
 
 # compositor
+pkill -x picom
 picom &
+
+# notifications
+pkill -x dunst
+dunst &
 
 # wallpaper
 nitrogen --restore
 
 # dock
-prime-run plank &
+pkill -x plank
+plank &
 
 # tray icons
+pkill -x cbatticon
 cbatticon &
+
+pkill -x nm-applet
 nm-applet &
+
+pkill -x optmius-manager-qt
 optimus-manager-qt &
+
+pkill -x pasystray
 pasystray & 
 
 # desktops

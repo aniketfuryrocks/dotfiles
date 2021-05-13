@@ -1,5 +1,32 @@
-XFi86Audio{Prev,Next}
-	playerctl {prev,next}
+# Media controls
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +1000
+
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -1000
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioNext
+	playerctl next
+
+# Screenshot
+Print
+    flameshot screen --path ~/Pictures
+
+shift + Print
+    flameshot gui
 
 # terminal (alacritty) 
 super + Return
@@ -41,5 +68,6 @@ super + {h,v}
 super + Escape
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
+# lock screen
 super + l
 	betterlockscreen -l -b
