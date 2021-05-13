@@ -81,12 +81,12 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " %Y-%m-%d"
+date-alt = "%Y-%m-%d"
 
 time = %I:%M %p
 time-alt = %H:%M:%S
 
-format-prefix =
+format-prefix =
 format-prefix-foreground = ${colors.foreground-alt}
 
 label-font = 2
