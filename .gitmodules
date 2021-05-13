@@ -1,0 +1,3 @@
+[submodule ".config/dunst"]
+	path = .config/dunst
+	url = https://github.com/dracula/dunst.git
