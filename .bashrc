@@ -1,4 +1,4 @@
-source .bash_profile
+export QT_STYLE_OVERRIDE=kvantum
 export EDITOR=nvim
 source "$HOME/.cargo/env"
 export NVM_DIR="$HOME/.nvm"

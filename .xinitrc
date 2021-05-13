@@ -14,6 +14,9 @@ if [[ $(xrandr -q | grep 'HDMI-1-1 connected') ]]; then
     xrandr --output eDP-1-1 --mode 1600x900
 fi
 
+# set cursor
+xsetroot -cursor_name left_ptr
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
