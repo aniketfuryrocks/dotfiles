@@ -1,13 +1,5 @@
 #! /bin/sh
 
-# keyboard shortcut manager
-#pgrep -x sxhkd > /dev/null || sxhkd &
-
-# display settings
-#xrandr --auto
-#xrandr --output HDMI-1-1 --left-of eDP-1-1 --primary
-#xrandr --output eDP-1-1 --mode 1600x900
-
 # compositor
 pkill -x picom
 picom &
@@ -37,9 +29,10 @@ pkill -x pasystray
 pasystray & 
 
 # desktops
-bspc monitor HDMI-1-1 -d 1 2 3 4 5
-bspc monitor eDP-1-1 -d 6 7 8 9 0
-
+bspc monitor -d 1 2 3 4 5
+if [[ $(xrandr -q | grep 'HDMI-1-1 connected') ]]; then
+    bspc monitor eDP-1-1 -d 6 7 8 9 0
+fi
 
 bspc config border_width         1
 bspc config window_gap          15

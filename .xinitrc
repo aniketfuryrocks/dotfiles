@@ -9,8 +9,11 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 # resolution
 xrandr --auto
-xrandr --output HDMI-1-1 --left-of eDP-1-1 --primary
-xrandr --output eDP-1-1 --mode 1600x900
+if [[ $(xrandr -q | grep 'HDMI-1-1 connected') ]]; then
+    xrandr --output HDMI-1-1 --left-of eDP-1-1 --primary
+    xrandr --output eDP-1-1 --mode 1600x900
+fi
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
