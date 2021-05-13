@@ -28,6 +28,9 @@ optimus-manager-qt &
 pkill -x pasystray
 pasystray & 
 
+pkill -x blueman-tray
+blueman-tray
+
 # kde connect
 /usr/lib/kdeconnectd &
 kdeconnect-indicator &
