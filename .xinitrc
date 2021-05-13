@@ -17,6 +17,9 @@ fi
 # set cursor
 xsetroot -cursor_name left_ptr
 
+# qt5 themes
+export QT_STYLE_OVERRIDE=kvantum
+
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
