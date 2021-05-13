@@ -1,6 +1,7 @@
 #!/bin/sh
 usr/bin/prime-offload
 
+export XDG_SESSION_TYPE=x11
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
