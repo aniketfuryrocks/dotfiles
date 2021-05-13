@@ -28,6 +28,10 @@ optimus-manager-qt &
 pkill -x pasystray
 pasystray & 
 
+# kde connect
+/usr/lib/kdeconnectd &
+kdeconnect-indicator &
+
 # desktops
 bspc monitor -d 1 2 3 4 5
 if [[ $(xrandr -q | grep 'HDMI-1-1 connected') ]]; then
