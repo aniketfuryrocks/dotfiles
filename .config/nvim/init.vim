@@ -1,6 +1,8 @@
 set nocompatible
 
 call plug#begin('~/.vim/plugged')
+Plug 'valloric/youcompleteme'
+Plug 'dag/vim-fish'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/syntastic'
