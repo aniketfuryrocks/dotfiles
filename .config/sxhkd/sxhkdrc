@@ -34,7 +34,7 @@ super + Return
 
 # dmenu
 super + d
-	j4-dmenu-desktop
+	dmenu_run
 
 # close and kill
 super + shift + c
