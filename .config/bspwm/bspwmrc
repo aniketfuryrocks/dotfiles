@@ -29,10 +29,13 @@ pkill -x pasystray
 pasystray & 
 
 pkill -x blueman-tray
-blueman-tray
+blueman-tray &
+
+pkill -x mictray
+mictray &
 
 # kde connect
-/usr/lib/kdeconnectd &
+pkill -x kdeconnect-indicator
 kdeconnect-indicator &
 
 # desktops

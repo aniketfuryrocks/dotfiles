@@ -52,7 +52,6 @@ super + {_,shift + } {Up,Left,Down,Right}
 super + m
     bspc node -n "last.!automatic.local"
 
-
 # swap the current node and the biggest node
 super + g
 	bspc node -s biggest.local
@@ -77,3 +76,8 @@ super + Escape
 # lock screen
 super + l
 	betterlockscreen -l -b
+
+# dunst notification
+super + {shift,_,ctrl} + grave
+    dunstctl {action,history-pop,close}
+
