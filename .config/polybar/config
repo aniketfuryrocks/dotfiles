@@ -19,7 +19,7 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 padding = 3
-
+wm-restack = bspwm
 
 font-0 = fixed:pixelsize=11;2;
 font-1 = "Siji:pixelsize=11;2"
