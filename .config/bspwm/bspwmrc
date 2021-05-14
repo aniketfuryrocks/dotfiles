@@ -8,6 +8,10 @@ sxhkd &
 pkill -x picom
 picom &
 
+# gnome polit
+pkill -x polkit-gnome-au
+/usr/libexec/polkit-gnome-authentication-agent-1 &
+
 # notifications
 pkill -x dunst
 dunst &
