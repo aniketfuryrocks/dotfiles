@@ -87,3 +87,8 @@ super + ctrl + d
 # firefox
 super + ctrl + f
     firefox 
+
+# spotify (ncspot)
+super + ctrl + s
+    alacritty -e ncspot
+
