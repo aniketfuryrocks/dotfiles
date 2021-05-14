@@ -33,11 +33,11 @@ super + Return
 	alacritty
 
 # dmenu
-super + d
+super + shift + Return
 	rofi -show drun -e
 
 # close and kill
-super + shift + c
+super + shift + q
 	bspc node -c
 
 # set the window state
@@ -64,7 +64,6 @@ super + ctrl + {Left, Down, Up, Right}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}' --follow
 
-
 # preselect the direction
 super + {h,v}
 	bspc node -p {east,south}
@@ -81,3 +80,10 @@ super + l
 super + {shift,_,ctrl} + grave
     dunstctl {action,history-pop,close}
 
+# files
+super + ctrl + d
+    alacritty -e ranger
+
+# firefox
+super + ctrl + f
+    firefox 
