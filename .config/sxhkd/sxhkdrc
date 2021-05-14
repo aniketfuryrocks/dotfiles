@@ -34,7 +34,7 @@ super + Return
 
 # dmenu
 super + d
-	dmenu_run
+	rofi -show drun -e
 
 # close and kill
 super + shift + c
