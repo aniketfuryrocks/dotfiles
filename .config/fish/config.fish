@@ -1,6 +1,5 @@
 alias l="exa -la"
 alias dir="ranger"
-alias term="exec alacritty --working-directory ./ &"
 alias ports="sudo lsof -i -P -n | grep LISTEN"
 # env
 set EDITOR "nvim"

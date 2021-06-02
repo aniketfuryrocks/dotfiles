@@ -49,3 +49,6 @@ colors:
     - { index: 20, color: '0xb2ccd6' }
     - { index: 21, color: '0xeeffff' }
 
+# key bindings
+key_bindings:
+  - { key: Return,  mods: Control|Shift, action: SpawnNewInstance }
