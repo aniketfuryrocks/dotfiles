@@ -1,6 +1,8 @@
 set nocompatible
+set spelllang=en,cjk
 
 call plug#begin('~/.vim/plugged')
+Plug 'mhinz/vim-startify'
 Plug 'valloric/youcompleteme'
 Plug 'dag/vim-fish'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
