@@ -9,6 +9,20 @@ Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/syntastic'
 Plug 'rust-lang/rust.vim'
+Plug 'stephpy/vim-yaml'
+Plug 'plasticboy/vim-markdown'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'othree/html5.vim'
+Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'moll/vim-node'
+Plug 'ekalinin/dockerfile.vim'
+Plug 'thaerkh/vim-workspace'
+Plug 'wincent/command-t'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'} 
 call plug#end()
 
 if (has('termguicolors'))
