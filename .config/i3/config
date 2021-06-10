@@ -33,26 +33,20 @@ exec --no-startup-id prime-run picom --experimental-backends  # Picom (Composito
 
 # My Apps
 
-exec --no-startup-id firefox                                  # Brave (On Workspace 2)
-exec --no-startup-id spotify                                  # Spotify (On Workspace 5)
-exec --no-startup-id mailspring                               # Mailspring (On Workspace 6)
-exec --no-startup-id discord                                  # Discord (On Workspace 6)
-exec --no-startup-id signal-desktop --start-in-tray	          # Signal (Minimized Tray)
-exec --no-startup-id telegram-desktop -startintray            # Telegram (Minimized Tray)
+exec --no-startup-id firefox                                  # Firefox (On Workspace 1-5)
+exec --no-startup-id alacritty -t ncspot -e ncspot            # Spotify (On Workspace 2-5)
 
 # Assign Workspaces:
 
 assign [class="Steam"] $ws1-9
 assign [class="epicgameslauncher.exe"] $ws1-8
 assign [class="Lutris"] $ws1-8
-assign [class="firefox"] $ws1-2
-assign [class="Brave-browser"] $ws1-2
-for_window [class="Spotify"] move to workspace $ws2-7
-for_window [class="Spotify"] focus
-assign [class="discord"] $ws2-8
-assign [class="Mailspring"] $ws2-9
-assign [class="zoom"] $ws2-10
-
+assign [class="firefox"] $ws1-5
+assign [class="Brave-browser"] $ws1-5
+assign [title="ncspot"] $ws2-5
+for_window [class="Spotify"] move to workspace $ws2-5
+assign [class="discord"] $ws2-10
+assign [class="zoom"] $ws1-10
 
 
 #____________________Window and i3 Specific Key bindings__________________________________
@@ -109,59 +103,45 @@ bindsym $mod+space floating toggle
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-
 #____________________________________Workspaces_____________________________
 
 # variables
 # monitor
-set $ws1-1 1:
-set $ws1-2 2:
-set $ws1-3 3:
-set $ws1-4 4:
-set $ws1-5 5:
+set $ws1-1 1
+set $ws1-2 2
+set $ws1-3 3
+set $ws1-4 4
+set $ws1-5 5
 set $ws1-6 6
 set $ws1-7 7
-
-set $ws1-9 9:
-set $ws1-8 9:
-set $ws1-10 10:
+set $ws1-9 9
+set $ws1-8 9
+set $ws1-10 10
 # laptop
-set $ws2-1 11:
-set $ws2-2 12:
+set $ws2-1 11
+set $ws2-2 12
 set $ws2-3 13
-set $ws2-4 14:
-set $ws2-5 15:
+set $ws2-4 14
+set $ws2-5 15
 set $ws2-6 16
-set $ws2-7 17:
-set $ws2-8 18:
-set $ws2-9 19:
-set $ws2-10 20:
+set $ws2-7 17
+set $ws2-8 18
+set $ws2-9 19
+set $ws2-10 20
 
 
 # switch to workspace
 # monitor
-bindsym $mod+1 workspace $ws1-1
-bindsym $mod+2 workspace $ws1-2
-bindsym $mod+3 workspace $ws1-3
-bindsym $mod+4 workspace $ws1-4
-bindsym $mod+5 workspace $ws1-5
-bindsym $mod+6 workspace $ws1-6
-bindsym $mod+7 workspace $ws1-7
-bindsym $mod+8 workspace $ws1-8
-bindsym $mod+9 workspace $ws1-9
-bindsym $mod+0 workspace $ws1-10
-# laptop
-bindsym $mod+ctrl+1 workspace $ws2-1
-bindsym $mod+ctrl+2 workspace $ws2-2
-bindsym $mod+ctrl+3 workspace $ws2-3
-bindsym $mod+ctrl+4 workspace $ws2-4
-bindsym $mod+ctrl+5 workspace $ws2-5
-bindsym $mod+ctrl+6 workspace $ws2-6
-bindsym $mod+ctrl+7 workspace $ws2-7
-bindsym $mod+ctrl+8 workspace $ws2-8
-bindsym $mod+ctrl+9 workspace $ws2-9
-bindsym $mod+ctrl+0 workspace $ws2-10
-
+bindsym $mod+1 workspace $ws1-1, workspace $ws2-1
+bindsym $mod+2 workspace $ws1-2, workspace $ws2-2
+bindsym $mod+3 workspace $ws1-3, workspace $ws2-3
+bindsym $mod+4 workspace $ws1-4, workspace $ws2-4
+bindsym $mod+5 workspace $ws1-5, workspace $ws2-5
+bindsym $mod+6 workspace $ws1-6, workspace $ws2-6
+bindsym $mod+7 workspace $ws1-7, workspace $ws2-7
+bindsym $mod+8 workspace $ws1-8, workspace $ws2-8
+bindsym $mod+9 workspace $ws1-9, workspace $ws2-9
+bindsym $mod+0 workspace $ws1-10, workspace $ws2-10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1-1
