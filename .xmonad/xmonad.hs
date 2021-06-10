@@ -72,17 +72,16 @@ myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty"    -- Sets default terminal
+myTerminal = "prime-run alacritty "    -- Sets default terminal
 
 myBrowser :: String
-myBrowser = "qutebrowser "  -- Sets qutebrowser as browser
+myBrowser = "prime-run firefox "  -- Sets firefox as browser
 
 myEmacs :: String
 myEmacs = "emacsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type
 
 myEditor :: String
-myEditor = "emacsclient -c -a 'emacs' "  -- Sets emacs as editor
--- myEditor = myTerminal ++ " -e vim "    -- Sets vim as editor
+myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor
 
 myBorderWidth :: Dimension
 myBorderWidth = 2           -- Sets border width for windows
@@ -98,21 +97,9 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-    spawnOnce "lxsession &"
-    spawnOnce "picom &"
+    spawnOnce "prime-run xfce4-session &"
+    spawnOnce "prime-run picom &"
     spawnOnce "nm-applet &"
-    spawnOnce "volumeicon &"
-    spawnOnce "conky -c $HOME/.config/conky/xmonad.conkyrc"
-    spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --monitor 1 --transparent true --alpha 0 --tint 0x282c34  --height 22 &"
-    spawnOnce "/usr/bin/emacs --daemon &" -- emacs daemon for the emacsclient
-    -- spawnOnce "kak -d -s mysession &"  -- kakoune daemon for better performance
-    -- spawnOnce "urxvtd -q -o -f &"      -- urxvt daemon for better performance
-
-    spawnOnce "xargs xwallpaper --stretch < ~/.xwallpaper"  -- set last saved with xwallpaper
-    -- spawnOnce "/bin/ls ~/wallpapers | shuf -n 1 | xargs xwallpaper --stretch"  -- set random xwallpaper
-    -- spawnOnce "~/.fehbg &"  -- set last saved feh wallpaper
-    -- spawnOnce "feh --randomize --bg-fill ~/wallpapers/*"  -- feh set random wallpaper
-    -- spawnOnce "nitrogen --restore &"   -- if you prefer nitrogen to feh
     setWMName "LG3D"
 
 myColorizer :: Window -> Bool -> X (String, String)
@@ -337,65 +324,19 @@ myKeys =
     -- Xmonad
         [ ("M-C-r", spawn "xmonad --recompile")  -- Recompiles xmonad
         , ("M-S-r", spawn "xmonad --restart")    -- Restarts xmonad
-        , ("M-S-q", io exitSuccess)              -- Quits xmonad
+    --    , ("M-S-q", io exitSuccess)              -- Quits xmonad
 
     -- Run Prompt
-        , ("M-S-<Return>", spawn "dmenu_run -i -p \"Run: \"") -- Dmenu
-
-    -- Other Dmenu Prompts
-    -- In Xmonad and many tiling window managers, M-p is the default keybinding to
-    -- launch dmenu_run, so I've decided to use M-p plus KEY for these dmenu scripts.
-        , ("M-p a", spawn "dm-sounds")    -- choose an ambient background
-        , ("M-p b", spawn "dm-setbg")     -- set a background
-        , ("M-p c", spawn "dm-colpick")   -- pick color from our scheme
-        , ("M-p e", spawn "dm-confedit")  -- edit config files
-        , ("M-p i", spawn "dm-maim")      -- screenshots (images)
-        , ("M-p k", spawn "dm-kill")      -- kill processes
-        , ("M-p m", spawn "dm-man")       -- manpages
-        , ("M-p o", spawn "dm-bookman")   -- qutebrowser bookmarks/history
-        , ("M-p p", spawn "passmenu")     -- passmenu
-        , ("M-p q", spawn "dm-logout")    -- logout menu
-        , ("M-p r", spawn "dm-reddit")    -- reddio (a reddit viewer)
-        , ("M-p s", spawn "dm-websearch") -- search various search engines
+        , ("M-S-<Return>", spawn "prime-run dmenu_run -i -p \"Run: \"") -- Dmenu
 
     -- Useful programs to have a keybinding for launch
         , ("M-<Return>", spawn (myTerminal))
-        , ("M-b", spawn (myBrowser ++ " www.youtube.com/c/DistroTube/"))
         , ("M-M1-h", spawn (myTerminal ++ " -e htop"))
 
     -- Kill windows
-        , ("M-S-c", kill1)     -- Kill the currently focused client
-        , ("M-S-a", killAll)   -- Kill all windows on current workspace
-
-    -- Workspaces
-        , ("M-.", nextScreen)  -- Switch focus to next monitor
-        , ("M-,", prevScreen)  -- Switch focus to prev monitor
-        , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
-        , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
-
-    -- Floating windows
-        , ("M-f", sendMessage (T.Toggle "floats")) -- Toggles my 'floats' layout
-        , ("M-t", withFocused $ windows . W.sink)  -- Push floating window back to tile
-        , ("M-S-t", sinkAll)                       -- Push ALL floating windows to tile
-
-    -- Increase/decrease spacing (gaps)
-        , ("C-M1-j", decWindowSpacing 4)         -- Decrease window spacing
-        , ("C-M1-k", incWindowSpacing 4)         -- Increase window spacing
-        , ("C-M1-h", decScreenSpacing 4)         -- Decrease screen spacing
-        , ("C-M1-l", incScreenSpacing 4)         -- Increase screen spacing
-
-    -- Grid Select (CTR-g followed by a key)
-        , ("C-g g", spawnSelected' myAppGrid)                 -- grid select favorite apps
-        , ("C-g t", goToSelected $ mygridConfig myColorizer)  -- goto selected window
-        , ("C-g b", bringSelected $ mygridConfig myColorizer) -- bring selected window
-
-    -- Windows navigation
-        , ("M-m", windows W.focusMaster)  -- Move focus to the master window
-        , ("M-j", windows W.focusDown)    -- Move focus to the next window
-        , ("M-k", windows W.focusUp)      -- Move focus to the prev window
         , ("M-S-m", windows W.swapMaster) -- Swap the focused window and the master window
-        , ("M-S-j", windows W.swapDown)   -- Swap focused window with next window
-        , ("M-S-k", windows W.swapUp)     -- Swap focused window with prev window
+        , ("M-S-<Up>", windows W.swapDown)   -- Swap focused window with next window
+        , ("M-S-<Down>", windows W.swapUp)     -- Swap focused window with prev window
         , ("M-<Backspace>", promote)      -- Moves focused window to master, others maintain order
         , ("M-S-<Tab>", rotSlavesDown)    -- Rotate all windows except master and keep focus in place
         , ("M-C-<Tab>", rotAllDown)       -- Rotate all the windows in the current stack
@@ -404,75 +345,19 @@ myKeys =
         , ("M-<Tab>", sendMessage NextLayout)           -- Switch to next layout
         , ("M-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
 
-    -- Increase/decrease windows in the master pane or the stack
-        , ("M-S-<Up>", sendMessage (IncMasterN 1))      -- Increase # of clients master pane
-        , ("M-S-<Down>", sendMessage (IncMasterN (-1))) -- Decrease # of clients master pane
-        , ("M-C-<Up>", increaseLimit)                   -- Increase # of windows
-        , ("M-C-<Down>", decreaseLimit)                 -- Decrease # of windows
-
     -- Window resizing
-        , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
-        , ("M-l", sendMessage Expand)                   -- Expand horiz window width
-        , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
-        , ("M-M1-k", sendMessage MirrorExpand)          -- Expand vert window width
-
-    -- Sublayouts
-    -- This is used to push windows to tabbed sublayouts, or pull them out of it.
-        , ("M-C-h", sendMessage $ pullGroup L)
-        , ("M-C-l", sendMessage $ pullGroup R)
-        , ("M-C-k", sendMessage $ pullGroup U)
-        , ("M-C-j", sendMessage $ pullGroup D)
-        , ("M-C-m", withFocused (sendMessage . MergeAll))
-        -- , ("M-C-u", withFocused (sendMessage . UnMerge))
-        , ("M-C-/", withFocused (sendMessage . UnMergeAll))
-        , ("M-C-.", onGroup W.focusUp')    -- Switch focus to next tab
-        , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
-
-    -- Scratchpads
-    -- Toggle show/hide these programs.  They run on a hidden workspace.
-    -- When you toggle them to show, it brings them to your current workspace.
-    -- Toggle them to hide and it sends them back to hidden workspace (NSP).
-        , ("C-s t", namedScratchpadAction myScratchPads "terminal")
-        , ("C-s m", namedScratchpadAction myScratchPads "mocp")
-        , ("C-s c", namedScratchpadAction myScratchPads "calculator")
-
-    -- Set wallpaper with 'feh'. Type 'SUPER+F1' to launch sxiv in the wallpapers directory.
-    -- Then in sxiv, type 'C-x w' to set the wallpaper that you choose.
-        , ("M-<F1>", spawn "sxiv -r -q -t -o ~/wallpapers/*")
-        , ("M-<F2>", spawn "/bin/ls ~/wallpapers | shuf -n 1 | xargs xwallpaper --stretch")
-        --, ("M-<F2>", spawn "feh --randomize --bg-fill ~/wallpapers/*")
-
-    -- Controls for mocp music player (SUPER-u followed by a key)
-        , ("M-u p", spawn "mocp --play")
-        , ("M-u l", spawn "mocp --next")
-        , ("M-u h", spawn "mocp --previous")
-        , ("M-u <Space>", spawn "mocp --toggle-pause")
-
-    -- Emacs (CTRL-e followed by a key)
-        -- , ("C-e e", spawn myEmacs)                 -- start emacs
-        , ("C-e e", spawn (myEmacs ++ ("--eval '(dashboard-refresh-buffer)'")))   -- emacs dashboard
-        , ("C-e b", spawn (myEmacs ++ ("--eval '(ibuffer)'")))   -- list buffers
-        , ("C-e d", spawn (myEmacs ++ ("--eval '(dired nil)'"))) -- dired
-        , ("C-e i", spawn (myEmacs ++ ("--eval '(erc)'")))       -- erc irc client
-        , ("C-e m", spawn (myEmacs ++ ("--eval '(mu4e)'")))      -- mu4e email
-        , ("C-e n", spawn (myEmacs ++ ("--eval '(elfeed)'")))    -- elfeed rss
-        , ("C-e s", spawn (myEmacs ++ ("--eval '(eshell)'")))    -- eshell
-        , ("C-e t", spawn (myEmacs ++ ("--eval '(mastodon)'")))  -- mastodon.el
-        -- , ("C-e v", spawn (myEmacs ++ ("--eval '(vterm nil)'"))) -- vterm if on GNU Emacs
-        , ("C-e v", spawn (myEmacs ++ ("--eval '(+vterm/here nil)'"))) -- vterm if on Doom Emacs
-        -- , ("C-e w", spawn (myEmacs ++ ("--eval '(eww \"distrotube.com\")'"))) -- eww browser if on GNU Emacs
-        , ("C-e w", spawn (myEmacs ++ ("--eval '(doom/window-maximize-buffer(eww \"distrotube.com\"))'"))) -- eww browser if on Doom Emacs
-        -- emms is an emacs audio player. I set it to auto start playing in a specific directory.
-        , ("C-e a", spawn (myEmacs ++ ("--eval '(emms)' --eval '(emms-play-directory-tree \"~/Music/Non-Classical/70s-80s/\")'")))
+        , ("M-C-<Left>", sendMessage Shrink)                   -- Shrink horiz window width
+        , ("M-C-<Right>", sendMessage Expand)                   -- Expand horiz window width
+        , ("M-C-<Up>", sendMessage MirrorExpand)          -- Expand vert window width
+        , ("M-C-<Down>", sendMessage MirrorShrink)          -- Shrink vert window width
 
     -- Multimedia Keys
-        , ("<XF86AudioPlay>", spawn (myTerminal ++ "mocp --play"))
-        , ("<XF86AudioPrev>", spawn (myTerminal ++ "mocp --previous"))
-        , ("<XF86AudioNext>", spawn (myTerminal ++ "mocp --next"))
+        , ("<XF86AudioPlay>", spawn (myTerminal ++ "playerctl play-pause"))
+        , ("<XF86AudioPrev>", spawn (myTerminal ++ "playerctl previous"))
+        , ("<XF86AudioNext>", spawn (myTerminal ++ "playerctl next"))
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
         , ("<XF86AudioLowerVolume>", spawn "amixer set Master 5%- unmute")
         , ("<XF86AudioRaiseVolume>", spawn "amixer set Master 5%+ unmute")
-        , ("<XF86HomePage>", spawn "qutebrowser https://www.youtube.com/c/DistroTube")
         , ("<XF86Search>", spawn "dmsearch")
         , ("<XF86Mail>", runOrRaise "thunderbird" (resource =? "thunderbird"))
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
@@ -493,11 +378,6 @@ main = do
     xmonad $ ewmh def
         { manageHook         = myManageHook <+> manageDocks
         , handleEventHook    = docksEventHook
-                               -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
-                               -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
-                               -- it adds a border around the window if screen does not have focus. So, my solution
-                               -- is to use a keybinding to toggle fullscreen noborders instead.  (M-<Space>)
-                               -- <+> fullscreenEventHook
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
