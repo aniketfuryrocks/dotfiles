@@ -72,7 +72,7 @@ myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "prime-run alacritty "    -- Sets default terminal
+myTerminal = "alacritty "    -- Sets default terminal
 
 myBrowser :: String
 myBrowser = "prime-run firefox "  -- Sets firefox as browser
@@ -84,7 +84,7 @@ myEditor :: String
 myEditor = myTerminal ++ " -e nvim "    -- Sets vim as editor
 
 myBorderWidth :: Dimension
-myBorderWidth = 2           -- Sets border width for windows
+myBorderWidth = 1           -- Sets border width for windows
 
 myNormColor :: String
 myNormColor   = "#282c34"   -- Border color of normal windows
@@ -97,9 +97,8 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-    spawnOnce "prime-run xfce4-session &"
-    spawnOnce "prime-run picom &"
-    spawnOnce "nm-applet &"
+    spawnOnce "xfce4-session &"
+    spawnOnce "prime-run picom --experimental-backends &" 
     setWMName "LG3D"
 
 myColorizer :: Window -> Bool -> X (String, String)
