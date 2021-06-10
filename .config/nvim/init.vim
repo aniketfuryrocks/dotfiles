@@ -13,7 +13,10 @@ Plug 'valloric/youcompleteme'
 " langauge support
 Plug 'neovimhaskell/haskell-vim' 
 Plug 'dag/vim-fish'
+Plug 'cespare/vim-toml'
+Plug 'dense-analysis/ale'
 Plug 'rust-lang/rust.vim'
+Plug 'dense-analysis/ale'
 Plug 'stephpy/vim-yaml'
 Plug 'plasticboy/vim-markdown'
 Plug 'hail2u/vim-css3-syntax'
@@ -79,5 +82,12 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" ale
+"set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
+let g:ale_sign_column_always = 1
+let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
 " nerdtree
 nnoremap <C-b> :NERDTreeToggle<CR>
