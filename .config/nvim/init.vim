@@ -1,13 +1,18 @@
+syntax on
+filetype plugin indent on
 set nocompatible
 set spelllang=en,cjk
 
 call plug#begin('~/.vim/plugged')
-Plug 'mhinz/vim-startify'
-Plug 'valloric/youcompleteme'
-Plug 'dag/vim-fish'
+" asthetics
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
+" syntax
 Plug 'scrooloose/syntastic'
+Plug 'valloric/youcompleteme'
+" langauge support
+Plug 'neovimhaskell/haskell-vim' 
+Plug 'dag/vim-fish'
 Plug 'rust-lang/rust.vim'
 Plug 'stephpy/vim-yaml'
 Plug 'plasticboy/vim-markdown'
@@ -20,9 +25,15 @@ Plug 'leafgarland/typescript-vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'moll/vim-node'
 Plug 'ekalinin/dockerfile.vim'
+" extras
+Plug 'mhinz/vim-startify'
 Plug 'thaerkh/vim-workspace'
-Plug 'wincent/command-t'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} 
+" directory navigation NERDtree
+Plug 'preservim/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
 if (has('termguicolors'))
@@ -68,3 +79,5 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" nerdtree
+nnoremap <C-b> :NERDTreeToggle<CR>
