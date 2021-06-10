@@ -1,0 +1,247 @@
+# Super Key
+set $mod Mod4
+
+font pango:DejaVu Sans Mono 11
+
+# monitor
+set $laptop eDP-1 # internal
+set $monitor HDMI-1 # external
+
+#____________________Launch Application key bindings__________________________________
+
+
+# Screenshot
+bindsym Print exec flameshot gui
+
+# Terminal
+bindsym $mod+Return exec alacritty
+
+# Rofi program launcher
+#bindsym $mod+shift+Return exec i3-dmenu-desktop --dmenu='rofi -dmenu -show-icons'
+bindsym $mod+shift+Return exec prime-run dmenu_run -i -p "Run: "
+bindsym $mod+period exec rofimoji --insert-with-clipboard
+
+# Lock
+bindsym $mod+l exec betterlockscreen -l
+
+#_________________________________Startup Applications__________________________________
+
+# Utils
+
+exec --no-startup-id xfce4-session                            # XFCE4 startup apps
+exec --no-startup-id prime-run picom --experimental-backends  # Picom (Compositor)
+
+# My Apps
+
+exec --no-startup-id firefox                                  # Brave (On Workspace 2)
+exec --no-startup-id spotify                                  # Spotify (On Workspace 5)
+exec --no-startup-id mailspring                               # Mailspring (On Workspace 6)
+exec --no-startup-id discord                                  # Discord (On Workspace 6)
+exec --no-startup-id signal-desktop --start-in-tray	          # Signal (Minimized Tray)
+exec --no-startup-id telegram-desktop -startintray            # Telegram (Minimized Tray)
+
+# Assign Workspaces:
+
+assign [class="Steam"] $ws1-9
+assign [class="epicgameslauncher.exe"] $ws1-8
+assign [class="Lutris"] $ws1-8
+assign [class="firefox"] $ws1-2
+assign [class="Brave-browser"] $ws1-2
+for_window [class="Spotify"] move to workspace $ws2-7
+for_window [class="Spotify"] focus
+assign [class="discord"] $ws2-8
+assign [class="Mailspring"] $ws2-9
+assign [class="zoom"] $ws2-10
+
+
+
+#____________________Window and i3 Specific Key bindings__________________________________
+
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- unmute
+bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
+
+# Brightness
+bindsym XF86MonBrightnessUp exec sh ~/.config/i3/backlight.sh +1
+bindsym XF86MonBrightnessDown exec sh ~/.config/i3/backlight.sh -1
+
+# Media player controls
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Kill Focused Window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $modShift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+
+#____________________________________Workspaces_____________________________
+
+# variables
+# monitor
+set $ws1-1 1:
+set $ws1-2 2:
+set $ws1-3 3:
+set $ws1-4 4:
+set $ws1-5 5:
+set $ws1-6 6
+set $ws1-7 7
+
+set $ws1-9 9:
+set $ws1-8 9:
+set $ws1-10 10:
+# laptop
+set $ws2-1 11:
+set $ws2-2 12:
+set $ws2-3 13
+set $ws2-4 14:
+set $ws2-5 15:
+set $ws2-6 16
+set $ws2-7 17:
+set $ws2-8 18:
+set $ws2-9 19:
+set $ws2-10 20:
+
+
+# switch to workspace
+# monitor
+bindsym $mod+1 workspace $ws1-1
+bindsym $mod+2 workspace $ws1-2
+bindsym $mod+3 workspace $ws1-3
+bindsym $mod+4 workspace $ws1-4
+bindsym $mod+5 workspace $ws1-5
+bindsym $mod+6 workspace $ws1-6
+bindsym $mod+7 workspace $ws1-7
+bindsym $mod+8 workspace $ws1-8
+bindsym $mod+9 workspace $ws1-9
+bindsym $mod+0 workspace $ws1-10
+# laptop
+bindsym $mod+ctrl+1 workspace $ws2-1
+bindsym $mod+ctrl+2 workspace $ws2-2
+bindsym $mod+ctrl+3 workspace $ws2-3
+bindsym $mod+ctrl+4 workspace $ws2-4
+bindsym $mod+ctrl+5 workspace $ws2-5
+bindsym $mod+ctrl+6 workspace $ws2-6
+bindsym $mod+ctrl+7 workspace $ws2-7
+bindsym $mod+ctrl+8 workspace $ws2-8
+bindsym $mod+ctrl+9 workspace $ws2-9
+bindsym $mod+ctrl+0 workspace $ws2-10
+
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1-1
+bindsym $mod+Shift+2 move container to workspace $ws1-2
+bindsym $mod+Shift+3 move container to workspace $ws1-3
+bindsym $mod+Shift+4 move container to workspace $ws1-4
+bindsym $mod+Shift+5 move container to workspace $ws1-5
+bindsym $mod+Shift+6 move container to workspace $ws1-6
+bindsym $mod+Shift+7 move container to workspace $ws1-7
+bindsym $mod+Shift+8 move container to workspace $ws1-8
+bindsym $mod+Shift+9 move container to workspace $ws1-9
+bindsym $mod+Shift+0 move container to workspace $ws1-10
+
+bindsym $mod+Shift+ctrl+1 move container to workspace $ws2-1
+bindsym $mod+Shift+ctrl+2 move container to workspace $ws2-2
+bindsym $mod+Shift+ctrl+3 move container to workspace $ws2-3
+bindsym $mod+Shift+ctrl+4 move container to workspace $ws2-4
+bindsym $mod+Shift+ctrl+5 move container to workspace $ws2-5
+bindsym $mod+Shift+ctrl+6 move container to workspace $ws2-6
+bindsym $mod+Shift+ctrl+7 move container to workspace $ws2-7
+bindsym $mod+Shift+ctrl+8 move container to workspace $ws2-8
+bindsym $mod+Shift+ctrl+9 move container to workspace $ws2-9
+bindsym $mod+Shift+ctrl+0 move container to workspace $ws2-10
+
+
+#monitor
+workspace $ws1-1 output $monitor
+workspace $ws1-2 output $monitor
+workspace $ws1-3 output $monitor
+workspace $ws1-4 output $monitor
+workspace $ws1-5 output $monitor
+workspace $ws1-6 output $monitor
+workspace $ws1-7 output $monitor
+workspace $ws1-8 output $monitor
+workspace $ws1-9 output $monitor
+workspace $ws1-10 output $monitor
+
+workspace $ws2-1 output $laptop
+workspace $ws2-2 output $laptop
+workspace $ws2-3 output $laptop
+workspace $ws2-4 output $laptop
+workspace $ws2-5 output $laptop
+workspace $ws2-6 output $laptop
+workspace $ws2-7 output $laptop
+workspace $ws2-8 output $laptop
+workspace $ws2-9 output $laptop
+workspace $ws2-10 output $laptop
+
+
+#_______________________________Modes__________________________________
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+#_______________________________borders_________________________________
+
+
+client.focused #FF0000 #CC0000 #ffffff #3c6f73   #3e4e4f
+for_window [class="^.*"] border pixel 1
+gaps inner 10
+gaps outer 0
+
+for_window [class="jetbrains-.*" title="win0"] floating enable border
+
+#____________________Mouse_____________________________________________
+
+focus_follows_mouse no
+
