@@ -132,16 +132,16 @@ set $ws2-10 20
 
 # switch to workspace
 # monitor
-bindsym $mod+1 workspace $ws1-1, workspace $ws2-1
-bindsym $mod+2 workspace $ws1-2, workspace $ws2-2
-bindsym $mod+3 workspace $ws1-3, workspace $ws2-3
-bindsym $mod+4 workspace $ws1-4, workspace $ws2-4
-bindsym $mod+5 workspace $ws1-5, workspace $ws2-5
-bindsym $mod+6 workspace $ws1-6, workspace $ws2-6
-bindsym $mod+7 workspace $ws1-7, workspace $ws2-7
-bindsym $mod+8 workspace $ws1-8, workspace $ws2-8
-bindsym $mod+9 workspace $ws1-9, workspace $ws2-9
-bindsym $mod+0 workspace $ws1-10, workspace $ws2-10
+bindsym $mod+1 workspace $ws2-1, workspace $ws1-1
+bindsym $mod+2 workspace $ws2-2, workspace $ws1-2
+bindsym $mod+3 workspace $ws2-3, workspace $ws1-3
+bindsym $mod+4 workspace $ws2-4, workspace $ws1-4
+bindsym $mod+5 workspace $ws2-5, workspace $ws1-5
+bindsym $mod+6 workspace $ws2-6, workspace $ws1-6
+bindsym $mod+7 workspace $ws2-7, workspace $ws1-7
+bindsym $mod+8 workspace $ws2-8, workspace $ws1-8
+bindsym $mod+9 workspace $ws2-9, workspace $ws1-9
+bindsym $mod+0 workspace $ws2-10, workspace $ws1-10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1-1
