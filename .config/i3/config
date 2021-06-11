@@ -18,7 +18,7 @@ bindsym $mod+Return exec alacritty
 
 # Rofi program launcher
 #bindsym $mod+shift+Return exec i3-dmenu-desktop --dmenu='rofi -dmenu -show-icons'
-bindsym $mod+shift+Return exec prime-run dmenu_run -i -p "Run: "
+bindsym $mod+shift+Return exec dmenu_run -i -p "Run: "
 bindsym $mod+period exec rofimoji --insert-with-clipboard
 
 # Lock
@@ -29,12 +29,13 @@ bindsym $mod+l exec betterlockscreen -l
 # Utils
 
 exec --no-startup-id xfce4-session                            # XFCE4 startup apps
-exec --no-startup-id prime-run picom --experimental-backends  # Picom (Compositor)
+exec --no-startup-id picom --backend xr_glx_hybrid   # Picom (Compositor)
 
 # My Apps
 
 exec --no-startup-id firefox                                  # Firefox (On Workspace 1-5)
-exec --no-startup-id alacritty -t ncspot -e ncspot            # Spotify (On Workspace 2-5)
+#exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Workspace 2-5)
+exec --no-startup-id spotify                                  # Spotify (On Workspace 2-5)
 
 # Assign Workspaces:
 
