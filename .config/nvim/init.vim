@@ -8,23 +8,20 @@ call plug#begin('~/.vim/plugged')
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 " syntax
+Plug 'preservim/tagbar'
+Plug 'vim-syntastic/syntastic'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'honza/vim-snippets'
 " langauge support
 Plug 'neovimhaskell/haskell-vim' 
 Plug 'dag/vim-fish'
 Plug 'cespare/vim-toml'
-Plug 'dense-analysis/ale'
-"Plug 'rust-lang/rust.vim'
-Plug 'dense-analysis/ale'
+Plug 'rust-lang/rust.vim'
+Plug 'gko/vim-coloresque'
 Plug 'stephpy/vim-yaml'
 Plug 'plasticboy/vim-markdown'
-Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
-Plug 'elzr/vim-json'
-Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
-Plug 'leafgarland/typescript-vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'moll/vim-node'
 Plug 'ekalinin/dockerfile.vim'
 " extras
 Plug 'mhinz/vim-startify'
@@ -70,12 +67,14 @@ set hlsearch        " highlight matche
 set ignorecase      " ignore case when searching
 set smartcase       " ignore case if search pattern is lower case
                     " case-sensitive otherwise
-" ale
-let g:ale_completion_enabled = 1
-let g:ale_completion_autoimport = 1
-let g:ale_sign_column_always = 1
-let g:ale_fix_on_save = 1
-let g:airline#extensions#ale#enabled = 1
-let g:ale_set_balloon = 1
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 " nerdtree
 nnoremap <C-b> :NERDTreeToggle<CR>
