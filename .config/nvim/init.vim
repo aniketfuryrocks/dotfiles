@@ -2,6 +2,7 @@ syntax on
 filetype plugin indent on
 set nocompatible
 set spelllang=en,cjk
+set autoread
 
 call plug#begin('~/.vim/plugged')
 " asthetics

@@ -1,3 +1,6 @@
+# starship prompt
+starship init fish | source
+
 alias l="exa -la"
 alias dir="ranger"
 alias ports="sudo lsof -i -P -n | grep LISTEN"
