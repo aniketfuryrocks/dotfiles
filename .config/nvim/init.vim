@@ -1,5 +1,6 @@
 syntax on
 filetype plugin indent on
+set clipboard+=unnamedplus
 set nocompatible
 set spelllang=en,cjk
 set autoread
