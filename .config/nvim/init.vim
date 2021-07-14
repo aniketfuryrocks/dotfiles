@@ -46,6 +46,7 @@ Plug 'andymass/vim-matchup' " use % better
 Plug 'airblade/vim-rooter' " cd to nearest .git root
 Plug 'gko/vim-coloresque' " show colors for hex values #000000
 " extras
+Plug 'airblade/vim-gitgutter' " git 
 Plug 'mhinz/vim-startify'
 Plug 'thaerkh/vim-workspace'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} 
