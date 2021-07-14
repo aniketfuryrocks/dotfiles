@@ -1,30 +1,50 @@
 syntax on
 filetype plugin indent on
+set autoindent
+set encoding=utf-8
 set clipboard+=unnamedplus
 set nocompatible
 set spelllang=en,cjk
 set autoread
+
+" Sane splits
+set splitright
+set splitbelow
+
+" Proper search
+set incsearch
+set ignorecase
+set smartcase
+set gdefault
+
+" ale 
+let g:ale_disable_lsp = 1 " disable ale lsp, to work with coc https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
+let g:ale_sign_column_always = 1
+let g:airline#extensions#ale#enabled = 1
 
 call plug#begin('~/.vim/plugged')
 " asthetics
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 " syntax
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/tagbar'
-Plug 'vim-syntastic/syntastic'
-Plug 'ycm-core/YouCompleteMe'
-Plug 'honza/vim-snippets'
+Plug 'dense-analysis/ale'
 " langauge support
 Plug 'neovimhaskell/haskell-vim' 
 Plug 'dag/vim-fish'
 Plug 'cespare/vim-toml'
-Plug 'rust-lang/rust.vim'
-Plug 'gko/vim-coloresque'
 Plug 'stephpy/vim-yaml'
-Plug 'plasticboy/vim-markdown'
 Plug 'othree/html5.vim'
-Plug 'maxmellon/vim-jsx-pretty'
+Plug 'plasticboy/vim-markdown'
 Plug 'ekalinin/dockerfile.vim'
+" rust
+Plug 'rust-lang/rust.vim'
+Plug 'rhysd/rust-doc.vim'
+" tools
+Plug 'andymass/vim-matchup' " use % better
+Plug 'airblade/vim-rooter' " cd to nearest .git root
+Plug 'gko/vim-coloresque' " show colors for hex values #000000
 " extras
 Plug 'mhinz/vim-startify'
 Plug 'thaerkh/vim-workspace'
@@ -71,7 +91,7 @@ set smartcase       " ignore case if search pattern is lower case
                     " case-sensitive otherwise
 " syntastic
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
@@ -80,3 +100,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 " nerdtree
 nnoremap <C-b> :NERDTreeToggle<CR>
+" move lines
+" xnoremap <S-Up>  :m-2<CR>gv=gv
+" xnoremap <S-Down> :m'>+<CR>gv=gv
+
