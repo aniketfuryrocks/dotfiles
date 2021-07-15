@@ -1,4 +1,3 @@
-starship prompt
 starship init fish | source
 
 alias l="exa -la"
