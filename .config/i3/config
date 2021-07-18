@@ -3,9 +3,22 @@ set $mod Mod4
 
 font pango:DejaVu Sans Mono 11
 
-# monitor
-set $laptop eDP-1 # internal
-set $monitor HDMI-1 # external
+# swaymsg -t get_outputs
+# internal monitor
+set $laptop eDP-1
+# external monitor
+set $monitor HDMI-A-1 
+# wallpaper
+set $wallpaper ~/Pictures/Wallpapers/pexels-peter-olexa-3875821.jpg
+
+output $monitor pos 0 0 res 1920x1080
+#output $laptop pos 1920 0 res 1600x900
+
+output $laptop scale 1.25
+
+focus output $monitor
+
+output "*" bg $wallpaper fill
 
 #____________________Launch Application key bindings__________________________________
 
@@ -22,20 +35,27 @@ bindsym $mod+shift+Return exec dmenu_run -i -p "Run: "
 bindsym $mod+period exec rofimoji --insert-with-clipboard
 
 # Lock
-bindsym $mod+l exec betterlockscreen -l
+bindsym $mod+l exec swaylock -e -i $wallpaper -l
+
+# albert
+bindsym Mod1+space exec albert toggle
 
 #_________________________________Startup Applications__________________________________
 
 # Utils
 
-exec --no-startup-id xfce4-session                            # XFCE4 startup apps
-exec --no-startup-id picom --backend xr_glx_hybrid   # Picom (Compositor)
-
+#exec --no-startup-id xfce4-session                            # XFCE4 startup apps
+exec --no-startup-id waybar
+exec --no-startup-id dunst
 # My Apps
 
+exec --no-startup-id albert
 exec --no-startup-id firefox                                  # Firefox (On Workspace 1-5)
 #exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Workspace 2-5)
-exec --no-startup-id spotify                                  # Spotify (On Workspace 2-5)
+#exec --no-startup-id spotify                                 # Spotify (On Workspace 2-5)
+exec --no-startup-id flatpak run com.spotify.Client           # Spotify (On Workspace 2-5)
+
+
 
 # Assign Workspaces:
 
@@ -50,24 +70,34 @@ assign [class="discord"] $ws2-10
 assign [class="zoom"] $ws1-10
 
 
+#____________________Input Devices__________________________________
+
+# touchpad
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+# mouse
+focus_follows_mouse no
+
+#____________________Clipboard__________________________________
+
+exec wl-paste -t text --watch clipman store
+
 #____________________Window and i3 Specific Key bindings__________________________________
 
-
-# Use pactl to adjust volume in PulseAudio.
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer set Master 5%- unmute
-bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle
-bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle
-
-# Brightness
-bindsym XF86MonBrightnessUp exec sh ~/.config/i3/backlight.sh +1
-bindsym XF86MonBrightnessDown exec sh ~/.config/i3/backlight.sh -1
-
-# Media player controls
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+# special keys
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec bemenu-run
 
 # Kill Focused Window
 bindsym $mod+Shift+q kill
@@ -80,7 +110,7 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+Left move left
-bindsym $modShift+Down move down
+bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
@@ -214,15 +244,11 @@ bindsym $mod+r mode "resize"
 
 #_______________________________borders_________________________________
 
-
+default_border none
 client.focused #FF0000 #CC0000 #ffffff #3c6f73   #3e4e4f
 for_window [class="^.*"] border pixel 1
 gaps inner 10
 gaps outer 0
 
 for_window [class="jetbrains-.*" title="win0"] floating enable border
-
-#____________________Mouse_____________________________________________
-
-focus_follows_mouse no
 
