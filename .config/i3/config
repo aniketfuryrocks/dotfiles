@@ -45,6 +45,7 @@ bindsym Mod1+space exec albert toggle
 # Utils
 
 #exec --no-startup-id xfce4-session                            # XFCE4 startup apps
+exec --no-startup-id lxpolkit                                  # polkit 
 exec --no-startup-id waybar
 exec --no-startup-id dunst
 # My Apps
