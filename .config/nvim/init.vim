@@ -90,7 +90,10 @@ colorscheme material
 
 " case-sensitive otherwise
 " nerdtree
-nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <M-1> :NERDTreeToggle<CR>
+nnoremap <M-Enter> :CocFix<CR>
+nnoremap <S-F6> :ALERename<CR>
+nnoremap <C-B> :ALEGoToDefinition<CR>
 " move lines
 xnoremap <S-Up>  :m-2<CR>gv=gv
 xnoremap <S-Down> :m'>+<CR>gv=gv

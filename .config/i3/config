@@ -14,7 +14,7 @@ set $wallpaper ~/Pictures/Wallpapers/pexels-peter-olexa-3875821.jpg
 output $monitor pos 0 0 res 1920x1080
 #output $laptop pos 1920 0 res 1600x900
 
-output $laptop scale 1.25
+# output $laptop scale 1.25
 
 focus output $monitor
 
