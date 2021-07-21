@@ -12,6 +12,10 @@ set PATH "$HOME/.cargo/bin:$PATH"
 set PATH "/opt/android_sdk/platform-tools:$PATH"
 set DENO_INSTALL "$HOME/.deno"
 set PATH "$DENO_INSTALL/bin:$PATH"
+
+# flatpak
+set XDG_DATA_DIRS "$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:~/.local/share/flatpak/exports/share"
+
 string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME/bin" $PATH
 
 # cd autojump

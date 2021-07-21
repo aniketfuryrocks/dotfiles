@@ -1,3 +1,6 @@
+# enable xwayland
+xwayland enable
+
 # Super Key
 set $mod Mod4
 
@@ -9,7 +12,7 @@ set $laptop eDP-1
 # external monitor
 set $monitor HDMI-A-1 
 # wallpaper
-set $wallpaper ~/Pictures/Wallpapers/pexels-peter-olexa-3875821.jpg
+set $wallpaper ~/Pictures/wallpaper.jpg
 
 output $monitor pos 0 0 res 1920x1080
 #output $laptop pos 1920 0 res 1600x900
@@ -40,6 +43,7 @@ bindsym $mod+l exec swaylock -e -i $wallpaper -l
 # albert
 bindsym Mod1+space exec albert toggle
 
+
 #_________________________________Startup Applications__________________________________
 
 # Utils
@@ -56,8 +60,15 @@ exec --no-startup-id firefox                                  # Firefox (On Work
 #exec --no-startup-id spotify                                 # Spotify (On Workspace 2-5)
 exec --no-startup-id flatpak run com.spotify.Client           # Spotify (On Workspace 2-5)
 
+# polkit 
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# keyring
+exec gnome-keyring-daemon
+exec seahorse-daemon
+# Xwayland
+exec systemctl --user import-environment
 
-
+#_________________________________Workspaces__________________________________
 # Assign Workspaces:
 
 assign [class="Steam"] $ws1-9
