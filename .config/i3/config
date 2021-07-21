@@ -57,8 +57,8 @@ exec --no-startup-id dunst
 exec --no-startup-id albert
 exec --no-startup-id firefox                                  # Firefox (On Workspace 1-5)
 #exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Workspace 2-5)
-#exec --no-startup-id spotify                                 # Spotify (On Workspace 2-5)
-exec --no-startup-id flatpak run com.spotify.Client           # Spotify (On Workspace 2-5)
+exec --no-startup-id spotify                                  # Spotify (On Workspace 2-5)
+#exec --no-startup-id flatpak run com.spotify.Client          # Spotify (On Workspace 2-5)
 
 # polkit 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
