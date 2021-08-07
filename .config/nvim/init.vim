@@ -56,6 +56,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/tagbar'
 Plug 'dense-analysis/ale'
 " langauge support
+Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'}
 Plug 'neovimhaskell/haskell-vim' 
 Plug 'dag/vim-fish'
 Plug 'cespare/vim-toml'
