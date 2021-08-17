@@ -6,12 +6,17 @@ alias ports="sudo lsof -i -P -n | grep LISTEN"
 # env
 set EDITOR "nvim"
 
-set -gx WASMTIME_HOME "$HOME/.wasmtime"
+set WASMTIME_HOME "$HOME/.wasmtime"
 set PATH "$HOME/.local/bin:$PATH"
 set PATH "$HOME/.cargo/bin:$PATH"
-set PATH "/opt/android_sdk/platform-tools:$PATH"
+
+# deno
 set DENO_INSTALL "$HOME/.deno"
 set PATH "$DENO_INSTALL/bin:$PATH"
+
+# android
+set ANDROID_SDK_ROOT "$HOME/Android/Sdk"
+set PATH "$HOME/Android/Sdk/platform-tools:$PATH"
 
 # flatpak
 set XDG_DATA_DIRS "$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:~/.local/share/flatpak/exports/share"
