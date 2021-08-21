@@ -17,7 +17,7 @@ set $wallpaper ~/Pictures/wallpaper.jpg
 output $monitor pos 0 0 res 1920x1080
 #output $laptop pos 1920 0 res 1600x900
 
-# output $laptop scale 1.25
+output $laptop scale 1.25
 
 focus output $monitor
 
@@ -27,15 +27,10 @@ output "*" bg $wallpaper fill
 
 
 # Screenshot
-bindsym Print exec flameshot gui
+bindsym Print exec grim -t png 
 
 # Terminal
 bindsym $mod+Return exec alacritty
-
-# Rofi program launcher
-#bindsym $mod+shift+Return exec i3-dmenu-desktop --dmenu='rofi -dmenu -show-icons'
-bindsym $mod+shift+Return exec dmenu_run -i -p "Run: "
-bindsym $mod+period exec rofimoji --insert-with-clipboard
 
 # Lock
 bindsym $mod+l exec swaylock -e -i $wallpaper -l
@@ -49,15 +44,14 @@ bindsym Mod1+space exec albert toggle
 # Utils
 
 #exec --no-startup-id xfce4-session                            # XFCE4 startup apps
-exec --no-startup-id lxpolkit                                  # polkit 
 exec --no-startup-id waybar
 exec --no-startup-id dunst
 # My Apps
 
 exec --no-startup-id albert
 exec --no-startup-id firefox                                  # Firefox (On Workspace 1-5)
-#exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Workspace 2-5)
-exec --no-startup-id spotify                                  # Spotify (On Workspace 2-5)
+exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Workspace 2-5)
+#exec --no-startup-id spotify                                  # Spotify (On Workspace 2-5)
 #exec --no-startup-id flatpak run com.spotify.Client          # Spotify (On Workspace 2-5)
 
 # polkit 
@@ -67,20 +61,6 @@ exec gnome-keyring-daemon
 exec seahorse-daemon
 # Xwayland
 exec systemctl --user import-environment
-
-#_________________________________Workspaces__________________________________
-# Assign Workspaces:
-
-assign [class="Steam"] $ws1-9
-assign [class="epicgameslauncher.exe"] $ws1-8
-assign [class="Lutris"] $ws1-8
-assign [class="firefox"] $ws1-5
-assign [class="Brave-browser"] $ws1-5
-assign [title="ncspot"] $ws2-5
-for_window [class="Spotify"] move to workspace $ws2-5
-assign [class="discord"] $ws2-10
-assign [class="zoom"] $ws1-10
-
 
 #____________________Input Devices__________________________________
 
@@ -157,8 +137,8 @@ set $ws1-4 4
 set $ws1-5 5
 set $ws1-6 6
 set $ws1-7 7
-set $ws1-9 9
 set $ws1-8 9
+set $ws1-9 9
 set $ws1-10 10
 # laptop
 set $ws2-1 11
@@ -233,7 +213,6 @@ workspace $ws2-8 output $laptop
 workspace $ws2-9 output $laptop
 workspace $ws2-10 output $laptop
 
-
 #_______________________________Modes__________________________________
 
 
@@ -263,4 +242,18 @@ gaps inner 10
 gaps outer 0
 
 for_window [class="jetbrains-.*" title="win0"] floating enable border
+
+#_________________________________Workspaces__________________________________
+# Assign Workspaces:
+
+assign [class="Steam"] $ws1-9
+assign [class="epicgameslauncher.exe"] $ws1-8
+assign [class="Lutris"] $ws1-8
+assign [class="firefox"] $ws1-2
+assign [class="Brave-browser"] $ws1-5
+assign [title="ncspot"] $ws2-2
+for_window [class="Spotify"] move to workspace $ws2-2
+assign [class="discord"] $ws2-10
+assign [class="zoom"] $ws1-10
+
 

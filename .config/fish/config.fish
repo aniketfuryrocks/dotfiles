@@ -10,6 +10,9 @@ set WASMTIME_HOME "$HOME/.wasmtime"
 set PATH "$HOME/.local/bin:$PATH"
 set PATH "$HOME/.cargo/bin:$PATH"
 
+#yarn
+set PATH "$HOME/.yarn/bin:$PATH"
+
 # deno
 set DENO_INSTALL "$HOME/.deno"
 set PATH "$DENO_INSTALL/bin:$PATH"
