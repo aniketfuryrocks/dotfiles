@@ -25,3 +25,7 @@ string match -r ".wasmtime" "$PATH" > /dev/null; or set -gx PATH "$WASMTIME_HOME
 
 # cd autojump
 if test -f /home/aniket/.autojump/share/autojump/autojump.fish; . /home/aniket/.autojump/share/autojump/autojump.fish; end
+
+# Wasmer
+export WASMER_DIR="/home/aniket/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"

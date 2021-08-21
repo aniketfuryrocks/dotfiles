@@ -68,6 +68,8 @@ Plug 'ekalinin/dockerfile.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/rust-doc.vim'
 " tools
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 Plug 'andymass/vim-matchup' " use % better
 Plug 'airblade/vim-rooter' " cd to nearest .git root
 Plug 'gko/vim-coloresque' " show colors for hex values #000000
@@ -102,3 +104,7 @@ xnoremap <S-Down> :m'>+<CR>gv=gv
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 
+" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
