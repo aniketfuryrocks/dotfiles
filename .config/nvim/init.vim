@@ -58,26 +58,18 @@ Plug 'dense-analysis/ale'
 " langauge support
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'}
 Plug 'neovimhaskell/haskell-vim' 
-Plug 'dag/vim-fish'
-Plug 'cespare/vim-toml'
-Plug 'stephpy/vim-yaml'
-Plug 'othree/html5.vim'
-Plug 'plasticboy/vim-markdown'
-Plug 'ekalinin/dockerfile.vim'
 " rust
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/rust-doc.vim'
 " tools
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf.vim'
 Plug 'andymass/vim-matchup' " use % better
 Plug 'airblade/vim-rooter' " cd to nearest .git root
 Plug 'gko/vim-coloresque' " show colors for hex values #000000
 " extras
 Plug 'airblade/vim-gitgutter' " git 
 Plug 'mhinz/vim-startify'
-Plug 'thaerkh/vim-workspace'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'} 
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " directory navigation NERDtree
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -91,12 +83,34 @@ au ColorScheme * hi Normal ctermbg=none guibg=none              "transparent bac
 au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red  "transparent back
 colorscheme material
 
-" case-sensitive otherwise
 " nerdtree
 nnoremap <M-1> :NERDTreeToggle<CR>
-nnoremap <M-Enter> :CocFix<CR>
-nnoremap <S-F6> :ALERename<CR>
-nnoremap <C-B> :ALEGoToDefinition<CR>
+nnoremap <M-Enter> :CocAction<CR>
+nnoremap <C-B> :call CocActionAsync('jumpDefinition')<CR>
+
+
+" coc vim
+autocmd CursorHold * silent call CocActionAsync('highlight')
+" ctrl + space auto complete
+inoremap <silent><expr> <c-space> coc#refresh()
+" goto definition
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+" commands
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+
 " move lines
 xnoremap <S-Up>  :m-2<CR>gv=gv
 xnoremap <S-Down> :m'>+<CR>gv=gv
@@ -105,6 +119,7 @@ let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 
 " telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap ff :GFiles<CR>
+nnoremap fb :Buffers<CR>
+" search in all files
+nnoremap fl :Lines<CR> 

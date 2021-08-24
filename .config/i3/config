@@ -45,7 +45,7 @@ exec --no-startup-id dunst
 # My Apps
 
 #exec --no-startup-id albert
-exec --no-startup-id gamemoderun firefox                                  # Firefox (On Workspace 1-5)
+exec --no-startup-id firefox                                  # Firefox (On Workspace 1-5)
 exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Workspace 2-5)
 #exec --no-startup-id spotify                                  # Spotify (On Workspace 2-5)
 #exec --no-startup-id flatpak run com.spotify.Client          # Spotify (On Workspace 2-5)
@@ -59,8 +59,8 @@ exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Works
 # clipboard
 exec --no-startup-id clipit
 # compositor picom
-exec --no-startup-id picom --experimental-backends --vsync 
-exec ~/.config/polybar/launch.sh
+exec_always --no-startup-id picom --experimental-backends --vsync 
+exec_always ~/.config/polybar/launch.sh
 
 #____________________Window and i3 Specific Key bindings__________________________________
 
@@ -248,6 +248,7 @@ assign [class="Lutris"] $ws1-8
 assign [class="firefox"] $ws1-2
 assign [class="Brave-browser"] $ws1-5
 assign [title="ncspot"] $ws2-2
+assign [title="lyrics"] $ws2-2
 for_window [class="Spotify"] move to workspace $ws2-2
 assign [class="discord"] $ws2-10
 assign [class="zoom"] $ws1-10
