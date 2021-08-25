@@ -59,7 +59,7 @@ exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Works
 # clipboard
 exec --no-startup-id clipit
 # compositor picom
-exec_always --no-startup-id picom --experimental-backends --vsync 
+exec_always --no-startup-id "__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia picom --experimental-backends --vsync"
 exec_always ~/.config/polybar/launch.sh
 
 #____________________Window and i3 Specific Key bindings__________________________________
@@ -122,7 +122,7 @@ set $ws1-4 4
 set $ws1-5 5
 set $ws1-6 6
 set $ws1-7 7
-set $ws1-8 9
+set $ws1-8 8
 set $ws1-9 9
 set $ws1-10 10
 # laptop

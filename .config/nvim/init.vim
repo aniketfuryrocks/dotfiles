@@ -119,7 +119,8 @@ let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 
 " telescope
-nnoremap ff :GFiles<CR>
+nnoremap ff :Files<CR>
+nnoremap fg :GFiles<CR>
 nnoremap fb :Buffers<CR>
 " search in all files
 nnoremap fl :Lines<CR> 
