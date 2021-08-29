@@ -27,7 +27,7 @@ bindsym Print exec flameshot gui
 bindsym $mod+Return exec alacritty
 
 # Lock
-bindsym $mod+l exec betterlockscreen -u $wallpaper
+bindsym $mod+F12 exec betterlockscreen -u $wallpaper
 
 # albert
 bindsym Mod1+space exec albert toggle
@@ -41,6 +41,7 @@ exec --no-startup-id dex -vae i3
 
 #exec --no-startup-id xfce4-session                            # XFCE4 startup apps
 exec --no-startup-id polybar
+exec --no-startup-id picom
 exec --no-startup-id dunst
 # My Apps
 
@@ -80,22 +81,22 @@ bindsym XF86Search exec bemenu-run
 bindsym $mod+Shift+q kill
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused window
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+ctrl+h split h 
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+ctrl+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -238,7 +239,8 @@ gaps inner 20
 gaps outer 10
 
 for_window [class="jetbrains-.*" title="win0"] floating enable border
-
+for_window [class="plan"] floating enable
+for_window [class="Plank"] floating enable, border 1px, focus, move absolute center
 #_________________________________Workspaces__________________________________
 # Assign Workspaces:
 

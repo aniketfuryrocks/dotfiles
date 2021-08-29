@@ -1,5 +1,5 @@
 starship init fish | source
-
+fish_vi_key_bindings
 alias l="exa -la"
 alias dir="ranger"
 alias ports="sudo lsof -i -P -n | grep LISTEN"

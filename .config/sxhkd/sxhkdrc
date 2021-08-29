@@ -81,11 +81,11 @@ super + {shift,_,ctrl} + grave
     dunstctl {action,history-pop,close}
 
 # files
-super + ctrl + d
+super + f
     alacritty -e ranger
 
 # firefox
-super + ctrl + f
+super + b
     firefox 
 
 # spotify (ncspot)

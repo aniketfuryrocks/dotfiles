@@ -1,54 +1,47 @@
 #! /bin/sh
 
+#_________________________________Startup Applications__________________________________
+
+WALLPAPER="~/Pictures/wallpaper.jpg"
+
+#_________________________________Startup Applications__________________________________
+
 # keyboard
-pkill -x sxhkd
 sxhkd &
-
-# compositor
-pkill -x picom
-picom &
-
-# gnome polit
-pkill -x polkit-gnome-au
-/usr/libexec/polkit-gnome-authentication-agent-1 &
-
-# notifications
-pkill -x dunst
-dunst &
-
 # wallpaper
-nitrogen --restore
+feh --bg-fill $WALLPAPER
+
+# Utils
+# auto start https://github.com/jceb/dex
+dex -vae i3 &
+
+#exec --no-startup-id xfce4-session         # XFCE4 startup apps
+~/.config/polybar/launch.sh &               #polybar
+dunst &                                     # notifications
+
+# My Apps
+firefox &                                   # Firefox (On Workspace 1-5)
+alacritty -t ncspot -e ncspot &             # Spotify (On Workspace 2-5)
+
+# compositor picom
+__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia picom --experimental-backends --vsync &
 
 # dock
-pkill -x plank
 plank &
 
 # tray icons
-pkill -x cbatticon
-cbatticon &
-
-pkill -x nm-applet
-nm-applet &
-
-pkill -x optmius-manager-qt
-optimus-manager-qt &
-
-pkill -x pasystray
-pasystray & 
-
-pkill -x blueman-tray
-blueman-tray &
-
-pkill -x mictray
-mictray &
-
-# kde connect
-pkill -x kdeconnect-indicator
-kdeconnect-indicator &
+clipit &                                    # clipboard manager
+cbatticono                                  # chargin 
+nm-applet &                                 # network
+optimus-manager-qt &                        # graphics switch
+pasystray &                                 # audio
+blueman-tray &                              # bluetooth
+mictray &                                   # mic
+kdeconnect-indicator &                      # kde connect
 
 # desktops
 bspc monitor -d 1 2 3 4 5
-if [[ $(xrandr -q | grep 'HDMI-1-1 connected') ]]; then
+if [[ $(xrandr -q | grep 'HDMI-1 connected') ]]; then
     bspc monitor eDP-1-1 -d 6 7 8 9 0
 fi
 
@@ -64,5 +57,3 @@ bspc rule -a Firefox desktop="^2"
 # dock
 bspc rule -a Plank layer=above manage=on border=off
 
-# bar
-~/.config/polybar/launch.sh
