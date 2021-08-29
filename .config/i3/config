@@ -39,10 +39,14 @@ bindsym Mod1+space exec albert toggle
 # auto start https://github.com/jceb/dex
 exec --no-startup-id dex -vae i3
 
-#exec --no-startup-id xfce4-session                            # XFCE4 startup apps
+#startup apps
 exec --no-startup-id polybar
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backends 
 exec --no-startup-id dunst
+exec --no-startup-id mictray
+exec --no-startup-id mictray
+exec --no-startup-id cbatticon
+
 # My Apps
 
 #exec --no-startup-id albert
@@ -59,8 +63,6 @@ exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Works
 #exec seahorse-daemon
 # clipboard
 exec --no-startup-id clipit
-# compositor picom
-exec_always --no-startup-id "__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia picom --experimental-backends --vsync"
 exec_always ~/.config/polybar/launch.sh
 
 #____________________Window and i3 Specific Key bindings__________________________________
@@ -234,13 +236,12 @@ bindsym $mod+r mode "resize"
 
 default_border none
 client.focused #FF0000 #CC0000 #ffffff #3c6f73   #3e4e4f
-#for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 1
 gaps inner 20
 gaps outer 10
 
 for_window [class="jetbrains-.*" title="win0"] floating enable border
-for_window [class="plan"] floating enable
-for_window [class="Plank"] floating enable, border 1px, focus, move absolute center
+for_window [class="albert"] floating enable, border 1px, focus, move absolute center
 #_________________________________Workspaces__________________________________
 # Assign Workspaces:
 
