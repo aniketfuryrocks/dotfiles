@@ -38,7 +38,8 @@ bindsym Mod1+space exec albert toggle
 # Utils
 # auto start https://github.com/jceb/dex
 exec --no-startup-id dex -vae i3
-
+# authentication agent
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #startup apps
 exec --no-startup-id polybar
 exec --no-startup-id picom --experimental-backends 
