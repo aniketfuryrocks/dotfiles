@@ -47,6 +47,22 @@ endif
 " ale
 let g:ale_disable_lsp = 1 " disable ale lsp, to work with coc https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
 
+" incremental backups
+"Turn on backup option
+set backup
+
+"Where to store backups
+set backupdir=~/.vim/backup//
+
+"Make backup before overwriting the current buffer
+set writebackup
+
+"Overwrite the original backup file
+set backupcopy=yes
+
+"Meaningful backup name, ex: filename@2015-04-05.14:59
+au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
+
 call plug#begin('~/.vim/plugged')
 " asthetics
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
