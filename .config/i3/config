@@ -15,9 +15,7 @@ exec --no-startup-id xrandr --auto
 exec --no-startup-id xrandr --output $laptop --right-of $monitor --mode 1600x900
 exec --no-startup-id xrandr --output $monitor --primary --mode 1920x1080
 
-exec feh --bg-fill $wallpaper
-
-# auto tiling
+exec_always feh --bg-fill $wallpaper
 exec_always --no-startup-id i3-auto-layout
 
 #____________________Launch Application key bindings__________________________________
@@ -30,44 +28,10 @@ bindsym Print exec flameshot gui
 bindsym $mod+Return exec alacritty
 
 # Lock
-bindsym $mod+F12 exec betterlockscreen -u $wallpaper
+bindsym $mod+F12 exec betterlockscreen -l
 
 # albert
 bindsym Mod1+space exec albert toggle
-
-
-#_________________________________Startup Applications__________________________________
-
-# Utils
-# auto start https://github.com/jceb/dex
-exec --no-startup-id dex -vae i3
-# authentication agent
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-#startup apps
-exec --no-startup-id polybar
-exec --no-startup-id picom --experimental-backends 
-exec --no-startup-id dunst
-exec --no-startup-id mictray
-exec --no-startup-id mictray
-exec --no-startup-id cbatticon
-
-# My Apps
-
-#exec --no-startup-id albert
-exec --no-startup-id firefox                                  # Firefox (On Workspace 1-5)
-exec --no-startup-id alacritty -t ncspot -e ncspot           # Spotify (On Workspace 2-5)
-#exec --no-startup-id spotify                                  # Spotify (On Workspace 2-5)
-#exec --no-startup-id flatpak run com.spotify.Client          # Spotify (On Workspace 2-5)
-
-#these are auto started by dex
-# polkit 
-#exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# keyring
-#exec gnome-keyring-daemon
-#exec seahorse-daemon
-# clipboard
-exec --no-startup-id clipit
-exec_always ~/.config/polybar/launch.sh
 
 #____________________Window and i3 Specific Key bindings__________________________________
 
@@ -252,12 +216,42 @@ for_window [class="albert"] floating enable, border 1px, focus, move absolute ce
 assign [class="Steam"] $ws1-9
 assign [class="epicgameslauncher.exe"] $ws1-8
 assign [class="Lutris"] $ws1-8
-assign [class="firefox"] $ws1-2
 assign [class="Brave-browser"] $ws1-5
-assign [title="ncspot"] $ws2-2
-assign [title="lyrics"] $ws2-2
+
+
+assign [class="firefox"] $ws1-2
+assign [title="ncspot"] $ws2-3
+assign [title="lyrics"] $ws2-3
+assign [title="cava"] $ws2-3
+assign [title="tock"] $ws1-3
+
 for_window [class="Spotify"] move to workspace $ws2-2
 assign [class="discord"] $ws2-10
 assign [class="zoom"] $ws1-10
 
+
+#_________________________________Startup Applications__________________________________
+
+# Utils
+# auto start https://github.com/jceb/dex
+exec --no-startup-id dex -vae i3
+# authentication agent
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#startup apps
+exec --no-startup-id polybar
+exec --no-startup-id picom --experimental-backends 
+exec --no-startup-id dunst
+exec --no-startup-id mictray
+exec --no-startup-id pasystray
+exec --no-startup-id cbatticon
+exec --no-startup-id clipit
+
+exec_always ~/.config/polybar/launch.sh
+
+# My Apps
+exec --no-startup-id firefox                                # Firefox (On Workspace 2)
+exec --no-startup-id alacritty -t ncspot -e ncspot          # Spotify (On Workspace 13)
+exec --no-startup-id alacritty -t lyrics -e lyrics          # Lyrics  (On Workspace 13)
+exec --no-startup-id alacritty -t cava -e cava              # Visualizer (On Workspace 13)
+exec --no-startup-id alacritty -t tock -e tock -c -C 255,255,255               # Visualizer (On Workspace 13)
 
