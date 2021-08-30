@@ -94,10 +94,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " ctrl + space auto complete
 inoremap <silent><expr> <c-space> coc#refresh()
 " goto definition
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 " commands
@@ -110,17 +110,19 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
+" fmt
+nnoremap <leader>fmt :Format<CR>
 
-" move lines
-xnoremap <S-Up>  :m-2<CR>gv=gv
-xnoremap <S-Down> :m'>+<CR>gv=gv
 " ale 
 let g:ale_sign_column_always = 1
 let g:airline#extensions#ale#enabled = 1
 
-" telescope
-nnoremap <leader> ff :Files<CR>
-nnoremap <leader> fg :GFiles<CR>
-nnoremap <leader> fb :Buffers<CR>
-" search <leader> in all files
-nnoremap <leader> fl :Lines<CR> 
+" fzf
+nnoremap <leader>ff :Files<CR>
+nnoremap <leader>fg :GFiles<CR>
+nnoremap <leader>fb :Buffers<CR>
+" search <leader>in all files
+nnoremap <leader>fl :Lines<CR> 
+
+" hybrid line numbers
+:set number relativenumber

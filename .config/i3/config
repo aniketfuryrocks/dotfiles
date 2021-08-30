@@ -17,6 +17,9 @@ exec --no-startup-id xrandr --output $monitor --primary --mode 1920x1080
 
 exec feh --bg-fill $wallpaper
 
+# auto tiling
+exec_always --no-startup-id i3-auto-layout
+
 #____________________Launch Application key bindings__________________________________
 
 
