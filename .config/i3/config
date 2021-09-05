@@ -203,7 +203,7 @@ bindsym $mod+r mode "resize"
 #_______________________________borders_________________________________
 
 default_border none
-client.focused #FF0000 #CC0000 #ffffff #3c6f73   #3e4e4f
+client.focused #FF0000 #CC0000 #ffffff #3f898f #3e4e4f
 for_window [class="^.*"] border pixel 1
 gaps inner 20
 gaps outer 10

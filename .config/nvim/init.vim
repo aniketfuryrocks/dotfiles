@@ -83,6 +83,9 @@ Plug 'andymass/vim-matchup' " use % better
 Plug 'airblade/vim-rooter' " cd to nearest .git root
 Plug 'gko/vim-coloresque' " show colors for hex values #000000
 " extras
+Plug 'liuchengxu/vista.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'folke/todo-comments.nvim'
 Plug 'airblade/vim-gitgutter' " git 
 Plug 'mhinz/vim-startify'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -104,6 +107,10 @@ nnoremap <M-1> :NERDTreeToggle<CR>
 nnoremap <M-Enter> :CocAction<CR>
 nnoremap <C-B> :call CocActionAsync('jumpDefinition')<CR>
 
+" todo comments
+lua << EOF
+  require("todo-comments").setup {}
+EOF
 
 " coc vim
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -142,3 +149,13 @@ nnoremap <leader>fl :Lines<CR>
 
 " hybrid line numbers
 :set number relativenumber
+
+" vista.vim
+
+" keybinds
+" show symbol sidebar
+nnoremap <leader>ss :Vista coc!<CR>
+" find symbols in current file
+nnoremap <leader>fs :Vista finder<CR> 
+" find symbols in all files
+nnoremap <leader>fas :Vista finder!<CR>
