@@ -1,49 +1,36 @@
-! Base16 Material Darker
-! Scheme: Nate Peterson
-#define base00 #212121
-#define base01 #303030
-#define base02 #353535
-#define base03 #4a4a4a
-#define base04 #b2ccd6
-#define base05 #eeffff
-#define base06 #eeffff
-#define base07 #ffffff
-#define base08 #f07178
-#define base09 #f78c6c
-#define base0A #ffcb6b
-#define base0B #c3e88d
-#define base0C #89ddff
-#define base0D #82aaff
-#define base0E #c792ea
-#define base0F #ff5370
+!! special
+*.foreground:   #eeffff
+*.background:   #212121
+*.cursorColor:  #eeffff
 
-foreground:   base05
-background:   #dd212121
-cursorColor:  base05
+! black
+*.color0:       #212121
+*.color8:       #4a4a4a
 
-color0:       base00
-color1:       base08
-color2:       base0B
-color3:       base0A
-color4:       base0D
-color5:       base0E
-color6:       base0C
-color7:       base05
+! red
+*.color1:       #f07178
+*.color9:       #f07178
 
-color8:       base03
-color9:       base08
-color10:      base0B
-color11:      base0A
-color12:      base0D
-color13:      base0E
-color14:      base0C
-color15:      base07
+! green
+*.color2:       #c3e88d
+*.color10:      #c3e88d
 
-color16:      base09
-color17:      base0F
-color18:      base01
-color19:      base02
-color20:      base04
-color21:      base06
+! yellow
+*.color3:       #ffcb6b
+*.color11:      #ffcb6b
 
+! blue
+*.color4:       #82aaff
+*.color12:      #82aaff
 
+! magenta
+*.color5:       #c792ea
+*.color13:      #c792ea
+
+! cyan
+*.color6:       #89ddff
+*.color14:      #89ddff
+
+! white
+*.color7:       #eeffff
+*.color15:      #ffffff

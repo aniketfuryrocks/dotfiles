@@ -14,12 +14,12 @@ height = 30
 fixed-center = true
 background = #000000FF
 foreground = ${colors.foreground}
-line-size = 2
+line-size = 3
 line-color = #f00
 border-size = 0
 border-color = #00000000
 padding = 3
-wm-restack = bspwm
+wm-restack = i3
 
 font-0 = fixed:pixelsize=11;2;
 font-1 = "Siji:pixelsize=11;2"
@@ -31,7 +31,7 @@ font-5 = "Font Awesome 5 Brands:size=11;2"
 tray-position = right
 tray-padding = 2
 
-modules-left = i3
+modules-left = i3 player-mpris-tail
 modules-center = 
 modules-right = date
 
@@ -116,36 +116,20 @@ time = %I:%M %p
 time-alt = %H:%M:%S
 
 format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
 
 label-font = 2
 label = %date% %time%
 
 
 
-;_________________________________ Date __________________________________
+;_________________________________ Media __________________________________
 
 
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/player-mpris-tail.py -f '{icon} {artist} - {title}'
+tail = true
+click-left = ~~/.config/polybar/player-mpris-tail.py previous &
+click-right = ~~/.config/polybar/player-mpris-tail.py next &
+click-middle = ~~/.config/polybar/player-mpris-tail.py play-pause &
 
-
-[module/pulseaudio]
-type = internal/pulseaudio
-
-sink = alsa_output.pci-0000_12_00.3.analog-stereo
-
-use-ui-max = false
-
-interval = 5
-
-format-volume = <ramp-volume> <label-volume>
-
-label-volume = %percentage%%
-
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
-
-click-right = pavucontrol

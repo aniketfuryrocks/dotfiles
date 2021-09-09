@@ -90,6 +90,7 @@ Plug 'airblade/vim-gitgutter' " git
 Plug 'mhinz/vim-startify'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " directory navigation NERDtree
+Plug 'tpope/vim-fugitive' "git
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
