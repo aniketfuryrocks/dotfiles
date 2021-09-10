@@ -105,8 +105,6 @@ colorscheme material
 
 " nerdtree
 nnoremap <M-1> :NERDTreeToggle<CR>
-nnoremap <M-Enter> :CocAction<CR>
-nnoremap <C-B> :call CocActionAsync('jumpDefinition')<CR>
 
 " todo comments
 lua << EOF
@@ -117,6 +115,8 @@ EOF
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " ctrl + space auto complete
 inoremap <silent><expr> <c-space> coc#refresh()
+" fix box
+nnoremap <M-Enter> :CocAction<CR>
 " goto definition
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gt <Plug>(coc-type-definition)
@@ -145,8 +145,10 @@ let g:airline#extensions#ale#enabled = 1
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
 nnoremap <leader>fb :Buffers<CR>
-" search <leader>in all files
+" search in all files
 nnoremap <leader>fl :Lines<CR> 
+" ripgrep search inside all files
+nnoremap <leader>rg :Rg<CR>
 
 " hybrid line numbers
 :set number relativenumber
