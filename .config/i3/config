@@ -245,6 +245,7 @@ exec --no-startup-id mictray
 exec --no-startup-id pasystray
 exec --no-startup-id cbatticon
 exec --no-startup-id clipit
+exec --no-startup-id kdeconnect-indicator
 
 exec_always ~/.config/polybar/launch.sh
 
