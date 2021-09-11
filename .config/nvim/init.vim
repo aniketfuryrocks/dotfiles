@@ -73,7 +73,7 @@ Plug 'preservim/tagbar'
 Plug 'dense-analysis/ale'
 " langauge support
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'}
-Plug 'neovimhaskell/haskell-vim' 
+Plug 'neovimhaskell/haskell-vim'
 " rust
 Plug 'rust-lang/rust.vim'
 Plug 'rhysd/rust-doc.vim'
@@ -90,6 +90,7 @@ Plug 'airblade/vim-gitgutter' " git
 Plug 'mhinz/vim-startify'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " directory navigation NERDtree
+Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive' "git
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -97,8 +98,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
-let g:material_theme_style = 'darker'
+let g:material_theme_style = 'darker-community'
 let g:airline_theme = 'material'
+
 au ColorScheme * hi Normal ctermbg=none guibg=none              "transparent back
 au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red  "transparent back
 colorscheme material
@@ -124,6 +126,9 @@ nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+" list errors
+nnoremap <leader>dig :CocDiagnostics<CR>
+nnoremap <leader>err :lopen<CR>
 " commands
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -162,3 +167,6 @@ nnoremap <leader>ss :Vista coc!<CR>
 nnoremap <leader>fs :Vista finder<CR> 
 " find symbols in all files
 nnoremap <leader>fas :Vista finder!<CR>
+
+" todo vim
+nnoremap <leader>todo :TodoLocList<CR>
