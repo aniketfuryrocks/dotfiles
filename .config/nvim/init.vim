@@ -65,11 +65,12 @@ au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 
 call plug#begin('~/.vim/plugged')
 " asthetics
+Plug 'https://github.com/ryanoasis/vim-devicons'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
+Plug 'sheerun/vim-polyglot'
 " syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/tagbar'
 Plug 'dense-analysis/ale'
 " langauge support
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'}
@@ -94,7 +95,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive' "git
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 call plug#end()
 
