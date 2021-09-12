@@ -64,38 +64,45 @@ set backupcopy=yes
 au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 
 call plug#begin('~/.vim/plugged')
+
 " asthetics
-Plug 'https://github.com/ryanoasis/vim-devicons'
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'vim-airline/vim-airline'
-Plug 'sheerun/vim-polyglot'
-" syntax
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'dense-analysis/ale'
-" langauge support
-Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'}
-Plug 'neovimhaskell/haskell-vim'
-" rust
-Plug 'rust-lang/rust.vim'
-Plug 'rhysd/rust-doc.vim'
-" tools
-Plug 'junegunn/fzf.vim'
-Plug 'andymass/vim-matchup' " use % better
-Plug 'airblade/vim-rooter' " cd to nearest .git root
+Plug 'mhinz/vim-startify'   " start page
+Plug 'kaicataldo/material.vim', { 'branch': 'main' } " theme
+Plug 'https://github.com/ryanoasis/vim-devicons'    " icons
+Plug 'vim-airline/vim-airline'                      " bottom bar
+Plug 'vim-airline/vim-airline-themes'               " airline themes
 Plug 'gko/vim-coloresque' " show colors for hex values #000000
-" extras
-Plug 'liuchengxu/vista.vim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'folke/todo-comments.nvim'
-Plug 'airblade/vim-gitgutter' " git 
-Plug 'mhinz/vim-startify'
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-" directory navigation NERDtree
-Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive' "git
-Plug 'preservim/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" syntax
+Plug 'neoclide/coc.nvim', {'branch': 'release'}     " language server support
+Plug 'dense-analysis/ale'                           " linting
+Plug 'sheerun/vim-polyglot'                         " syntax highlight
+
+" langauge support
+Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'} " preview markdown
+
+" rust
+Plug 'rhysd/rust-doc.vim'
+
+" better editing
+Plug 'tpope/vim-surround'       " change parens 
+Plug 'mg979/vim-visual-multi'   " multi line editing
+
+" tools
+Plug 'junegunn/fzf.vim'         " fzf
+Plug 'airblade/vim-rooter'      " cd to nearest .git root
+Plug 'andymass/vim-matchup'     " use % better
+Plug 'liuchengxu/vista.vim'     " symbol search
+Plug 'nvim-lua/plenary.nvim'    " required for todo
+Plug 'folke/todo-comments.nvim' " better todo comments
+Plug 'airblade/vim-gitgutter'   " shows changed lines
+Plug 'tpope/vim-fugitive'       " git tooling
+Plug 'preservim/nerdtree'       " directory navigation
+
+" nerd tree plugins
+Plug 'Xuyuanp/nerdtree-git-plugin'  
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 call plug#end()
 
 let g:material_theme_style = 'darker-community'
