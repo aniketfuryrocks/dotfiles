@@ -1,28 +1,21 @@
 syntax on
 filetype plugin indent on
+
 set autoindent
-set encoding=utf-8
+set encoding=UTF-8
 set clipboard+=unnamedplus
 set nocompatible
 set spelllang=en,cjk
-set autoread
 
 " Sane splits
 set splitright
 set splitbelow
-
-" Proper search
-set incsearch
-set ignorecase
-set smartcase
-set gdefault
 
 " tabs
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for autoindent
 set expandtab       " tabs are space
-set autoindent
 set copyindent      " copy indent from the previous line
  
 " ui
@@ -39,20 +32,21 @@ set hlsearch        " highlight matche
 set ignorecase      " ignore case when searching
 set smartcase       " ignore case if search pattern is lower case
 
+" hybrid line numbers
+set number relativenumber
+
 " term colors
 if (has('termguicolors'))
     set termguicolors
 endif
 
-" ale
-let g:ale_disable_lsp = 1 " disable ale lsp, to work with coc https://github.com/dense-analysis/ale#5iii-how-can-i-use-ale-and-cocnvim-together
-
-" incremental backups
-"Turn on backup option
+"Turn on backup and undo option
 set backup
+set undofile 
 
 "Where to store backups
-set backupdir=~/.vim/backup//
+set backupdir=~/.vim/backup
+set undodir=~/.vim/undodir
 
 "Make backup before overwriting the current buffer
 set writebackup
@@ -63,26 +57,42 @@ set backupcopy=yes
 "Meaningful backup name, ex: filename@2015-04-05.14:59
 au BufWritePre * let &bex = '@' . strftime("%F.%H:%M")
 
+" coc extensions
+let g:coc_global_extensions = [
+      \'coc-snippets',
+      \'coc-markdownlint',    
+      \'coc-vetur',
+      \'coc-go',
+      \'coc-python',
+      \'coc-flutter', 
+      \'coc-json', 
+      \'coc-fzf-preview',
+      \'coc-flutter',
+      \'coc-fish',
+      \'coc-lua',
+      \'coc-emoji',
+      \'coc-spell-checker',
+      \'coc-cspell-dicts',
+      \'coc-rust-analyzer',
+      \'coc-toml'
+      \]
+
 call plug#begin('~/.vim/plugged')
 
 " asthetics
 Plug 'mhinz/vim-startify'   " start page
 Plug 'kaicataldo/material.vim', { 'branch': 'main' } " theme
-Plug 'https://github.com/ryanoasis/vim-devicons'    " icons
+Plug 'ryanoasis/vim-devicons'                       " icons
 Plug 'vim-airline/vim-airline'                      " bottom bar
 Plug 'vim-airline/vim-airline-themes'               " airline themes
 Plug 'gko/vim-coloresque' " show colors for hex values #000000
 
 " syntax
 Plug 'neoclide/coc.nvim', {'branch': 'release'}     " language server support
-Plug 'dense-analysis/ale'                           " linting
 Plug 'sheerun/vim-polyglot'                         " syntax highlight
 
 " langauge support
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'} " preview markdown
-
-" rust
-Plug 'rhysd/rust-doc.vim'
 
 " better editing
 Plug 'tpope/vim-surround'       " change parens 
@@ -105,6 +115,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 call plug#end()
 
+" theme
 let g:material_theme_style = 'darker-community'
 let g:airline_theme = 'material'
 
@@ -121,7 +132,20 @@ lua << EOF
 EOF
 
 " coc vim
+
+" commands
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" auto
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " ctrl + space auto complete
 inoremap <silent><expr> <c-space> coc#refresh()
 " fix box
@@ -134,46 +158,32 @@ nmap <leader>gr <Plug>(coc-references)
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 " list errors
-nnoremap <leader>dig :CocDiagnostics<CR>
+nnoremap <leader>dig :CocList diagnostics<CR>
 nnoremap <leader>err :lopen<CR>
-" commands
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
 " fmt
 nnoremap <leader>fmt :Format<CR>
 
-" ale 
-let g:ale_sign_column_always = 1
-let g:airline#extensions#ale#enabled = 1
 
 " fzf
 nnoremap <leader>ff :Files<CR>
 nnoremap <leader>fg :GFiles<CR>
-nnoremap <leader>fb :Buffers<CR>
+" list of open tabs
+nnoremap <leader>st :W<CR>
+" list of open buffers
+nnoremap <leader>sb :Buffers<CR>
 " search in all files
 nnoremap <leader>fl :Lines<CR> 
 " ripgrep search inside all files
 nnoremap <leader>rg :Rg<CR>
 
-" hybrid line numbers
-:set number relativenumber
 
 " vista.vim
 
 " keybinds
-" show symbol sidebar
-nnoremap <leader>ss :Vista coc!<CR>
 " find symbols in current file
 nnoremap <leader>fs :Vista finder<CR> 
 " find symbols in all files
 nnoremap <leader>fas :Vista finder!<CR>
 
 " todo vim
-nnoremap <leader>todo :TodoLocList<CR>
+nnoremap <leader>to :TodoLocList<CR>

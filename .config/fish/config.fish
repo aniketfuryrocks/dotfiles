@@ -14,8 +14,8 @@ set fzf_fd_opts --hidden --exclude=.git             # search hidden files
 
 alias l="exa -la"
 alias dir="ranger"
-alias ports="sudo lsof -i -P -n | grep LISTEN"
-
+alias ports="doas lsof -i -P -n | grep LISTEN"
+alias sudo="doas"
 
 
 # ____________env

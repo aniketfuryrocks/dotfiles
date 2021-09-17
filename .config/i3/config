@@ -238,7 +238,6 @@ exec --no-startup-id dex -vae i3
 # authentication agent
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #startup apps
-exec --no-startup-id polybar
 exec --no-startup-id picom --experimental-backends 
 exec --no-startup-id dunst
 exec --no-startup-id mictray
@@ -246,7 +245,7 @@ exec --no-startup-id pasystray
 exec --no-startup-id cbatticon
 exec --no-startup-id clipit
 exec --no-startup-id kdeconnect-indicator
-
+exec --no-startup-id nm-applet
 exec_always ~/.config/polybar/launch.sh
 
 # My Apps
