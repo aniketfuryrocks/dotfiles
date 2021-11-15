@@ -14,8 +14,7 @@ set fzf_fd_opts --hidden --exclude=.git             # search hidden files
 
 alias l="exa -la"
 alias dir="ranger"
-alias ports="doas lsof -i -P -n | grep LISTEN"
-alias sudo="doas"
+alias ports="sudo lsof -i -P -n | grep LISTEN"
 
 
 # ____________env
@@ -23,6 +22,9 @@ alias sudo="doas"
 set EDITOR "nvim"
 set PATH "$HOME/.local/bin:$PATH"
 
+
+#____________flutter snap
+set PATH "$HOME/snap/flutter/common/flutter:$PATH"
 
 
 # ____________rust

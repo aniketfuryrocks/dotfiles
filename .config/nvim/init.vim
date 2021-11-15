@@ -67,14 +67,15 @@ let g:coc_global_extensions = [
       \'coc-flutter', 
       \'coc-json', 
       \'coc-fzf-preview',
-      \'coc-flutter',
       \'coc-fish',
       \'coc-lua',
       \'coc-emoji',
       \'coc-spell-checker',
       \'coc-cspell-dicts',
       \'coc-rust-analyzer',
-      \'coc-toml'
+      \'coc-toml',
+      \'coc-prettier',
+      \'coc-marketplace'
       \]
 
 call plug#begin('~/.vim/plugged')
@@ -93,6 +94,7 @@ Plug 'sheerun/vim-polyglot'                         " syntax highlight
 
 " langauge support
 Plug 'npxbr/glow.nvim', {'do': ':GlowInstall', 'branch': 'main'} " preview markdown
+Plug 'dart-lang/dart-vim-plugin'
 
 " better editing
 Plug 'tpope/vim-surround'       " change parens 
