@@ -46,7 +46,7 @@ set undofile
 
 "Where to store backups
 set backupdir=~/.vim/backup
-set undodir=~/.vim/undodir
+set undodir=~/.vim/undo
 
 "Make backup before overwriting the current buffer
 set writebackup
@@ -75,7 +75,8 @@ let g:coc_global_extensions = [
       \'coc-rust-analyzer',
       \'coc-toml',
       \'coc-prettier',
-      \'coc-marketplace'
+      \'coc-marketplace',
+      \'coc-docker',
       \]
 
 call plug#begin('~/.vim/plugged')
