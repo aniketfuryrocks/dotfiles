@@ -1,7 +1,6 @@
 {
     "layer": "top",
     "position": "top",
-	"output": "HDMI-A-1",
     "modules-left": ["sway/workspaces", "sway/mode","custom/media"],
     "modules-right": ["tray","network", "battery", "pulseaudio", "clock"],
     "clock": {
@@ -22,6 +21,10 @@
         "format-discharging": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
     },
     "network": {
         "format": "{ifname}",
