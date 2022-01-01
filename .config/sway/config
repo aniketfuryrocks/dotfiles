@@ -20,11 +20,7 @@ output "*" bg $wallpaper fill
 
 
 # Screenshot
-set $ps1 Print
-set $ps2 Alt+Print
-
-bindsym $ps1 exec grim $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
-bindsym $ps2 exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
+bindsym Print exec grim -g "$(slurp)" - | swappy -f -
 
 # Terminal
 bindsym $mod+Return exec alacritty
@@ -32,9 +28,9 @@ bindsym $mod+Return exec alacritty
 # Lock
 bindsym $mod+l exec swaylock -e -i $wallpaper -l
 
-# albert
+# launcher
 bindsym Mod1+space exec yofi
-
+bindsym $mod+d exec bemenu-run
 
 #_________________________________Startup Applications__________________________________
 
