@@ -6,6 +6,12 @@ set $mod Mod4
 
 font pango:DejaVu Sans Mono 11
 
+# display
+set $monitor HDMI-A-1
+set $laptop eDP-1
+output $laptop scale 1.25
+focus output $monitor
+
 ## wallpaper
 set $wallpaper ~/Pictures/wallpaper.jpg
 output "*" bg $wallpaper fill
@@ -15,14 +21,10 @@ output "*" bg $wallpaper fill
 
 # Screenshot
 set $ps1 Print
-set $ps2 Control+Print
-set $ps3 Alt+Print
-set $ps4 Alt+Control+Print
+set $ps2 Alt+Print
 
-bindsym $ps1 exec grim - | wl-copy
-bindsym $ps2 exec grim -g "$(slurp)" - | wl-copy
-bindsym $ps3 exec grim $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
-bindsym $ps4 exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
+bindsym $ps1 exec grim $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
+bindsym $ps2 exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
 
 # Terminal
 bindsym $mod+Return exec alacritty
