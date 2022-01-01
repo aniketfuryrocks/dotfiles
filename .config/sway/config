@@ -29,8 +29,8 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+l exec swaylock -e -i $wallpaper -l
 
 # launcher
-bindsym Mod1+space exec yofi
-bindsym $mod+d exec bemenu-run
+bindsym Mod1+Shift+space exec yofi
+bindsym Mod1+space exec bemenu-run
 
 #_________________________________Startup Applications__________________________________
 
