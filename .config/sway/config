@@ -41,9 +41,7 @@ exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec /usr/libexec/xdg-desktop-portal-gtk
 exec /usr/libexec/xdg-desktop-portal-wlr
 exec /usr/bin/gentoo-pipewire-launcher
-
 exec gnome-keyring-daemon
-exec seahorse-daemon
 
 # Idle behaviour
 exec swayidle -w \
