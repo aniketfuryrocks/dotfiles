@@ -18,7 +18,7 @@ set $ps1 Print
 set $ps2 Control+Print
 set $ps3 Alt+Print
 set $ps4 Alt+Control+Print
- 
+
 bindsym $ps1 exec grim - | wl-copy
 bindsym $ps2 exec grim -g "$(slurp)" - | wl-copy
 bindsym $ps3 exec grim $(xdg-user-dir PICTURES)/ps_$(date +"%Y%m%d%H%M%S").png
@@ -38,14 +38,12 @@ bindsym Mod1+space exec yofi
 
 # Essential Utils
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-exec /usr/libexec/pipewire-launcher
-exec /usr/libexec/xdg-desktop-portal
-exec /usr/libexec/xdg-desktop-portal-gtk
-exec /usr/libexec/xdg-desktop-portal-wlr
-
 exec /usr/libexec/polkit-gnome-authentication-agent-1 -r
 exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
-exec pipewire
+exec /usr/libexec/xdg-desktop-portal-gtk
+exec /usr/libexec/xdg-desktop-portal-wlr
+exec /usr/bin/gentoo-pipewire-launcher
+
 exec gnome-keyring-daemon
 exec seahorse-daemon
 
