@@ -7,6 +7,13 @@ window#waybar {
     background: rgba(0,0,0,0);
 }
 
+#idle_inhibitor {
+  margin: 3px 0px 3px 0px;
+  background: #1d1f21;
+  padding: 5px;
+  color: #c5c8c6;
+}
+
 #battery {
   margin: 3px 0px 3px 0px;
   background: #1d1f21;

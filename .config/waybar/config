@@ -2,7 +2,7 @@
     "layer": "bottom",
     "position": "top",
     "modules-left": ["sway/workspaces", "sway/mode","custom/media"],
-    "modules-right": ["tray","network", "battery", "pulseaudio", "clock"],
+    "modules-right": ["idle_inhibitor","tray","network", "battery", "pulseaudio", "clock"],
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%a %b %d}",
@@ -14,13 +14,19 @@
             "warning": 30,
             "critical": 15
         },
-        "bat":"BAT1",
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
         "format-discharging": " {capacity}%",
         "format-alt": "{icon} {time}",
         "format-icons": ["", "", "", "", ""]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
     },
     "tray": {
         "icon-size": 21,
