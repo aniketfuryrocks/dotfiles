@@ -38,8 +38,12 @@ exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec /usr/libexec/xdg-desktop-portal-gtk
 exec /usr/libexec/xdg-desktop-portal-wlr
 exec /usr/bin/gentoo-pipewire-launcher
-exec gnome-keyring-daemon
+exec gnome-keyring-daemon --start
+
+## user apps
+
 exec /usr/lib64/libexec/kdeconnectd
+exec flatpak run com.nextcloud.desktopclient.nextcloud
 exec "sh -c 'sleep 5;exec kdeconnect-indicator'"
 
 # Idle behaviour
@@ -188,3 +192,13 @@ gaps inner 10
 gaps outer 0
 
 for_window [class="jetbrains-.*" title="win0"] floating enable border
+
+#_______________________________theme_________________________________
+
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+#    gsettings set $gnome-schema gtk-theme 'theme name'
+    gsettings set $gnome-schema icon-theme 'WhiteSur-dark'
+#    gsettings set $gnome-schema cursor-theme 'cursor theme name'
+#    gsettings set $gnome-schema font-name 'Sans 10'
+}

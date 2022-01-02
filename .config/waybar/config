@@ -29,7 +29,7 @@
         }
     },
     "tray": {
-        "icon-size": 21,
+        "icon-size": 15,
         "spacing": 10
     },
     "network": {
