@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export XDG_CURRENT_DESKTOP=gnome
+
+dbus-launch --exit-with-session sway --my-next-gpu-wont-be-nvidia

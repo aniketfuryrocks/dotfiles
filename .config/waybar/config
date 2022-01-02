@@ -2,7 +2,7 @@
     "layer": "bottom",
     "position": "top",
     "modules-left": ["sway/workspaces", "sway/mode","custom/media"],
-    "modules-right": ["idle_inhibitor","tray","network", "battery", "pulseaudio", "clock"],
+    "modules-right": ["tray","idle_inhibitor","network", "battery", "pulseaudio", "clock"],
     "clock": {
         "format": "{:%H:%M}",
         "format-alt": "{:%a %b %d}",
