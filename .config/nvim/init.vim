@@ -104,7 +104,6 @@ Plug 'mg979/vim-visual-multi'   " multi line editing
 " tools
 Plug 'junegunn/fzf.vim'         " fzf
 Plug 'airblade/vim-rooter'      " cd to nearest .git root
-Plug 'andymass/vim-matchup'     " use % better
 Plug 'liuchengxu/vista.vim'     " symbol search
 Plug 'nvim-lua/plenary.nvim'    " required for todo
 Plug 'folke/todo-comments.nvim' " better todo comments
