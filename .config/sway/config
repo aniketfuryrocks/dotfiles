@@ -10,6 +10,9 @@ font pango:DejaVu Sans Mono 11
 set $wallpaper ~/Pictures/wallpaper.jpg
 output "*" bg $wallpaper fill
 
+set $screen_lock swaylock -e -i $wallpaper -l
+set $terminal alacritty
+
 #____________________Launch Application key bindings__________________________________
 
 
@@ -17,10 +20,10 @@ output "*" bg $wallpaper fill
 bindsym Print exec grim -g "$(slurp)" - | swappy -f -
 
 # Terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec $terminal
 
 # Lock
-bindsym $mod+l exec swaylock -e -i $wallpaper -l
+bindsym $mod+l exec $screen_lock 
 
 # launcher
 bindsym Mod1+Shift+space exec yofi
