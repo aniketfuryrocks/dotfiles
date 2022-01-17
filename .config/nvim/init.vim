@@ -77,6 +77,7 @@ let g:coc_global_extensions = [
       \'coc-prettier',
       \'coc-marketplace',
       \'coc-docker',
+      \'coc-java',
       \]
 
 call plug#begin('~/.vim/plugged')
