@@ -4,7 +4,7 @@ xwayland enable
 # Super Key
 set $mod Mod4
 
-font pango:DejaVu Sans Mono 11
+#font pango:DejaVu Sans Mono 11
 
 ## wallpaper
 set $wallpaper ~/Pictures/wallpaper.jpg
@@ -12,6 +12,8 @@ output "*" bg $wallpaper fill
 
 set $screen_lock swaylock -e -i $wallpaper -l
 set $terminal alacritty
+
+output eDP-1 scale 1.25
 
 #____________________Launch Application key bindings__________________________________
 
@@ -37,12 +39,13 @@ exec /usr/libexec/polkit-gnome-authentication-agent-1 -r
 exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec /usr/libexec/xdg-desktop-portal-gtk
 exec /usr/libexec/xdg-desktop-portal-wlr
-exec /usr/bin/gentoo-pipewire-launcher
-exec gnome-keyring-daemon --start
+exec /usr/bin/pipewire
+exec eval $(gnome-keyring-daemon --start)
+exec export SSH_AUTH_SOCK
 
 ## user apps
 
-exec /usr/lib64/libexec/kdeconnectd
+exec /usr/libexec/kdeconnectd 
 exec flatpak run com.nextcloud.desktopclient.nextcloud
 exec "sh -c 'sleep 5;exec kdeconnect-indicator'"
 
@@ -55,7 +58,6 @@ exec swayidle -w \
 # util windows
 exec --no-startup-id waybar
 exec --no-startup-id dunst
-exec --no-startup-id albert
 
 #____________________Input Devices__________________________________
 
@@ -197,7 +199,7 @@ for_window [class="jetbrains-.*" title="win0"] floating enable border
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-#    gsettings set $gnome-schema gtk-theme 'theme name'
+    gsettings set $gnome-schema gtk-theme 'WhiteSur-dark'
     gsettings set $gnome-schema icon-theme 'WhiteSur-dark'
 #    gsettings set $gnome-schema cursor-theme 'cursor theme name'
 #    gsettings set $gnome-schema font-name 'Sans 10'

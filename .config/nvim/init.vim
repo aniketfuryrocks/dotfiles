@@ -68,6 +68,7 @@ let g:coc_global_extensions = [
       \'coc-json', 
       \'coc-fzf-preview',
       \'coc-fish',
+      \'coc-sh',
       \'coc-lua',
       \'coc-emoji',
       \'coc-spell-checker',
@@ -78,6 +79,10 @@ let g:coc_global_extensions = [
       \'coc-marketplace',
       \'coc-docker',
       \'coc-java',
+      \'coc-css',
+      \'coc-cssmodules',
+      \'coc-scssmodules',
+      \'coc-svg',
       \]
 
 call plug#begin('~/.vim/plugged')

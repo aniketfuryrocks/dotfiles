@@ -3,6 +3,9 @@
 starship init fish | source                         # use starship prompt
 fish_vi_key_bindings                                # use vim keybinds
 
+bass source "$HOME/.bashrc"
+set SHELL "/usr/bin/fish"
+
 # fzf
 
 set fzf_preview_dir_cmd exa --all --color=always    # use exa 
@@ -19,7 +22,9 @@ alias ports="sudo lsof -i -P -n | grep LISTEN"
 
 # ____________env
 
-set EDITOR "nvim"
+set EDITOR "/usr/bin/nvim"
+set SUDO_EDITOR "$EDITOR"
+
 set PATH "$HOME/.local/bin:$PATH"
 
 
@@ -64,7 +69,4 @@ set PATH "$HOME/Android/Sdk/platform-tools:$PATH"
 
 
 # ____________flatpak
-
-set XDG_DATA_DIRS "$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:~/.local/share/flatpak/exports/share"
-
 
