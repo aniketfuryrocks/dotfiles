@@ -19,7 +19,7 @@ output eDP-1 scale 1.25
 
 
 # Screenshot
-bindsym Print exec grim -g "$(slurp)" - | swappy -f -
+bindsym Print exec grim -g "$(slurp)" - | swappy -f - -o "$(date +'scr_%d-%m-%y-%H-%M-%S.png')"
 
 # Terminal
 bindsym $mod+Return exec $terminal
@@ -40,14 +40,17 @@ exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec /usr/libexec/xdg-desktop-portal-gtk
 exec /usr/libexec/xdg-desktop-portal-wlr
 exec /usr/bin/pipewire
+exec playerctld daemon
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
+
 
 ## user apps
 
 exec /usr/libexec/kdeconnectd 
 exec flatpak run com.nextcloud.desktopclient.nextcloud
 exec "sh -c 'sleep 5;exec kdeconnect-indicator'"
+exec blueman-tray
 
 # Idle behaviour
 exec swayidle -w \
@@ -57,7 +60,7 @@ exec swayidle -w \
 
 # util windows
 exec --no-startup-id waybar
-exec --no-startup-id dunst
+exec --no-startup-id mako
 
 #____________________Input Devices__________________________________
 
@@ -69,6 +72,11 @@ input type:touchpad {
 
 # mouse
 focus_follows_mouse no
+
+input type:mouse {
+    pointer_accel 0
+}
+
 
 #____________________Clipboard__________________________________
 
