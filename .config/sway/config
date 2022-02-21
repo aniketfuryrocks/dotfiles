@@ -28,7 +28,7 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+l exec $screen_lock 
 
 # launcher
-bindsym Mod1+Shift+space exec yofi
+bindsym Mod1+Shift+space exec albert show
 bindsym Mod1+space exec bemenu-run
 
 #_________________________________Startup Applications__________________________________
@@ -47,6 +47,7 @@ exec export SSH_AUTH_SOCK
 
 ## user apps
 
+exec albert
 exec /usr/libexec/kdeconnectd 
 exec flatpak run com.nextcloud.desktopclient.nextcloud
 exec "sh -c 'sleep 5;exec kdeconnect-indicator'"
