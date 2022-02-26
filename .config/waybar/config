@@ -45,7 +45,9 @@
         "format": "{}",
         "interval": 1,
         "exec": "$HOME/.config/waybar/get_media.sh",
-        "on-click": "playerctl play-pause"
+        "on-click-middle": "playerctl play-pause -a",
+        "on-click-right": "playerctl next",
+        "on-click": "playerctl previous",
     },
     "pulseaudio": {
         "format": "{icon} {volume}%",

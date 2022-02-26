@@ -46,7 +46,7 @@ exec export SSH_AUTH_SOCK
 
 
 ## user apps
-
+exec spotifyd
 exec albert
 exec /usr/libexec/kdeconnectd 
 exec flatpak run com.nextcloud.desktopclient.nextcloud
