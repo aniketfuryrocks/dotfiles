@@ -1,15 +1,11 @@
 env:
   TERM: xterm-256color
 
-shell:
-  program: /usr/bin/fish
-
 window:
     padding:
         x: 5
         y: 5
-
-background_opacity: 0.88
+    opacity: 0.88
 
 font:
     size: 11.0

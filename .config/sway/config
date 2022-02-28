@@ -13,7 +13,9 @@ output "*" bg $wallpaper fill
 set $screen_lock swaylock -e -i $wallpaper -l
 set $terminal alacritty
 
-output eDP-1 scale 1.25
+output eDP-1 scale 1.25 pos 1920 0
+output HDMI-A-1 pos 0 0 
+focus output HDMI-A-1
 
 #____________________Launch Application key bindings__________________________________
 
@@ -46,7 +48,7 @@ exec export SSH_AUTH_SOCK
 
 
 ## user apps
-exec "sh -c 'sleep 10; exec spotifyd --no-daemon'"
+exec "sh -c 'sleep 10; exec spotifyd --no-daemon --autoplay'"
 exec albert
 exec /usr/libexec/kdeconnectd 
 exec flatpak run com.nextcloud.desktopclient.nextcloud
@@ -208,8 +210,8 @@ for_window [class="jetbrains-.*" title="win0"] floating enable border
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'WhiteSur-dark'
-    gsettings set $gnome-schema icon-theme 'WhiteSur-dark'
+    gsettings set $gnome-schema gtk-theme 'adw-gtk3-dark'
+    gsettings set $gnome-schema icon-theme 'Adwita-dark'
 #    gsettings set $gnome-schema cursor-theme 'cursor theme name'
 #    gsettings set $gnome-schema font-name 'Sans 10'
 }
