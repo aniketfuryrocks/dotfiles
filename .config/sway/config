@@ -210,8 +210,8 @@ for_window [class="jetbrains-.*" title="win0"] floating enable border
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'adw-gtk3-dark'
-    gsettings set $gnome-schema icon-theme 'Adwita-dark'
+    gsettings set $gnome-schema gtk-theme 'Adw-gtk3-dark'
+    gsettings set $gnome-schema icon-theme 'Adwaita'
 #    gsettings set $gnome-schema cursor-theme 'cursor theme name'
 #    gsettings set $gnome-schema font-name 'Sans 10'
 }
