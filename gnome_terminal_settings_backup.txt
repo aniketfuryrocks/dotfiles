@@ -1,0 +1,18 @@
+[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+audible-bell=true
+background-color='rgb(33,33,33)'
+background-transparency-percent=12
+cursor-background-color='rgb(33,33,33)'
+cursor-blink-mode='system'
+cursor-colors-set=false
+cursor-foreground-color='rgb(33,33,33)'
+cursor-shape='underline'
+font='Monospace 11'
+foreground-color='rgb(238,255,255)'
+login-shell=false
+palette=['rgb(33,33,33)', 'rgb(240,113,120)', 'rgb(195,232,141)', 'rgb(255,203,107)', 'rgb(130,170,255)', 'rgb(199,146,234)', 'rgb(137,221,255)', 'rgb(238,255,255)', 'rgb(74,74,74)', 'rgb(240,113,120)', 'rgb(195,232,141)', 'rgb(255,203,107)', 'rgb(130,170,255)', 'rgb(199,146,234)', 'rgb(137,221,255)', 'rgb(255,255,255)']
+use-custom-command=false
+use-system-font=false
+use-theme-colors=false
+use-transparent-background=true
+visible-name='Material'
