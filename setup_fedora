@@ -12,7 +12,8 @@ ln -s $(pwd)/alacritty ~/.config
 rm -rf ~/.config/fish
 ln -s $(pwd)/fish ~/.config
 ln -s $(pwd)/nvim ~/.config
-
+ln -s $(pwd)/spotifyd ~/.config
+make gnome-terminal-config-restore 
 
 #### --------- install tools ---------
 
@@ -50,7 +51,7 @@ curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install 
 sudo dnf install -y pulseaudio-libs-devel libxcb-devel openssl-devel ncurses-devel dbus-devel
 
 # tools
-cargo install ncspot &
+#cargo install ncspot &
 cargo install topgrade &
 cargo install gxib &
 cargo install cargo-expand &
