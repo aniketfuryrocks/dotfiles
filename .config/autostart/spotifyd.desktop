@@ -1,4 +1,4 @@
 [Desktop Entry]
 Name=Spotifyd
-Exec=spotifyd --no-daemon
+Exec=spotifyd --no-daemon --autoplay --backend pulseaudio
 Type=Application
