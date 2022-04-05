@@ -84,6 +84,7 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'
 Plug 'f3fora/cmp-spell'
+Plug 'j-hui/fidget.nvim' " progress bar
 
 " syntac highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -146,6 +147,7 @@ nmap <leader>fs <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nmap <leader>fas <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nmap <leader>fmt <cmd>lua vim.lsp.buf.formatting()<CR>
 nmap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <a-cr> <cmd>lua vim.lsp.buf.code_action()<CR>
 
 " diagnostics
 nnoremap <leader>dig :TroubleToggle<CR>
@@ -268,6 +270,7 @@ cmp.setup({
   },
 })
 
+require"fidget".setup{}
 EOF
 
 " Show diagnostic popup on cursor hover
