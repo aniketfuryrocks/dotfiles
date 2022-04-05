@@ -83,7 +83,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'
-Plug 'glepnir/lspsaga.nvim'
+Plug 'f3fora/cmp-spell'
 
 " syntac highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -264,8 +264,10 @@ cmp.setup({
     { name = 'vsnip' },
     { name = 'path' },
     { name = 'buffer' },
+    { name = 'spell' } -- spell
   },
 })
+
 EOF
 
 " Show diagnostic popup on cursor hover
