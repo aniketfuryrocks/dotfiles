@@ -1,11 +1,12 @@
+filetype plugin on
 syntax on
-filetype plugin indent on
 
+set spell 
+set spelllang=en_us
 set autoindent
 set encoding=UTF-8
 set clipboard+=unnamedplus
 set nocompatible
-set spelllang=en,cjk
 
 " Sane splits
 set splitright
@@ -14,7 +15,7 @@ set splitbelow
 " tabs
 set tabstop=4       " number of visual spaces per TAB
 set softtabstop=4   " number of spaces in tab when editing
-set shiftwidth=4    " number of spaces to use for autoindent
+set shiftwidth=4    " number of spaces to use for auto indent
 set expandtab       " tabs are space
 set copyindent      " copy indent from the previous line
  
@@ -22,13 +23,13 @@ set copyindent      " copy indent from the previous line
 set number                   " show line number
 set showcmd                  " show command in bottom bar
 set cursorline               " highlight current line
-set wildmenu                 " visual autocomplete for command menu
+set wildmenu                 " visual auto-complete for command menu
 set showmatch                " highlight matching brace
 set laststatus=2             " window will always have a status line
  
 " search
 set incsearch       " search as characters are entered
-set hlsearch        " highlight matche
+set hlsearch        " highlight match
 set ignorecase      " ignore case when searching
 set smartcase       " ignore case if search pattern is lower case
 
@@ -76,18 +77,18 @@ Plug 'gko/vim-coloresque' " show colors for hex values #000000
 " lsp
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim' " lua
-Plug 'hrsh7th/nvim-cmp' " Autocompletion framework
+Plug 'hrsh7th/nvim-cmp' " auto completion framework
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'simrat39/rust-tools.nvim'
-Plug 'f3fora/cmp-spell'
 Plug 'j-hui/fidget.nvim' " progress bar
 
 " syntac highlight
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'lewis6991/spellsitter.nvim'
 
 " diagnostics
 Plug 'folke/trouble.nvim'
@@ -179,6 +180,7 @@ nvim_lsp.tsserver.setup {}
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
+    additional_vim_regex_highlighting = true -- <= THIS LINE is the magic!
   },
   indent = {
     enable = false,
@@ -197,6 +199,10 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+require('spellsitter').setup {
+  -- Whether enabled, can be a list of filetypes, e.g. {'python', 'lua'}
+  enable = true,
+}
 
 local opts = {
     tools = { -- rust-tools options
@@ -265,8 +271,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'vsnip' },
     { name = 'path' },
-    { name = 'buffer' },
-    { name = 'spell' } -- spell
+    { name = 'buffer' }
   },
 })
 
@@ -275,3 +280,4 @@ EOF
 
 " Show diagnostic popup on cursor hover
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+
