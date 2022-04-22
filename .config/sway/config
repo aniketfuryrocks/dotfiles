@@ -42,13 +42,14 @@ exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec /usr/libexec/xdg-desktop-portal-gtk
 exec /usr/libexec/xdg-desktop-portal-wlr
 exec /usr/bin/pipewire
+exec wireplumber
 exec playerctld daemon
 exec eval $(gnome-keyring-daemon --start)
 exec export SSH_AUTH_SOCK
 
 
 ## user apps
-exec "sh -c 'sleep 10; exec spotifyd --no-daemon --autoplay'"
+exec "sh -c 'sleep 10; exec spotifyd --no-daemon --autoplay -b pulseaudio'"
 exec albert
 exec /usr/libexec/kdeconnectd 
 exec flatpak run com.nextcloud.desktopclient.nextcloud

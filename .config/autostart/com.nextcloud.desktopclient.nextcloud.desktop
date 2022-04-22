@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Utility;X-SuSE-SyncUtility;
 Type=Application
-Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud
+Exec=env QT_QPA_PLATFORM=wayland /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=nextcloud com.nextcloud.desktopclient.nextcloud
 Name=Nextcloud Desktop
 Comment=Nextcloud desktop synchronization client
 GenericName=Folder Sync
