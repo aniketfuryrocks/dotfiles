@@ -11,29 +11,55 @@ function imap(shortcut, command)
   map('i', shortcut, command)
 end
 
+---
 -- lsp
-nmap("<leader>gd","<cmd>lua vim.lsp.buf.definition()<CR>")
-nmap("<leader>gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-nmap("<leader>gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-nmap("<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
-nmap("<leader>fs", "<cmd>lua vim.lsp.buf.document_symbol()<CR>")
-nmap("<leader>fas", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>")
+---
+
+-- go to
+nmap("<leader>gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
+nmap("<leader>gt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>")
+nmap("<leader>gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>")
+nmap("<leader>gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
+
+-- code actions
+nmap("<a-cr>", "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>")
+
+-- symbols
+nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
+nmap("<leader>fas", "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+
+-- format
 nmap("<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+
+-- rename
 nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-nmap("<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<CR>")
 
 -- diagnostics
-nmap("<leader>dig", ":DiagnosticsAll<CR>")
+nmap("<leader>dig", "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
 nmap("<leader>to", ":TodoLocList<CR>")
 
+---
 -- telescope
- 
+---
+
 nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nmap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 nmap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 nmap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 nmap("<leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>")
 
+----
+-- git
+----
+nmap("<leader>gc", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
+nmap("<leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>")
+nmap("<leader>gs", "<cmd>lua require('telescope.builtin').git_status()<cr>")
+nmap("<leader>gst", "<cmd>lua require('telescope.builtin').git_stash()<cr>")
+
+
+----
+-- NvimTreeToggle
+----
 nmap("<M-1>", ":NvimTreeToggle<CR>")
 
 
