@@ -2,6 +2,9 @@
 vim.cmd "set guifont=FiraCode\\ NF:h11"
 vim.g.neovide_transparency = 0.9
 
+-- enforce cd
+vim.o.autochdir = true
+
 -- general
 vim.o.syntax = 'on'
 vim.o.completeopt='menuone,noinsert,noselect'
@@ -36,3 +39,12 @@ vim.o.smartcase = true      -- smart case
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+-- save work
+vim.o.backup = true
+vim.o.undofile  = true
+vim.o.writebackup = true
+
+vim.cmd "set backupdir=~/.vim/backup"
+vim.cmd "set undodir=~/.vim/undo"
+vim.cmd "set backupcopy=yes"
+vim.cmd "au BufWritePre * let &bex = '@' . strftime('%F.%H:%M')" -- backup file name
