@@ -1,9 +1,13 @@
+-- font
+vim.cmd "set guifont=FiraCode\\ NF:h11"
+vim.g.neovide_transparency = 0.9
+
 -- general
 vim.o.syntax = 'on'
 vim.o.completeopt='menuone,noinsert,noselect'
 vim.o.spell = false
 vim.o.spelllang = 'en_us'
-
+vim.cmd "set clipboard+=unnamedplus"
 -- indent
 vim.bo.autoindent = true
 vim.bo.smartindent = true
@@ -26,4 +30,9 @@ vim.o.wildmenu = true       -- auto complete in command mode
 vim.o.hlsearch = true       -- highlight match
 vim.o.incsearch = true      -- search as you type
 vim.o.ignorecase = true     -- ignore case
+vim.o.smartcase = true      -- smart case
+
+-- splits 
+vim.o.splitright = true
+vim.o.splitbelow = true
 

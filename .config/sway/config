@@ -100,8 +100,8 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 ## Brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 2
-bindsym XF86MonBrightnessUp exec xbacklight -inc 4
+bindsym XF86MonBrightnessDown exec light -U 2
+bindsym XF86MonBrightnessUp exec light -A 4
 # Kill Focused Window
 bindsym $mod+Shift+q kill
 

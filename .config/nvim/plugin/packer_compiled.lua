@@ -99,6 +99,16 @@ _G.packer_plugins = {
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["crates.nvim"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/crates.nvim",
+    url = "https://github.com/saecki/crates.nvim"
+  },
+  ["fidget.nvim"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/fidget.nvim",
+    url = "https://github.com/j-hui/fidget.nvim"
+  },
   ["glow.nvim"] = {
     loaded = true,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/glow.nvim",
@@ -118,11 +128,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/hrsh7th/nvim-cmp"
-  },
-  ["nvim-lsp-installer"] = {
-    loaded = true,
-    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
-    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
@@ -159,6 +164,11 @@ _G.packer_plugins = {
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["rust-tools.nvim"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
+    url = "https://github.com/simrat39/rust-tools.nvim"
+  },
   ["spellsitter.nvim"] = {
     loaded = true,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/spellsitter.nvim",
@@ -168,6 +178,26 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["todo-comments.nvim"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
+    url = "https://github.com/folke/todo-comments.nvim"
+  },
+  ["vim-gitgutter"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-gitgutter",
+    url = "https://github.com/airblade/vim-gitgutter"
+  },
+  ["vim-startify"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-startify",
+    url = "https://github.com/mhinz/vim-startify"
+  },
+  ["vim-visual-multi"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-visual-multi",
+    url = "https://github.com/mg979/vim-visual-multi"
   },
   ["vim-vsnip"] = {
     loaded = true,

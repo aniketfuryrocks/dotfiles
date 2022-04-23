@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+require"fidget".setup{} -- lsp progress bar
 
 -- pre configured languages
 nvim_lsp.tsserver.setup {}
@@ -19,7 +20,11 @@ nvim_lsp.eslint.setup {
 nvim_lsp.sumneko_lua.setup {}
 
 -- lsp installer
-require('nvim-lsp-installer')
+-- local lsp_installer = require("nvim-lsp-installer")
+-- 
+-- lsp_installer.on_server_ready(function (server)
+--    server:setup {}
+-- end)
 
 -- auto complete
 local cmp = require('cmp')
@@ -55,4 +60,50 @@ cmp.setup({
     { name = 'luasnip' },
   },
 })
+
+-- rust
+
+require('crates').setup()
+require('rust-tools').setup {
+    tools = { -- rust-tools options
+        autoSetHints = true,
+        hover_with_actions = true,
+   		executor = require("rust-tools/executors").termopen,
+        inlay_hints = {
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+        },
+    },
+    hover_with_actions = {
+        auto_focus = true
+    },
+    server = {
+        settings = {
+            ["rust-analyzer"] = {
+                assist = {
+                    importGranularity = "module",
+                    importPrefix = "self",
+                },
+                cargo = {
+                    loadOutDirsFromCheck = true
+                },
+                procMacro = {
+                    enable = true
+                },
+                checkOnSave = {
+                    command = "clippy"
+                },
+            }
+        },
+    	standalone = true
+    },
+    dap = {
+		adapter = {
+			type = "executable",
+			command = "lldb-vscode",
+			name = "rt_lldb",
+		},
+	},
+}
 

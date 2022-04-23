@@ -16,10 +16,13 @@ require('packer').startup(function()
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
+    use 'mhinz/vim-startify' -- front page
 
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
-
+    use 'folke/todo-comments.nvim' -- todo comments
+    use 'j-hui/fidget.nvim'     -- lsp progress bar
+    use 'airblade/vim-gitgutter' -- git on left side
     use { -- file tree
         'kyazdani42/nvim-tree.lua',
         requires = {
@@ -50,11 +53,14 @@ require('packer').startup(function()
     use 'L3MON4D3/LuaSnip' --
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 
-    -- lsp installer
-    use 'williamboman/nvim-lsp-installer'
+    -- rust
+    use 'simrat39/rust-tools.nvim'
+    use 'saecki/crates.nvim'
 
     -- Markdown Preview
     use 'npxbr/glow.nvim'
 
+    -- better editing
+    use 'mg979/vim-visual-multi'
 
 end)
