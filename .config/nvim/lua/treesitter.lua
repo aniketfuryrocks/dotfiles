@@ -5,6 +5,5 @@ require('nvim-treesitter.configs').setup {
 -- spellings
 
 require('spellsitter').setup {
-  enable = true,
+    enable = true,
 }
-

@@ -21,7 +21,7 @@ require('packer').startup(function()
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
     use 'folke/todo-comments.nvim' -- todo comments
-    use 'j-hui/fidget.nvim'     -- lsp progress bar
+    use 'j-hui/fidget.nvim' -- lsp progress bar
     use 'airblade/vim-gitgutter' -- git on left side
     use { -- file tree
         'kyazdani42/nvim-tree.lua',
@@ -34,6 +34,7 @@ require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use {'nvim-telescope/telescope-ui-select.nvim' }
 
     -- syntax highlighting
     use 'nvim-treesitter/nvim-treesitter' -- ssyntax
@@ -57,9 +58,20 @@ require('packer').startup(function()
     use 'simrat39/rust-tools.nvim'
     use 'saecki/crates.nvim'
 
+    -- glsl shaders
+    use { 'timtro/glslView-nvim', ft = 'glsl' }
+    use 'tikhomirov/vim-glsl'
+
     -- Markdown Preview
     use 'npxbr/glow.nvim'
 
+    -- latex
+    use {
+        "brymer-meneses/grammar-guard.nvim",
+        requires = {
+            "neovim/nvim-lspconfig"
+        }
+    }
     -- better editing
     use 'mg979/vim-visual-multi'
 

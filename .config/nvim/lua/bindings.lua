@@ -1,14 +1,13 @@
 function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
+    vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = true })
 end
 
-
 function nmap(shortcut, command)
-  map('n', shortcut, command)
+    map('n', shortcut, command)
 end
 
 function imap(shortcut, command)
-  map('i', shortcut, command)
+    map('i', shortcut, command)
 end
 
 ---
@@ -22,7 +21,7 @@ nmap("<leader>gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<
 nmap("<leader>gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
 
 -- code actions
-nmap("<a-cr>", "<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>")
+nmap("<a-cr>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
 
 -- symbols
 nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
@@ -61,5 +60,3 @@ nmap("<leader>gst", "<cmd>lua require('telescope.builtin').git_stash()<cr>")
 -- NvimTreeToggle
 ----
 nmap("<M-1>", ":NvimTreeToggle<CR>")
-
-
