@@ -10,6 +10,7 @@ require('status_line')
 require('nvim_tree')
 require('terminal')
 require('find')
+require('todo')
 
 -- syntax highlighting and lsp
 require('treesitter')

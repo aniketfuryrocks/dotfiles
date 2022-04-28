@@ -34,7 +34,7 @@ require('packer').startup(function()
         'nvim-telescope/telescope.nvim',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-    use {'nvim-telescope/telescope-ui-select.nvim' }
+    use { 'nvim-telescope/telescope-ui-select.nvim' }
 
     -- syntax highlighting
     use 'nvim-treesitter/nvim-treesitter' -- ssyntax
@@ -72,6 +72,7 @@ require('packer').startup(function()
             "neovim/nvim-lspconfig"
         }
     }
+
     -- better editing
     use 'mg979/vim-visual-multi'
 

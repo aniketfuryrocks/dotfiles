@@ -44,7 +44,6 @@ nmap("<leader>to", ":TodoLocList<CR>")
 nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nmap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 nmap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
-nmap("<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>")
 nmap("<leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>")
 
 ----
@@ -54,6 +53,12 @@ nmap("<leader>gc", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
 nmap("<leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>")
 nmap("<leader>gs", "<cmd>lua require('telescope.builtin').git_status()<cr>")
 nmap("<leader>gst", "<cmd>lua require('telescope.builtin').git_stash()<cr>")
+
+
+----
+-- TodoComments
+----
+nmap("<leader>ft", "<cmd>TodoTelescope<cr>")
 
 
 ----
