@@ -6,6 +6,7 @@ vim.g.neovide_transparency = 0.9
 vim.o.autochdir = true
 
 -- general
+vim.o.modifiable = true
 vim.o.syntax = 'on'
 vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.o.spell = false

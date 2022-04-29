@@ -16,13 +16,25 @@ require('packer').startup(function()
         'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
     }
-    use 'mhinz/vim-startify' -- front page
+    use {
+        'goolord/alpha-nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' }
+    }
 
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
     use 'folke/todo-comments.nvim' -- todo comments
     use 'j-hui/fidget.nvim' -- lsp progress bar
-    use 'airblade/vim-gitgutter' -- git on left side
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
+    
+    -- session manager
+    use 'Shatur/neovim-session-manager'
+
     use { -- file tree
         'kyazdani42/nvim-tree.lua',
         requires = {
