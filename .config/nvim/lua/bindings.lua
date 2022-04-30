@@ -21,7 +21,7 @@ nmap("<leader>gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<
 nmap("<leader>gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
 
 -- code actions
-nmap("<a-cr>", "<cmd>lua vim.lsp.buf.range_code_action()<cr>")
+nmap("<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 
 -- symbols
 nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
@@ -40,19 +40,26 @@ nmap("<leader>to", ":TodoLocList<CR>")
 ---
 -- telescope
 ---
-
 nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nmap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 nmap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 nmap("<leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>")
 
 ----
+-- debugging
+----
+nmap("<leader>db", "<cmd>DapToggleBreakpoint<cr>")
+nmap("<leader>do", "<cmd>DapStepOver<cr>")
+nmap("<leader>di", "<cmd>DapStepInto<cr>")
+nmap("<leader>dlb", "<cmd>Telescope dap list_breakpoints<cr>")
+nmap("<leader>dlc", "<cmd>Telescope dap commands<cr>")
+nmap("<leader>dlv", "<cmd>Telescope dap variables<cr>")
+nmap("<leader>dlf", "<cmd>Telescope dap frames<cr>")
+
+----
 -- git
 ----
 nmap("<leader>gc", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
-nmap("<leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>")
-nmap("<leader>gs", "<cmd>lua require('telescope.builtin').git_status()<cr>")
-nmap("<leader>gst", "<cmd>lua require('telescope.builtin').git_stash()<cr>")
 
 
 ----

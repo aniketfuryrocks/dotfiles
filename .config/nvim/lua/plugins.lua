@@ -9,49 +9,32 @@ vim.cmd [[packadd packer.nvim]]
 -- plugins
 require('packer').startup(function()
     use 'wbthomason/packer.nvim'
+    -- common deps
+    use 'nvim-lua/plenary.nvim'
+    use 'kyazdani42/nvim-web-devicons'
 
     -- asthetics
     use 'kaicataldo/material.vim' -- material theme
-    use { -- status line
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-    }
-    use {
-        'goolord/alpha-nvim',
-        requires = { 'kyazdani42/nvim-web-devicons' }
-    }
+    use 'nvim-lualine/lualine.nvim' -- status line
+    use 'goolord/alpha-nvim' -- dashboard
+
 
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
     use 'folke/todo-comments.nvim' -- todo comments
     use 'j-hui/fidget.nvim' -- lsp progress bar
-    use {
-        'lewis6991/gitsigns.nvim',
-        config = function()
-            require('gitsigns').setup()
-        end
-    }
-    
-    -- session manager
-    use 'Shatur/neovim-session-manager'
-
-    use { -- file tree
-        'kyazdani42/nvim-tree.lua',
-        requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icon
-        }
-    }
-
-    use { -- fzf finder
-        'nvim-telescope/telescope.nvim',
-        requires = { { 'nvim-lua/plenary.nvim' } }
-    }
-    use { 'nvim-telescope/telescope-ui-select.nvim' }
+    use 'lewis6991/gitsigns.nvim'
+    use 'kyazdani42/nvim-tree.lua' -- file tree
+    use 'nvim-telescope/telescope.nvim' -- fzf finder
+    use 'nvim-telescope/telescope-ui-select.nvim'
+    use 'mg979/vim-visual-multi' -- better editing
+    use 'npxbr/glow.nvim' -- markdown preview
+    use { 'timtro/glslView-nvim', ft = 'glsl' } -- glsl preview
+    use 'rcarriga/nvim-notify'
 
     -- syntax highlighting
     use 'nvim-treesitter/nvim-treesitter' -- ssyntax
     use 'lewis6991/spellsitter.nvim' -- spellings
-
 
     -- lsp
     use 'neovim/nvim-lspconfig'
@@ -62,30 +45,20 @@ require('packer').startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/vim-vsnip'
 
+    -- debugging
+    use 'mfussenegger/nvim-dap'
+    use 'rcarriga/nvim-dap-ui'
+    use 'theHamsta/nvim-dap-virtual-text' --inline
+    use 'nvim-telescope/telescope-dap.nvim'
+
     -- Snippets
     use 'L3MON4D3/LuaSnip' --
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 
-    -- rust
-    use 'simrat39/rust-tools.nvim'
-    use 'saecki/crates.nvim'
-
-    -- glsl shaders
-    use { 'timtro/glslView-nvim', ft = 'glsl' }
-    use 'tikhomirov/vim-glsl'
-
-    -- Markdown Preview
-    use 'npxbr/glow.nvim'
-
-    -- latex
-    use {
-        "brymer-meneses/grammar-guard.nvim",
-        requires = {
-            "neovim/nvim-lspconfig"
-        }
-    }
-
-    -- better editing
-    use 'mg979/vim-visual-multi'
+    -- language specific
+    use 'simrat39/rust-tools.nvim' -- rust
+    use 'saecki/crates.nvim' -- rust cargo.toml
+    use 'tikhomirov/vim-glsl' -- glsl shaders
+    use 'brymer-meneses/grammar-guard.nvim' -- latex
 
 end)

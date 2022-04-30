@@ -10,10 +10,14 @@ require('dashboard')
 -- tools
 require('nvim_tree')
 require('terminal')
-require('find')
+require('telescpe')
 require('todo')
-require('session')
+require('git')
 
 -- syntax highlighting and lsp
 require('treesitter')
 require('lsp')
+
+-- languaage specific
+require('debg')
+require('rust')

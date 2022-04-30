@@ -1,5 +1,6 @@
 -- font
-vim.cmd "set guifont=FiraCode\\ NF:h11"
+vim.cmd "set guifont=JetBrainsMono\\ Nerd\\ Font\\ Mono:h11"
+
 vim.g.neovide_transparency = 0.9
 
 -- enforce cd
