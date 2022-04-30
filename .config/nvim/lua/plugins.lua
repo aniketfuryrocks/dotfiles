@@ -18,7 +18,6 @@ require('packer').startup(function()
     use 'nvim-lualine/lualine.nvim' -- status line
     use 'goolord/alpha-nvim' -- dashboard
 
-
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
     use 'folke/todo-comments.nvim' -- todo comments

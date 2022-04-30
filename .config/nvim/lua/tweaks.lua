@@ -1,8 +1,7 @@
--- font
-vim.cmd "set guifont=JetBrainsMono\\ Nerd\\ Font\\ Mono:h11"
-
+-- neovide
+vim.cmd "set guifont=FiraCode\\ Nerd\\ Font:h11"
 vim.opt.termguicolors = true
-vim.g.neovide_transparency = 0.9
+vim.g.neovide_transparency = 0.96
 
 -- enforce cd
 vim.o.autochdir = true
@@ -18,6 +17,9 @@ vim.cmd "set clipboard+=unnamedplus"
 -- indent
 vim.bo.autoindent = true
 vim.bo.smartindent = true
+
+-- mouse
+vim.cmd "set mouse+=a"
 
 -- tabs
 vim.o.tabstop = 4
