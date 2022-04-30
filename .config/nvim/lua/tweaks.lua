@@ -1,6 +1,7 @@
 -- font
 vim.cmd "set guifont=JetBrainsMono\\ Nerd\\ Font\\ Mono:h11"
 
+vim.opt.termguicolors = true
 vim.g.neovide_transparency = 0.9
 
 -- enforce cd
@@ -13,6 +14,7 @@ vim.o.completeopt = 'menuone,noinsert,noselect'
 vim.o.spell = false
 vim.o.spelllang = 'en_us'
 vim.cmd "set clipboard+=unnamedplus"
+
 -- indent
 vim.bo.autoindent = true
 vim.bo.smartindent = true
