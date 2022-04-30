@@ -20,12 +20,6 @@ nvim_lsp.eslint.setup {
 nvim_lsp.sumneko_lua.setup {}
 nvim_lsp.ltex.setup {}
 
--- lsp installer
--- local lsp_installer = require("nvim-lsp-installer")
---
--- lsp_installer.on_server_ready(function (server)
---    server:setup {}
--- end)
 
 -- auto complete
 local cmp = require('cmp')

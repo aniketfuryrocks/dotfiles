@@ -49,8 +49,12 @@ nmap("<leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>"
 -- debugging
 ----
 nmap("<leader>db", "<cmd>DapToggleBreakpoint<cr>")
-nmap("<leader>do", "<cmd>DapStepOver<cr>")
+nmap("<leader>do", "<cmd>DapStepOut<cr>")
+nmap("<leader>dn", "<cmd>DapStepOver<cr>")
 nmap("<leader>di", "<cmd>DapStepInto<cr>")
+nmap("<leader>dc", "<cmd>DapContinue<cr>")
+nmap("<leader>dr", "<cmd>DapToggleRepl<cr>")
+
 nmap("<leader>dlb", "<cmd>Telescope dap list_breakpoints<cr>")
 nmap("<leader>dlc", "<cmd>Telescope dap commands<cr>")
 nmap("<leader>dlv", "<cmd>Telescope dap variables<cr>")

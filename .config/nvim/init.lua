@@ -13,6 +13,7 @@ require('terminal')
 require('telescpe')
 require('todo')
 require('git')
+require('noti')
 
 -- syntax highlighting and lsp
 require('treesitter')

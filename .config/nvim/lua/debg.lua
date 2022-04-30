@@ -1,6 +1,26 @@
-require("nvim-dap-virtual-text").setup()
+local dap = require("dap")
 
-local dap, dapui = require("dap"), require("dapui")
+--dap.configurations.cpp = {
+--  {
+--    name = "Launch file",
+--    type = "codelldb",
+--    request = "launch",
+--    program = function()
+--      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+--    end,
+--    cwd = '${workspaceFolder}',
+--    stopOnEntry = true,
+--  },
+--}
+--dap.configurations.c = dap.configurations.cpp
+--dap.configurations.rust = dap.configurations.cpp
+
+
+---
+-- ui
+---
+
+local dapui = require('dapui')
 dapui.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
@@ -14,3 +34,10 @@ dap.listeners.before.event_exited["dapui_config"] = function()
     require("notify")("Debug Exit")
     dapui.close()
 end
+
+
+---
+-- inline
+---
+require("nvim-dap-virtual-text").setup()
+
