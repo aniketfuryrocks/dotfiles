@@ -30,6 +30,7 @@ require('packer').startup(function()
     use 'npxbr/glow.nvim' -- markdown preview
     use { 'timtro/glslView-nvim', ft = 'glsl' } -- glsl preview
     use 'rcarriga/nvim-notify'
+    use 'airblade/vim-rooter'
 
     -- syntax highlighting
     use 'nvim-treesitter/nvim-treesitter' -- ssyntax

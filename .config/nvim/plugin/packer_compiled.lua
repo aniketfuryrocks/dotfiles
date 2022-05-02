@@ -241,6 +241,11 @@ _G.packer_plugins = {
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-glsl",
     url = "https://github.com/tikhomirov/vim-glsl"
   },
+  ["vim-rooter"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-rooter",
+    url = "https://github.com/airblade/vim-rooter"
+  },
   ["vim-visual-multi"] = {
     loaded = true,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-visual-multi",

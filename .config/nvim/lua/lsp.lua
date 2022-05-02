@@ -1,7 +1,7 @@
 local nvim_lsp = require('lspconfig')
 require "fidget".setup {} -- lsp progress bar
 
--- pre configured languages
+-- pre configured languagess
 nvim_lsp.tsserver.setup {}
 nvim_lsp.cssls.setup {
     capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } }
@@ -18,7 +18,7 @@ nvim_lsp.eslint.setup {
     packageManager = "yarn"
 }
 nvim_lsp.sumneko_lua.setup {}
-nvim_lsp.ltex.setup {}
+--nvim_lsp.ltex.setup {}
 
 
 -- auto complete
@@ -58,3 +58,6 @@ cmp.setup({
 
 -- latex
 require("grammar-guard").init()
+nvim_lsp.grammar_guard.setup({
+    cmd = { '/usr/local/bin/ltex-ls' }, -- add this if you install ltex-ls yourself
+})

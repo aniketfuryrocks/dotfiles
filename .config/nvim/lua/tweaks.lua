@@ -4,7 +4,7 @@ vim.opt.termguicolors = true
 vim.g.neovide_transparency = 0.96
 
 -- enforce cd
-vim.o.autochdir = true
+-- vim.o.autochdir = true
 
 -- general
 vim.o.modifiable = true
