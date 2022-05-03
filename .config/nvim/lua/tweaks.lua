@@ -4,7 +4,7 @@ vim.opt.termguicolors = true
 vim.g.neovide_transparency = 0.96
 
 -- enforce cd
-vim.o.shell= "/bin/bash"
+vim.o.shell = "/bin/bash"
 
 -- general
 vim.o.modifiable = true
@@ -60,3 +60,8 @@ vim.cmd "tnoremap <Esc> <C-\\><C-n>"
 
 -- fix paste
 vim.cmd "cnoremap <c-v> <c-r>+"
+
+-- vim rooter
+vim.cmd "let g:rooter_patterns = ['init.vim','.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'package.json', 'node_modules', 'target']"
+vim.g.rooter_manual_only = 1
+

@@ -7,7 +7,7 @@ require('theme')
 require('status_line')
 require('dashboard')
 require('tree')
-require('tab_bar')
+require('tabs')
 
 -- tools
 require('terminal')

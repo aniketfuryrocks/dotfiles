@@ -17,7 +17,7 @@ require('packer').startup(function()
     use 'kaicataldo/material.vim' -- material theme
     use 'nvim-lualine/lualine.nvim' -- status line
     use 'goolord/alpha-nvim' -- dashboard
-    use 'romgrk/barbar.nvim' -- tab bar
+    use { 'akinsho/bufferline.nvim', tag = "v2.*" } --tabs
 
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
