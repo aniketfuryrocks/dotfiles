@@ -17,8 +17,8 @@ end
 -- go to
 nmap("<leader>gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
 nmap("<leader>gt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>")
-nmap("<leader>gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>")
-nmap("<leader>gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
+nmap("<leader>fi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>")
+nmap("<leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
 
 -- code actions
 nmap("<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
@@ -76,4 +76,11 @@ nmap("<leader>ft", "<cmd>TodoTelescope<cr>")
 ----
 -- NvimTreeToggle
 ----
-nmap("<M-1>", ":NvimTreeToggle<CR>")
+nmap("<leader>tt", ":NvimTreeToggle<cr>")
+
+---
+--BufferPick
+---
+nmap("<leader>pp", ":BufferPick<cr>")
+nmap("<leader>p]", ":BufferNext<cr>")
+nmap("<leader>p[", ":BufferPrevious<cr>")

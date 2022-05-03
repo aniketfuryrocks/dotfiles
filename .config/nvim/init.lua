@@ -2,13 +2,14 @@ require('tweaks')
 require('bindings')
 require('plugins')
 
--- asthetics
+-- ui/asthetics
 require('theme')
 require('status_line')
 require('dashboard')
+require('tree')
+require('tab_bar')
 
 -- tools
-require('nvim_tree')
 require('terminal')
 require('telescpe')
 require('todo')

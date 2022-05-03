@@ -13,10 +13,11 @@ require('packer').startup(function()
     use 'nvim-lua/plenary.nvim'
     use 'kyazdani42/nvim-web-devicons'
 
-    -- asthetics
+    -- ui/asthetics
     use 'kaicataldo/material.vim' -- material theme
     use 'nvim-lualine/lualine.nvim' -- status line
     use 'goolord/alpha-nvim' -- dashboard
+    use 'romgrk/barbar.nvim' -- tab bar
 
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
