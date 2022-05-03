@@ -1,7 +1,7 @@
 -- neovide
 vim.cmd "set guifont=FiraCode\\ Nerd\\ Font:h11"
 vim.opt.termguicolors = true
-vim.g.neovide_transparency = 0.96
+vim.g.neovide_transparency = 0.9
 
 -- enforce cd
 vim.o.shell = "/bin/bash"
@@ -62,6 +62,13 @@ vim.cmd "tnoremap <Esc> <C-\\><C-n>"
 vim.cmd "cnoremap <c-v> <c-r>+"
 
 -- vim rooter
-vim.cmd "let g:rooter_patterns = ['init.vim','.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'package.json', 'node_modules', 'target']"
+vim.g.rooter_patterns = {
+    'Makefile',
+    'init.vim',
+    'node_modules',
+    'target',
+    'Cargo.toml',
+    '.git'
+}
 vim.g.rooter_manual_only = 1
 
