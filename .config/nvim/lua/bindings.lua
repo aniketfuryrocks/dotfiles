@@ -81,5 +81,5 @@ nmap("<leader>tt", ":NvimTreeToggle<cr>")
 ---
 --BufferPick
 ---
-nmap("[b", ":BufferLineCycleNext<cr>")
-nmap("]b", ":BufferLineCyclePrev<cr>")
+nmap("]b", ":BufferLineCycleNext<cr>")
+nmap("[b", ":BufferLineCyclePrev<cr>")
