@@ -46,6 +46,7 @@ require('packer').startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/vim-vsnip'
 
+
     -- debugging
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'

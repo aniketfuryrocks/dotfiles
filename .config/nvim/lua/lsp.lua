@@ -18,8 +18,6 @@ nvim_lsp.eslint.setup {
     packageManager = "yarn"
 }
 nvim_lsp.sumneko_lua.setup {}
---nvim_lsp.ltex.setup {}
-
 
 -- auto complete
 local cmp = require('cmp')
@@ -58,6 +56,3 @@ cmp.setup({
 
 -- latex
 require("grammar-guard").init()
-nvim_lsp.grammar_guard.setup({
-    cmd = { '/usr/local/bin/ltex-ls' }, -- add this if you install ltex-ls yourself
-})
