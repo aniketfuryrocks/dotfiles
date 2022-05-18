@@ -36,7 +36,7 @@ bindsym Mod1+space exec bemenu-run
 #_________________________________Startup Applications__________________________________
 
 # Essential Utils
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=unity
 exec /usr/libexec/polkit-gnome-authentication-agent-1 -r
 exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
 exec /usr/libexec/xdg-desktop-portal-gtk
@@ -55,6 +55,7 @@ exec /usr/libexec/kdeconnectd
 exec flatpak run com.nextcloud.desktopclient.nextcloud
 exec "sh -c 'sleep 5;exec kdeconnect-indicator'"
 exec blueman-tray
+exec nm-applet --indicator
 
 # Idle behaviour
 exec swayidle -w \
@@ -211,8 +212,9 @@ for_window [class="jetbrains-.*" title="win0"] floating enable border
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Adw-gtk3-dark'
+    gsettings set $gnome-schema gtk-theme adw-gtk3-dark
     gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 #    gsettings set $gnome-schema cursor-theme 'cursor theme name'
 #    gsettings set $gnome-schema font-name 'Sans 10'
 }
