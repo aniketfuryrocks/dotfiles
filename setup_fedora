@@ -8,47 +8,15 @@ git submodule update
 make gnome-terminal-config-restore 
 rm -rf ~/.config/fish
 ln -s $(pwd)/.config/alacritty ~/.config
-ln -s $(pwd)/.config/fish ~/.config
-ln -s $(pwd)/.config/nvim ~/.config
 ln -s $(pwd)/.config/spotifyd ~/.config
 
 #### --------- install tools ---------
 
-# sync repos
-
-sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
-sudo dnf upgrade -y
-
-# rust
-sudo dnf install @development-tools
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-nvm install node
-
-# sdkman
-curl -s "https://get.sdkman.io" | bash 
-
 # terminal utils
-sudo dnf install -y neovim fd-find ripgrep fish starship util-linux-user &
+sudo dnf install -y neovim fd-find ripgrep fish starship util-linux-user gh &
 
 # oh my fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
-
-
-
-#### ------------ rust tools ------------
-
-# deps
-sudo dnf install -y pulseaudio-libs-devel libxcb-devel openssl-devel ncurses-devel dbus-devel
-
-# tools
-#cargo install ncspot &
-cargo install topgrade &
-cargo install cargo-expand &
-cargo install cargo-edit &
-cargo install cargo-update &
 
 
 #### ----------- extra tools -------------
