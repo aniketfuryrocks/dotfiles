@@ -10,6 +10,11 @@ function imap(shortcut, command)
     map('i', shortcut, command)
 end
 
+
+--- leader
+vim.g.mapleader = " "
+
+
 ---
 -- lsp
 ---

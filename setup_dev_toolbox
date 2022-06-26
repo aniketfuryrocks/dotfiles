@@ -29,7 +29,7 @@ git config --list
 red_echo "upgrading system"
 sudo dnf upgrade -y
 red_echo "installing terminal utils"
-sudo dnf install neovim fd-find ripgrep fish starship util-linux-user exa fzf gh z -y   
+sudo dnf install neovim fish util-linux-user fzf gh z -y   
 red_echo "installing essential compilers and linkers"
 sudo dnf install @development-tools mold gcc g++ cmake clang openssl1.1-devel -y
 red_echo "installing lazygit"
@@ -69,6 +69,7 @@ curl -s "https://get.sdkman.io" | bash
 
 red_echo "installing rust tools"
 fish -c 'cargo install cargo-expand cargo-edit cargo-update'
+fish -c 'cargo install exa ripgrep fd-find starship' 
 
 
 ### ------------- neovim tools ----------
