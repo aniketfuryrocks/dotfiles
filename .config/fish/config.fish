@@ -19,7 +19,8 @@ alias ls="exa"
 alias l="exa -la"
 alias dir="ranger"
 alias ports="sudo lsof -i -P -n | grep LISTEN"
-
+alias edit="neovide --multigrid" 
+alias notes="edit ~/Nextcloud/Notes"
 
 # ____________env
 

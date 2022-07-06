@@ -46,7 +46,6 @@ require('packer').startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/vim-vsnip'
 
-
     -- debugging
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
@@ -63,4 +62,6 @@ require('packer').startup(function()
     use 'tikhomirov/vim-glsl' -- glsl shaders
     use 'brymer-meneses/grammar-guard.nvim' -- latex
 
+    -- note taking
+    use 'vimwiki/vimwiki'
 end)

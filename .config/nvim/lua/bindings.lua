@@ -27,6 +27,7 @@ nmap("<leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
 
 -- code actions
 nmap("<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+nmap("<leader>h", "<cmd>lua vim.lsp.buf.hover()<cr>")
 
 -- symbols
 nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
