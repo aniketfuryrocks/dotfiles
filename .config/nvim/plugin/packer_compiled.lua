@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
+  ["cmp-spell"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/cmp-spell",
+    url = "https://github.com/f3fora/cmp-spell"
+  },
   ["cmp-vsnip"] = {
     loaded = true,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
@@ -135,11 +140,6 @@ _G.packer_plugins = {
     only_cond = false,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/opt/glslView-nvim",
     url = "https://github.com/timtro/glslView-nvim"
-  },
-  ["grammar-guard.nvim"] = {
-    loaded = true,
-    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/grammar-guard.nvim",
-    url = "https://github.com/brymer-meneses/grammar-guard.nvim"
   },
   ["lualine.nvim"] = {
     loaded = true,

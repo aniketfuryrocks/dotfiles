@@ -7,10 +7,11 @@ vim.g.neovide_transparency = 0.9
 vim.o.shell = "/bin/bash"
 
 -- general
+--
 vim.o.modifiable = true
 vim.o.syntax = 'on'
 vim.o.completeopt = 'menuone,noinsert,noselect'
-vim.o.spell = false
+vim.o.spell = true
 vim.o.spelllang = 'en_us'
 vim.cmd "set clipboard+=unnamedplus"
 

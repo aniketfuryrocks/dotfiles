@@ -2,7 +2,7 @@ require('tweaks')
 require('bindings')
 require('plugins')
 
--- ui/asthetics
+-- UI/aesthetics
 require('theme')
 require('status_line')
 require('dashboard')
@@ -20,6 +20,6 @@ require('noti')
 require('treesitter')
 require('lsp')
 
--- languaage specific
+-- language specific
 require('debg')
 require('rust')
