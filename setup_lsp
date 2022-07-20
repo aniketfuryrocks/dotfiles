@@ -1,0 +1,6 @@
+#! /bin/bash
+
+npm i -g vscode-langservers-extracted
+npm i -g typescript-language-server typescript
+npm i -g cssmodules-language-server
+npm i -g eslint

@@ -60,7 +60,6 @@ require('packer').startup(function()
     use 'simrat39/rust-tools.nvim' -- rust
     use 'saecki/crates.nvim' -- rust cargo.toml
     use 'tikhomirov/vim-glsl' -- glsl shaders
-    use 'brymer-meneses/grammar-guard.nvim' -- latex
 
     -- note taking
     use 'vimwiki/vimwiki'

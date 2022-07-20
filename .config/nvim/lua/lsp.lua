@@ -18,6 +18,8 @@ nvim_lsp.eslint.setup {
     packageManager = "yarn"
 }
 nvim_lsp.sumneko_lua.setup {}
+nvim_lsp.texlab.setup {}
+
 
 -- auto complete
 local cmp = require('cmp')
@@ -54,5 +56,3 @@ cmp.setup({
     },
 })
 
--- latex
-require("grammar-guard").init()
