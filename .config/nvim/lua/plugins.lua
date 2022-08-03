@@ -37,6 +37,10 @@ require('packer').startup(function()
     use 'nvim-treesitter/nvim-treesitter' -- ssyntax
     use 'lewis6991/spellsitter.nvim' -- spellings
 
+    -- mason
+    use "williamboman/mason.nvim" -- lsp installer
+    use "williamboman/mason-lspconfig.nvim"
+
     -- lsp
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/nvim-cmp' -- Autocompletion plugin

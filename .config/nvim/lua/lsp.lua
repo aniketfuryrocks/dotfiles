@@ -1,4 +1,5 @@
 local nvim_lsp = require('lspconfig')
+
 require "fidget".setup {} -- lsp progress bar
 
 -- pre configured languagess
@@ -20,6 +21,11 @@ nvim_lsp.eslint.setup {
 nvim_lsp.sumneko_lua.setup {}
 nvim_lsp.texlab.setup {}
 
+-- nvim_lsp_installer
+require("mason").setup()
+require("mason-lspconfig").setup ({
+    automatic_installation = true,
+})
 
 -- auto complete
 local cmp = require('cmp')
