@@ -13,12 +13,6 @@ require('rust-tools').setup {
             parameter_hints_prefix = "",
             other_hints_prefix = "",
         },
-        hover_with_actions = {
-            auto_focus = true
-        },
-        hover_actions = {
-            auto_focus = true
-        },
     },
     server = {
         settings = {
@@ -45,4 +39,3 @@ require('rust-tools').setup {
             codelldb_path, liblldb_path)
     }
 }
-

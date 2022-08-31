@@ -20,10 +20,13 @@ nvim_lsp.eslint.setup {
 }
 nvim_lsp.sumneko_lua.setup {}
 nvim_lsp.texlab.setup {}
+nvim_lsp.yamlls.setup {}
+nvim_lsp.astro.setup {}
+vim.cmd "autocmd BufRead,BufEnter *.astro set filetype=astro"
 
 -- nvim_lsp_installer
 require("mason").setup()
-require("mason-lspconfig").setup ({
+require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
@@ -62,4 +65,3 @@ cmp.setup({
         { name = 'spell' }
     },
 })
-

@@ -54,6 +54,7 @@ vim.o.writebackup = true
 vim.cmd "set backupdir=~/.vim/backup"
 vim.cmd "set undodir=~/.vim/undo"
 vim.cmd "set backupcopy=yes"
+vim.cmd "set noswapfile"
 vim.cmd "au BufWritePre * let &bex = '@' . strftime('%F.%H:%M')" -- backup file name
 
 -- terminal fix

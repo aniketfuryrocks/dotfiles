@@ -50,6 +50,7 @@ require('packer').startup(function()
     use 'hrsh7th/cmp-buffer'
     use 'f3fora/cmp-spell'
     use 'hrsh7th/vim-vsnip'
+    use 'wuelnerdotexe/vim-astro'
 
     -- debugging
     use 'mfussenegger/nvim-dap'

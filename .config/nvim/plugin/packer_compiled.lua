@@ -251,6 +251,11 @@ _G.packer_plugins = {
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
     url = "https://github.com/folke/todo-comments.nvim"
   },
+  ["vim-astro"] = {
+    loaded = true,
+    path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-astro",
+    url = "https://github.com/wuelnerdotexe/vim-astro"
+  },
   ["vim-glsl"] = {
     loaded = true,
     path = "/home/aniket/.local/share/nvim/site/pack/packer/start/vim-glsl",
