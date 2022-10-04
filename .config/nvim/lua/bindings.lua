@@ -31,7 +31,7 @@ nmap("<leader>h", "<cmd>lua vim.lsp.buf.hover()<cr>")
 
 -- symbols
 nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
-nmap("<leader>fas", "<cmd>lua require('telescope.builtin').lsp_workspace_symbols()<cr>")
+nmap("<leader>fas", "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>")
 
 -- format
 nmap("<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>")

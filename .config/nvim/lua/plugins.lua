@@ -32,6 +32,7 @@ require('packer').startup(function()
     use { 'timtro/glslView-nvim', ft = 'glsl' } -- glsl preview
     use 'rcarriga/nvim-notify'
     use 'airblade/vim-rooter'
+    use 'tpope/vim-fugitive'
 
     -- syntax highlighting
     use 'nvim-treesitter/nvim-treesitter' -- ssyntax
