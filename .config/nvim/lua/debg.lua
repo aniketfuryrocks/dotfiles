@@ -25,6 +25,7 @@ dapui.setup()
 
 dap.listeners.after.event_initialized["dapui_config"] = function()
     require("notify")("Debug Start")
+    vim.cmd ":NvimTreeClose"
     dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()
@@ -32,6 +33,7 @@ dap.listeners.before.event_terminated["dapui_config"] = function()
 end
 dap.listeners.before.event_exited["dapui_config"] = function()
     require("notify")("Debug Exit")
+    vim.cmd ":NvimTreeOpen"
     dapui.close()
 end
 
