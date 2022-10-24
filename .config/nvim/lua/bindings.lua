@@ -34,7 +34,7 @@ nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()
 nmap("<leader>fas", "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>")
 
 -- format
-nmap("<leader>fmt", "<cmd>lua vim.lsp.buf.formatting()<CR>")
+nmap("<leader>fmt", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
 
 -- rename
 nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")

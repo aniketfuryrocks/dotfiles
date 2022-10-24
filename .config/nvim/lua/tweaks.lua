@@ -1,8 +1,7 @@
 -- neovide
-vim.cmd "set guifont=Fira\\ Code:h11"
+vim.cmd "set guifont=FiraCode\\ NF:h11"
 vim.opt.termguicolors = true
 vim.g.neovide_transparency = 0.9
-vim.g.netrw_browsex_viewer = "cmd.exe /C start"
 
 -- enforce cd
 vim.o.shell = "/bin/bash"
