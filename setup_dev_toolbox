@@ -31,7 +31,7 @@ sudo dnf upgrade -y
 red_echo "installing terminal utils"
 sudo dnf install neovim fish util-linux-user fzf gh z -y   
 red_echo "installing essential compilers and linkers"
-sudo dnf install @development-tools mold gcc g++ cmake clang openssl1.1-devel -y
+sudo dnf install @development-tools mold gcc g++ cmake clang openssl-devel meson -y
 red_echo "installing lazygit"
 sudo dnf copr enable atim/lazygit -y
 sudo dnf install lazygit -y
@@ -68,8 +68,8 @@ curl -s "https://get.sdkman.io" | bash
 #### ------------ rust tools ------------
 
 red_echo "installing rust tools"
-fish -c 'cargo install cargo-expand cargo-edit cargo-update'
-fish -c 'cargo install exa ripgrep fd-find starship' 
+fish -c 'cargo install cargo-expand cargo-edit cargo-update --locked'
+fish -c 'cargo install exa ripgrep fd-find starship bat topgrade --locked' 
 
 
 ### ------------- neovim tools ----------
