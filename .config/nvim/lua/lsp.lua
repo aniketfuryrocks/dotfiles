@@ -10,7 +10,20 @@ nvim_lsp.cssls.setup {
 nvim_lsp.html.setup {
     capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } }
 }
-nvim_lsp.clangd.setup {}
+nvim_lsp.asm_lsp.setup {}
+nvim_lsp["clangd"].setup {
+    capabilities = capabilities,
+    cmd = {
+      "clangd",
+      "--background-index",
+      "--suggest-missing-includes",
+      "--clang-tidy",
+      "--completion-style=bundled",
+      "--header-insertion=iwyu"
+    },
+    on_attach = on_attach,
+    flags = {debounce_text_changes = 150}
+}
 nvim_lsp.vimls.setup {}
 nvim_lsp.cssmodules_ls.setup {}
 nvim_lsp.pyright.setup {}
