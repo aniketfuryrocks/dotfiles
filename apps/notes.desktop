@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Notes
-Comment=Notes
-Exec=neovide --multigrid /home/aniket/Nextcloud/Notes/ 
-Type=Application
-Icon=marker
