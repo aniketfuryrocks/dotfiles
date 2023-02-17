@@ -31,7 +31,7 @@ nvim_lsp.bashls.setup {}
 nvim_lsp.eslint.setup {
     packageManager = "yarn"
 }
-nvim_lsp.sumneko_lua.setup {}
+nvim_lsp.lua_ls.setup {}
 nvim_lsp.texlab.setup {}
 nvim_lsp.yamlls.setup {}
 nvim_lsp.astro.setup {}
