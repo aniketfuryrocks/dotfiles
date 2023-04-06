@@ -70,4 +70,7 @@ require('packer').startup(function()
 
     -- note taking
     use 'vimwiki/vimwiki'
+
+    -- git
+    use 'sindrets/diffview.nvim'
 end)

@@ -72,6 +72,8 @@ nmap("<leader>dlf", "<cmd>Telescope dap frames<cr>")
 nmap("<leader>gc", "<cmd>lua require('telescope.builtin').git_commits()<cr>")
 nmap("<leader>gs", "<cmd>lua require('telescope.builtin').git_status()<cr>")
 nmap("<leader>gb", "<cmd>lua require('telescope.builtin').git_branches()<cr>")
+nmap("<leader>gdo", "<cmd>DiffviewOpen main<cr>")
+nmap("<leader>gdc", "<cmd>DiffviewClose<cr>")
 
 ----
 -- TodoComments
