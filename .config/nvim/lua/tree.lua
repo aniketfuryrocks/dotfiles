@@ -11,11 +11,13 @@ nvim_tree.setup {
     },
     view = {
         width = 30,
-        hide_root_folder = true,
         preserve_window_proportions = true,
         signcolumn = "yes",
         adaptive_size = true,
     },
+    renderer = {
+        root_folder_label = false
+    }
 }
 
 vim.g.nvim_tree_git_hl = 1

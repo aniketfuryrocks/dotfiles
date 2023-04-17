@@ -24,7 +24,7 @@ set PATH "$HOME/Android/Sdk/platform-tools:$PATH"
 starship init fish | source                         # use starship prompt
 fish_vi_key_bindings                                # use vim keybinds
 
-bass source "$HOME/.bashrc"
+#bass source "$HOME/.bashrc"
 
 # fzf
 
