@@ -53,6 +53,9 @@ require('packer').startup(function()
     use 'hrsh7th/vim-vsnip'
     use 'wuelnerdotexe/vim-astro'
 
+    -- github copilot
+    use 'github/copilot.vim'
+
     -- debugging
     use 'mfussenegger/nvim-dap'
     use 'rcarriga/nvim-dap-ui'
