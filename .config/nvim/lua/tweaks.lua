@@ -1,5 +1,5 @@
 -- neovide
-vim.cmd "set guifont=FiraCode\\ NF:h11"
+vim.cmd "set guifont=FiraCode\\ Nerd\\ Font:h11"
 vim.opt.termguicolors = true
 vim.g.neovide_transparency = 0.9
 
@@ -27,6 +27,11 @@ vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
+
+-- js tabs
+vim.cmd [[
+  autocmd FileType javascript,typescript,typescriptreact,javascriptreact,yaml setlocal shiftwidth=2 tabstop=2 expandtab
+]]
 
 -- UI
 vim.wo.number = true

@@ -1,6 +1,6 @@
 #! /bin/bash
 
-npm i -g vscode-langservers-extracted
-npm i -g typescript-language-server typescript
-npm i -g cssmodules-language-server
-npm i -g eslint
+bun add -g vscode-langservers-extracted
+bun add -g typescript-language-server typescript
+bun add -g cssmodules-language-server
+bun add -g eslint

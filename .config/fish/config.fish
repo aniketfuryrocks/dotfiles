@@ -41,3 +41,7 @@ alias ports="sudo lsof -i -P -n | grep LISTEN"
 alias edit="neovide --multigrid" 
 alias notes="edit ~/Nextcloud/Notes"
 
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

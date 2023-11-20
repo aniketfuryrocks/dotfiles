@@ -61,6 +61,9 @@ red_echo "installing nvm"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fish -c 'nvm install node'
 
+red_echo "installing bun"
+curl -fsSL https://bun.sh/install | bash
+
 red_echo "installing sdkman"
 curl -s "https://get.sdkman.io" | bash 
 
