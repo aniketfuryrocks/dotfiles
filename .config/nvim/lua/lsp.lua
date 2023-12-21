@@ -24,13 +24,11 @@ nvim_lsp["clangd"].setup {
     on_attach = on_attach,
     flags = {debounce_text_changes = 150}
 }
+nvim_lsp.biome.setup {}
 nvim_lsp.vimls.setup {}
 nvim_lsp.cssmodules_ls.setup {}
 nvim_lsp.pyright.setup {}
 nvim_lsp.bashls.setup {}
-nvim_lsp.eslint.setup {
-    packageManager = "yarn"
-}
 nvim_lsp.lua_ls.setup {}
 nvim_lsp.texlab.setup {}
 nvim_lsp.yamlls.setup {}
