@@ -3,4 +3,5 @@ package foreign-env
 package fzf
 package nvm
 package sdk
+package z
 theme default

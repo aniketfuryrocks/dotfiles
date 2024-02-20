@@ -1,5 +1,5 @@
 -- neovide
-vim.cmd "set guifont=FiraCode\\ Nerd\\ Font:h11"
+vim.cmd "set guifont=FiraCode\\ Nerd\\ Font:h13"
 vim.opt.termguicolors = true
 vim.g.neovide_transparency = 0.9
 
