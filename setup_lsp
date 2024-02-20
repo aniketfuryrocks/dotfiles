@@ -1,6 +1,9 @@
 #! /bin/bash
 
-bun add -g vscode-langservers-extracted
-bun add -g typescript-language-server typescript
-bun add -g cssmodules-language-server
-bun add -g eslint
+yarn global add vscode-langservers-extracted
+yarn global add typescript-language-server typescript
+yarn global add cssmodules-language-server
+yarn global add bash-language-server
+yarn global add eslint
+
+pip3 install pyright
