@@ -22,6 +22,7 @@ set  PATH "$BUN_INSTALL/bin:$PATH"
 
 # android tools
 set  PATH "$ANDROID_HOME/platform-tools:$PATH"
+set  PATH "$ANDROID_HOME/emulator:$PATH"
 
 # ruby
 set  PATH "/opt/homebrew/opt/ruby/bin:$PATH"
