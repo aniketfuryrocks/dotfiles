@@ -73,8 +73,8 @@ curl -s "https://get.sdkman.io" | bash
 #### ------------ rust tools ------------
 
 red_echo "installing rust tools"
-fish -c 'cargo install cargo-expand cargo-edit cargo-update --locked'
-fish -c 'cargo install exa ripgrep fd-find starship bat topgrade --locked' 
+fish -c 'cargo install cargo-expand cargo-edit cargo-update cargo-watch --locked'
+fish -c 'cargo install exa ripgrep fd-find starship bat topgrade miniserve --locked' 
 
 
 ### ------------- neovim tools ----------

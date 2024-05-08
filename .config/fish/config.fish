@@ -2,7 +2,7 @@
 
 bass export GPG_TTY=$(tty)
 
-set --export EDITOR "/usr/bin/nvim"
+set --export EDITOR "$(which nvim)"
 set --export SUDO_EDITOR "$EDITOR"
 set --export DENO_INSTALL "$HOME/.deno"
 set --export WASMTIME_HOME "$HOME/.wasmtime"
@@ -47,6 +47,7 @@ fish_vi_key_bindings                                # use vim keybinds
 
 set fzf_preview_dir_cmd exa --all --color=always    # use exa 
 set fzf_fd_opts --hidden --exclude=.git             # search hidden files
+fzf --fish | source                                 # use fzf with fish
 
 
 # ____________aliases
