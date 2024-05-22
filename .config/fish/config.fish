@@ -3,6 +3,7 @@
 bass export GPG_TTY=$(tty)
 
 set --export EDITOR "$(which nvim)"
+set --export NEOVIDE_FORK 1
 set --export SUDO_EDITOR "$EDITOR"
 set --export DENO_INSTALL "$HOME/.deno"
 set --export WASMTIME_HOME "$HOME/.wasmtime"

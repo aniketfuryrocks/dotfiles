@@ -17,7 +17,7 @@ require('packer').startup(function()
     use 'kaicataldo/material.vim' -- material theme
     use 'nvim-lualine/lualine.nvim' -- status line
     use 'goolord/alpha-nvim' -- dashboard
-    use { 'akinsho/bufferline.nvim', tag = "v2.*" } --tabs
+    use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' } --tabs
 
     -- tools
     use 's1n7ax/nvim-terminal' -- terminal
@@ -36,7 +36,6 @@ require('packer').startup(function()
 
     -- syntax highlighting
     use 'nvim-treesitter/nvim-treesitter' -- ssyntax
-    use 'lewis6991/spellsitter.nvim' -- spellings
 
     -- mason
     use "williamboman/mason.nvim" -- lsp installer

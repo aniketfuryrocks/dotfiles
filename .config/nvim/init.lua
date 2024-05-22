@@ -12,7 +12,7 @@ require('tabs')
 -- tools
 require('terminal')
 require('telescpe')
---require('todo')
+require('todo')
 require('git')
 require('noti')
 
