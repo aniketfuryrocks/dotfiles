@@ -49,8 +49,8 @@ local function save_profiles(threshold)
 end
 
 time([[Luarocks path setup]], true)
-local package_path_str = "/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?.lua;/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1713773202/share/lua/5.1/?/init.lua;/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?.lua;/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1713773202/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1713773202/lib/lua/5.1/?.so"
+local package_path_str = "/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?.lua;/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1716656478/share/lua/5.1/?/init.lua;/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?.lua;/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1716656478/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/Users/aniketprajapati/.cache/nvim/packer_hererocks/2.1.1716656478/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["FixCursorHold.nvim"] = {
+    loaded = true,
+    path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/FixCursorHold.nvim",
+    url = "https://github.com/antoinemadec/FixCursorHold.nvim"
+  },
   LuaSnip = {
     loaded = true,
     path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/LuaSnip",
@@ -176,6 +181,11 @@ _G.packer_plugins = {
     path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/material.vim",
     url = "https://github.com/kaicataldo/material.vim"
   },
+  neotest = {
+    loaded = true,
+    path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/neotest",
+    url = "https://github.com/nvim-neotest/neotest"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -200,6 +210,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-nio"] = {
+    loaded = true,
+    path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/nvim-nio",
+    url = "https://github.com/nvim-neotest/nvim-nio"
   },
   ["nvim-notify"] = {
     loaded = true,
@@ -236,15 +251,10 @@ _G.packer_plugins = {
     path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
-  ["rust-tools.nvim"] = {
+  rustaceanvim = {
     loaded = true,
-    path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/rust-tools.nvim",
-    url = "https://github.com/simrat39/rust-tools.nvim"
-  },
-  ["spellsitter.nvim"] = {
-    loaded = true,
-    path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/spellsitter.nvim",
-    url = "https://github.com/lewis6991/spellsitter.nvim"
+    path = "/Users/aniketprajapati/.local/share/nvim/site/pack/packer/start/rustaceanvim",
+    url = "https://github.com/mrcjkb/rustaceanvim"
   },
   ["telescope-dap.nvim"] = {
     loaded = true,

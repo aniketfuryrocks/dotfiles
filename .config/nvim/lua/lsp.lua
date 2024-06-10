@@ -33,6 +33,8 @@ nvim_lsp.lua_ls.setup {}
 nvim_lsp.texlab.setup {}
 nvim_lsp.yamlls.setup {}
 nvim_lsp.astro.setup {}
+
+vim.lsp.inlay_hint.enable(true)
 vim.cmd "autocmd BufRead,BufEnter *.astro set filetype=astro"
 
 -- nvim_lsp_installer

@@ -14,21 +14,21 @@ require('packer').startup(function()
     use 'kyazdani42/nvim-web-devicons'
 
     -- ui/asthetics
-    use 'kaicataldo/material.vim' -- material theme
-    use 'nvim-lualine/lualine.nvim' -- status line
-    use 'goolord/alpha-nvim' -- dashboard
+    use 'kaicataldo/material.vim'                                               -- material theme
+    use 'nvim-lualine/lualine.nvim'                                             -- status line
+    use 'goolord/alpha-nvim'                                                    -- dashboard
     use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' } --tabs
 
     -- tools
-    use 's1n7ax/nvim-terminal' -- terminal
-    use 'folke/todo-comments.nvim' -- todo comments
-    use 'j-hui/fidget.nvim' -- lsp progress bar
+    use 's1n7ax/nvim-terminal'                  -- terminal
+    use 'folke/todo-comments.nvim'              -- todo comments
+    use 'j-hui/fidget.nvim'                     -- lsp progress bar
     use 'lewis6991/gitsigns.nvim'
-    use 'kyazdani42/nvim-tree.lua' -- file tree
-    use 'nvim-telescope/telescope.nvim' -- fzf finder
+    use 'kyazdani42/nvim-tree.lua'              -- file tree
+    use 'nvim-telescope/telescope.nvim'         -- fzf finder
     use 'nvim-telescope/telescope-ui-select.nvim'
-    use 'mg979/vim-visual-multi' -- better editing
-    use 'npxbr/glow.nvim' -- markdown preview
+    use 'mg979/vim-visual-multi'                -- better editing
+    use 'npxbr/glow.nvim'                       -- markdown preview
     use { 'timtro/glslView-nvim', ft = 'glsl' } -- glsl preview
     use 'rcarriga/nvim-notify'
     use 'airblade/vim-rooter'
@@ -43,7 +43,7 @@ require('packer').startup(function()
 
     -- lsp
     use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
+    use 'hrsh7th/nvim-cmp'     -- Autocompletion plugin
     use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/cmp-path'
@@ -61,13 +61,24 @@ require('packer').startup(function()
     use 'theHamsta/nvim-dap-virtual-text' --inline
     use 'nvim-telescope/telescope-dap.nvim'
 
+    -- testing
+    use {
+        "nvim-neotest/neotest",
+        requires = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        }
+    }
+
     -- Snippets
-    use 'L3MON4D3/LuaSnip' --
+    use 'L3MON4D3/LuaSnip'         --
     use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
 
     -- language specific
-    use 'simrat39/rust-tools.nvim' -- rust
-    use 'saecki/crates.nvim' -- rust cargo.toml
+    use 'mrcjkb/rustaceanvim' -- rust
+    use 'saecki/crates.nvim'  -- rust cargo.toml
     use 'tikhomirov/vim-glsl' -- glsl shaders
 
     -- note taking

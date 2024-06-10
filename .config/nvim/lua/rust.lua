@@ -1,11 +1,6 @@
 require('crates').setup()
 
--- Update this path
-local extension_path = vim.env.HOME .. '/.config/nvim/codelldb-x86_64-linux/extension'
-local codelldb_path = extension_path .. '/adapter/codelldb'
-local liblldb_path = extension_path .. '/lldb/lib/liblldb.so'
-
-require('rust-tools').setup {
+vim.g.rustaceanvim = {
     tools = { -- rust-tools options
         autoSetHints = true,
         inlay_hints = {
@@ -15,14 +10,15 @@ require('rust-tools').setup {
         },
     },
     server = {
-        settings = {
+        default_settings = {
             ["rust-analyzer"] = {
                 assist = {
                     importGranularity = "module",
                     importPrefix = "self",
                 },
                 cargo = {
-                    loadOutDirsFromCheck = true
+                    loadOutDirsFromCheck = true,
+                    allFeatures = true,
                 },
                 procMacro = {
                     enable = true
@@ -35,7 +31,5 @@ require('rust-tools').setup {
         standalone = true
     },
     dap = {
-        adapter = require('rust-tools.dap').get_codelldb_adapter(
-            codelldb_path, liblldb_path)
     }
 }
