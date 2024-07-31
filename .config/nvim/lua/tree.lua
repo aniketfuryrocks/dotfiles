@@ -2,7 +2,7 @@ local nvim_tree = require('nvim-tree')
 
 nvim_tree.setup {
     update_cwd = true,
-    open_on_tab = true,
+    open_on_tab = false,
     sync_root_with_cwd = true,
     reload_on_bufenter = true,
     diagnostics = {
