@@ -3,7 +3,6 @@ local nvim_lsp = require('lspconfig')
 require "fidget".setup {} -- lsp progress bar
 
 -- pre configured languagess
-nvim_lsp.tsserver.setup {}
 nvim_lsp.cssls.setup {
     capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } }
 }
@@ -11,19 +10,19 @@ nvim_lsp.html.setup {
     capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } }
 }
 nvim_lsp.asm_lsp.setup {}
-nvim_lsp["clangd"].setup {
-    capabilities = capabilities,
-    cmd = {
-      "clangd",
-      "--background-index",
-      "--suggest-missing-includes",
-      "--clang-tidy",
-      "--completion-style=bundled",
-      "--header-insertion=iwyu"
-    },
-    on_attach = on_attach,
-    flags = {debounce_text_changes = 150}
-}
+-- nvim_lsp["clangd"].setup {
+--     capabilities = capabilities,
+--     cmd = {
+--       "clangd",
+--       "--background-index",
+--       "--suggest-missing-includes",
+--       "--clang-tidy",
+--       "--completion-style=bundled",
+--       "--header-insertion=iwyu"
+--     },
+--     on_attach = on_attach,
+--     flags = {debounce_text_changes = 150}
+-- }
 nvim_lsp.biome.setup {}
 nvim_lsp.vimls.setup {}
 nvim_lsp.cssmodules_ls.setup {}

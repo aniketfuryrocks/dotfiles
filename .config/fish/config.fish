@@ -31,6 +31,7 @@ set  PATH "/opt/homebrew/opt/ruby/bin:$PATH"
 # Homebrew
 set  PATH "/opt/homebrew/bin:$PATH"
 set  PATH "/opt/homebrew/sbin:$PATH"
+set  PATH "/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 
 # For compilers to find ruby you may need to set:
 set -gx LDFLAGS "-L/opt/homebrew/opt/ruby/lib"

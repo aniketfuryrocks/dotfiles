@@ -1,5 +1,9 @@
 require('crates').setup()
 
+local cfg = require('rustaceanvim.config')
+local codelldb_path = "/Users/aniketprajapati/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/adapter/codelldb"
+local liblldb_path = "/Users/aniketprajapati/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/lldb/lib/liblldb.dylib"
+
 vim.g.rustaceanvim = {
     tools = { -- rust-tools options
         autoSetHints = true,
@@ -31,5 +35,6 @@ vim.g.rustaceanvim = {
         standalone = true
     },
     dap = {
+      adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
     }
 }

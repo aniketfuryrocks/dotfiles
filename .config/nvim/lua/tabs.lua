@@ -8,7 +8,6 @@ require('bufferline').setup {
             text_align = "left"
           }
         },
-        mode = "tabs",
         color_icons = true,
         diagnostics = "nvim_lsp",
     }
