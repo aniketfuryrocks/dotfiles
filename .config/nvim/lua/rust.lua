@@ -28,13 +28,17 @@ vim.g.rustaceanvim = {
                     enable = true
                 },
                 checkOnSave = {
-                    command = "clippy"
+                    command = "clippy",
+                    extraArgs = {
+                        "--target-dir",
+                        "/tmp/rust-analyzer-check"
+                    }
                 },
             }
         },
         standalone = true
     },
     dap = {
-      adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
+        adapter = cfg.get_codelldb_adapter(codelldb_path, liblldb_path),
     }
 }
