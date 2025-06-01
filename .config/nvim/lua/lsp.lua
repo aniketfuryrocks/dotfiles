@@ -1,61 +1,53 @@
 local nvim_lsp = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require "fidget".setup {} -- lsp progress bar
+require("fidget").setup({}) -- lsp progress bar
 
--- pre configured languagess
-nvim_lsp.cssls.setup {
-    capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } }
+-- Set up LSP servers
+local servers = {
+    'asm_lsp',
+    'biome',
+    'vimls',
+    'cssmodules_ls',
+    'pyright',
+    'bashls',
+    'lua_ls',
+    'texlab',
+    'yamlls',
+    'astro',
+    'cssls',
+    'html'
 }
-nvim_lsp.html.setup {
-    capabilities = { textDocument = { completion = { completionItem = { snippetSupport = true } } } }
-}
-nvim_lsp.asm_lsp.setup {}
--- nvim_lsp["clangd"].setup {
---     capabilities = capabilities,
---     cmd = {
---       "clangd",
---       "--background-index",
---       "--suggest-missing-includes",
---       "--clang-tidy",
---       "--completion-style=bundled",
---       "--header-insertion=iwyu"
---     },
---     on_attach = on_attach,
---     flags = {debounce_text_changes = 150}
--- }
-nvim_lsp.biome.setup {}
-nvim_lsp.vimls.setup {}
-nvim_lsp.cssmodules_ls.setup {}
-nvim_lsp.pyright.setup {}
-nvim_lsp.bashls.setup {}
-nvim_lsp.lua_ls.setup {}
-nvim_lsp.texlab.setup {}
-nvim_lsp.yamlls.setup {}
-nvim_lsp.astro.setup {}
+
+for _, lsp in ipairs(servers) do
+    nvim_lsp[lsp].setup({
+        capabilities = capabilities
+    })
+end
 
 vim.lsp.inlay_hint.enable(true)
-vim.cmd "autocmd BufRead,BufEnter *.astro set filetype=astro"
+vim.cmd("autocmd BufRead,BufEnter *.astro set filetype=astro")
 
--- nvim_lsp_installer
+-- Mason setup
 require("mason").setup()
 require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
--- auto complete
+-- Auto complete
 local cmp = require('cmp')
 cmp.setup({
-    -- Enable LSP snippets
     snippet = {
         expand = function(args)
+            -- Choose either VSnip or LuaSnip, not both
             vim.fn["vsnip#anonymous"](args.body)
+            -- or for LuaSnip:
+            -- require('luasnip').lsp_expand(args.body)
         end,
     },
-    -- Key mapping
     mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         ['<C-n>'] = cmp.mapping.select_next_item(),
-        -- Add tab support
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<Tab>'] = cmp.mapping.select_next_item(),
         ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -67,13 +59,11 @@ cmp.setup({
             select = true,
         })
     },
-    -- Installed sources
     sources = {
         { name = 'nvim_lsp' },
-        { name = 'vsnip' },
+        { name = 'vsnip' },  -- or 'luasnip' if using LuaSnip
         { name = 'path' },
         { name = 'buffer' },
-        { name = 'luasnip' },
         { name = 'spell' }
     },
 })

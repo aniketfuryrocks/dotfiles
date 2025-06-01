@@ -1,89 +1,107 @@
--- install using
---
--- git clone --depth 1 https://github.com/wbthomason/packer.nvim\
---   ~/.local/share/nvim/site/pack/packer/start/packer.nvim
---
+return {
+  -- Lazy.nvim itself
+  {
+    "folke/lazy.nvim",
+  },
 
-vim.cmd [[packadd packer.nvim]]
+  -- Common deps
+  { "nvim-lua/plenary.nvim" },
+  { "kyazdani42/nvim-web-devicons" },
 
--- plugins
-require('packer').startup(function()
-    use 'wbthomason/packer.nvim'
-    -- common deps
-    use 'nvim-lua/plenary.nvim'
-    use 'kyazdani42/nvim-web-devicons'
+  -- UI/Aesthetics
+  { "kaicataldo/material.vim" }, -- material theme
+  { "nvim-lualine/lualine.nvim" }, -- status line
+  { "goolord/alpha-nvim" }, -- dashboard
+  { 
+    "akinsho/bufferline.nvim", 
+    dependencies = { "nvim-tree/nvim-web-devicons" } 
+  }, -- tabs
 
-    -- ui/asthetics
-    use 'kaicataldo/material.vim'                                               -- material theme
-    use 'nvim-lualine/lualine.nvim'                                             -- status line
-    use 'goolord/alpha-nvim'                                                    -- dashboard
-    use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' } --tabs
+  -- Tools
+  { "s1n7ax/nvim-terminal" }, -- terminal
+  { "folke/todo-comments.nvim" }, -- todo comments
+  { "j-hui/fidget.nvim" }, -- lsp progress bar
+  { "lewis6991/gitsigns.nvim" },
+  { "kyazdani42/nvim-tree.lua" }, -- file tree
+  { 
+    "nvim-telescope/telescope.nvim", 
+    dependencies = { "nvim-lua/plenary.nvim" } 
+  }, -- fzf finder
+  { "nvim-telescope/telescope-ui-select.nvim" },
+  { "mg979/vim-visual-multi" }, -- better editing
+  { "npxbr/glow.nvim" }, -- markdown preview
+  { 
+    "timtro/glslView-nvim", 
+    ft = "glsl" 
+  }, -- glsl preview
+  { "rcarriga/nvim-notify" },
+  { "airblade/vim-rooter" },
+  { "tpope/vim-fugitive" },
 
-    -- tools
-    use 's1n7ax/nvim-terminal'                  -- terminal
-    use 'folke/todo-comments.nvim'              -- todo comments
-    use 'j-hui/fidget.nvim'                     -- lsp progress bar
-    use 'lewis6991/gitsigns.nvim'
-    use 'kyazdani42/nvim-tree.lua'              -- file tree
-    use 'nvim-telescope/telescope.nvim'         -- fzf finder
-    use 'nvim-telescope/telescope-ui-select.nvim'
-    use 'mg979/vim-visual-multi'                -- better editing
-    use 'npxbr/glow.nvim'                       -- markdown preview
-    use { 'timtro/glslView-nvim', ft = 'glsl' } -- glsl preview
-    use 'rcarriga/nvim-notify'
-    use 'airblade/vim-rooter'
-    use 'tpope/vim-fugitive'
+  -- Syntax highlighting
+  {"nvim-treesitter/nvim-treesitter", branch = 'main', lazy = false, build = ":TSUpdate", setup = function()
+      require('treesitter')
+  end},
 
-    -- syntax highlighting
-    use 'nvim-treesitter/nvim-treesitter' -- ssyntax
+  -- Mason
+  { "williamboman/mason.nvim" }, -- lsp installer
+  { "williamboman/mason-lspconfig.nvim" },
 
-    -- mason
-    use "williamboman/mason.nvim" -- lsp installer
-    use "williamboman/mason-lspconfig.nvim"
+  -- LSP
+  { "neovim/nvim-lspconfig" },
+  { "hrsh7th/nvim-cmp" }, -- Autocompletion plugin
+  { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp
+  { "hrsh7th/cmp-vsnip" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-buffer" },
+  { "f3fora/cmp-spell" },
+  { "hrsh7th/vim-vsnip" },
+  { "wuelnerdotexe/vim-astro" },
 
-    -- lsp
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/nvim-cmp'     -- Autocompletion plugin
-    use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-    use 'hrsh7th/cmp-vsnip'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-buffer'
-    use 'f3fora/cmp-spell'
-    use 'hrsh7th/vim-vsnip'
-    use 'wuelnerdotexe/vim-astro'
+  -- GitHub Copilot
+  { "github/copilot.vim" },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    dependencies = {
+      { "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
+    },
+    build = "make tiktoken", -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
 
-    -- github copilot
-    use 'github/copilot.vim'
+  -- Debugging
+  { "mfussenegger/nvim-dap" },
+  { "rcarriga/nvim-dap-ui" },
+  { "theHamsta/nvim-dap-virtual-text" }, -- inline
+  { "nvim-telescope/telescope-dap.nvim" },
 
-    -- debugging
-    use 'mfussenegger/nvim-dap'
-    use 'rcarriga/nvim-dap-ui'
-    use 'theHamsta/nvim-dap-virtual-text' --inline
-    use 'nvim-telescope/telescope-dap.nvim'
-
-    -- testing
-    use {
-        "nvim-neotest/neotest",
-        requires = {
-            "nvim-neotest/nvim-nio",
-            "nvim-lua/plenary.nvim",
-            "antoinemadec/FixCursorHold.nvim",
-            "nvim-treesitter/nvim-treesitter"
-        }
+  -- Testing
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter"
     }
+  },
 
-    -- Snippets
-    use 'L3MON4D3/LuaSnip'         --
-    use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
+  -- Snippets
+  { "L3MON4D3/LuaSnip" },
+  { "saadparwaiz1/cmp_luasnip" }, -- Snippets source for nvim-cmp
 
-    -- language specific
-    use 'mrcjkb/rustaceanvim' -- rust
-    use 'saecki/crates.nvim'  -- rust cargo.toml
-    use 'tikhomirov/vim-glsl' -- glsl shaders
+  -- Language specific
+  { "mrcjkb/rustaceanvim" }, -- rust
+  { "saecki/crates.nvim" }, -- rust cargo.toml
+  { "tikhomirov/vim-glsl" }, -- glsl shaders
 
-    -- note taking
-    use 'vimwiki/vimwiki'
+  -- Note taking
+  { "vimwiki/vimwiki" },
 
-    -- git
-    use 'sindrets/diffview.nvim'
-end)
+  -- Git
+  { "sindrets/diffview.nvim" },
+}

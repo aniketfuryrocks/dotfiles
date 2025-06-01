@@ -1,7 +1,7 @@
 -- neovide
 vim.cmd "set guifont=FiraCode\\ Nerd\\ Font:h13"
 vim.opt.termguicolors = true
-vim.g.neovide_transparency = 0.9
+vim.g.neovide_opacity = 0.9
 
 -- enforce cd
 vim.o.shell = "/bin/bash"

@@ -1,6 +1,6 @@
 require('tweaks')
 require('bindings')
-require('plugins')
+require('package-manager')
 
 -- UI/aesthetics
 require('theme')
@@ -17,7 +17,7 @@ require('git')
 require('noti')
 
 -- syntax highlighting and lsp
-require('treesitter')
+--require('treesitter')
 require('lsp')
 
 -- language specific
