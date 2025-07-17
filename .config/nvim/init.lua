@@ -22,4 +22,3 @@ require('lsp')
 
 -- language specific
 require('debg')
-require('rust')

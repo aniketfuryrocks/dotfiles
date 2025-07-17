@@ -3,6 +3,7 @@
 yarn global add vscode-langservers-extracted
 yarn global add typescript-language-server typescript
 yarn global add cssmodules-language-server
+yarn global add tailwindcss-language-server
 yarn global add bash-language-server
 yarn global add eslint
 

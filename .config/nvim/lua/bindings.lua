@@ -25,6 +25,10 @@ nmap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
 nmap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
 nmap("<leader>dl", "<cmd>lua vim.diagnostic.open_float()<CR>")
 
+-- Debug LSP attachment
+nmap("<leader>li", "<cmd>LspInfo<CR>")
+nmap("<leader>lr", "<cmd>LspRestart<CR>")
+
 ---
 -- telescope
 ---

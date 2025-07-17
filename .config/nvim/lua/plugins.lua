@@ -95,7 +95,6 @@ return {
   { "saadparwaiz1/cmp_luasnip" }, -- Snippets source for nvim-cmp
 
   -- Language specific
-  { "mrcjkb/rustaceanvim" }, -- rust
   { "saecki/crates.nvim" }, -- rust cargo.toml
   { "tikhomirov/vim-glsl" }, -- glsl shaders
 
