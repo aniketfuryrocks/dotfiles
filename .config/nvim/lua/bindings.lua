@@ -19,11 +19,9 @@ vim.g.mapleader = " "
 -- lsp (now handled by buffer-local keybindings in lsp.lua)
 ---
 
--- Global LSP-related keybindings
+-- Global LSP-related keybindings (diagnostic navigation handled by LSP buffer-local keybindings)
 nmap("<leader>to", ":TodoLocList<CR>")
-nmap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
-nmap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
-nmap("<leader>dl", "<cmd>lua vim.diagnostic.open_float()<CR>")
+nmap("<leader>dig", "<cmd>lua require('telescope.builtin').diagnostics()<CR>")
 
 -- Debug LSP attachment
 nmap("<leader>li", "<cmd>LspInfo<CR>")
@@ -36,6 +34,8 @@ nmap("<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>")
 nmap("<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>")
 nmap("<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>")
 nmap("<leader>fh", "<cmd>lua require('telescope.builtin').command_history()<cr>")
+nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
+nmap("<leader>fas", "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>")
 
 ----
 -- debugging

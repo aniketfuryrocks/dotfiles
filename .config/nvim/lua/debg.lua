@@ -21,7 +21,7 @@ dap.configurations.rust = dap.configurations.cpp
  dapui.setup()
  
  dap.listeners.after.event_initialized["dapui_config"] = function()
-     require("notify")("Debug Start")
+     vim.notify("Debug Start")
      vim.cmd ":NvimTreeClose"
      dapui.open()
  end
@@ -29,7 +29,7 @@ dap.configurations.rust = dap.configurations.cpp
      dapui.close()
  end
  dap.listeners.before.event_exited["dapui_config"] = function()
-     require("notify")("Debug Exit")
+     vim.notify("Debug Exit")
      vim.cmd ":NvimTreeOpen"
      dapui.close()
  end
