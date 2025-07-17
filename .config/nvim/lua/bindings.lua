@@ -16,32 +16,14 @@ vim.g.mapleader = " "
 
 
 ---
--- lsp
+-- lsp (now handled by buffer-local keybindings in lsp.lua)
 ---
 
--- go to
-nmap("<leader>gd", "<cmd>lua require('telescope.builtin').lsp_definitions()<cr>")
-nmap("<leader>gt", "<cmd>lua require('telescope.builtin').lsp_type_definitions()<cr>")
-nmap("<leader>fi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>")
-nmap("<leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>")
-
--- code actions
-nmap("<a-cr>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
-nmap("<leader>h", "<cmd>lua vim.lsp.buf.hover()<cr>")
-
--- symbols
-nmap("<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>")
-nmap("<leader>fas", "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>")
-
--- format
-nmap("<leader>fmt", "<cmd>lua vim.lsp.buf.format { async = true }<CR>")
-
--- rename
-nmap("<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-
--- diagnostics
-nmap("<leader>dig", "<cmd>lua require('telescope.builtin').diagnostics()<cr>")
+-- Global LSP-related keybindings
 nmap("<leader>to", ":TodoLocList<CR>")
+nmap("[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+nmap("]d", "<cmd>lua vim.diagnostic.goto_next()<CR>")
+nmap("<leader>dl", "<cmd>lua vim.diagnostic.open_float()<CR>")
 
 ---
 -- telescope

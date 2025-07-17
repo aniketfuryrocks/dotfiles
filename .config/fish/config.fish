@@ -3,6 +3,7 @@
 bass export GPG_TTY=$(tty)
 
 set --export EDITOR "$(which nvim)"
+set --export VISUAL "$(which neovide)"
 set --export NEOVIDE_FORK 1
 set --export SUDO_EDITOR "$EDITOR"
 set --export DENO_INSTALL "$HOME/.deno"
@@ -61,3 +62,8 @@ alias ports="sudo lsof -i -P -n | grep LISTEN"
 alias edit="neovide --multigrid" 
 alias notes="edit ~/Nextcloud/Notes"
 alias pinentry="pinentry-mac"
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /Users/aniketprajapati/.lmstudio/bin
+# End of LM Studio CLI section
+

@@ -76,10 +76,3 @@ curl -s "https://get.sdkman.io" | bash
 red_echo "installing rust tools"
 fish -c 'cargo install cargo-expand cargo-edit cargo-update cargo-watch --locked'
 fish -c 'cargo install exa ripgrep fd-find starship bat topgrade miniserve --locked' 
-
-
-### ------------- neovim tools ----------
-
-red_echo "installing packer vim"
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
