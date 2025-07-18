@@ -67,3 +67,5 @@ alias pinentry="pinentry-mac"
 set -gx PATH $PATH /Users/aniketprajapati/.lmstudio/bin
 # End of LM Studio CLI section
 
+set -gx CLAUDE_CODE_DISABLE_TERMINAL_TITLE 0
+set -gx CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR 1
