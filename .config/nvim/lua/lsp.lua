@@ -35,9 +35,6 @@ require("fidget").setup({
             format_message = require("fidget.progress.display").default_format_message,
             format_annote = function(msg) return msg.title end,
             format_group_name = function(group) return tostring(group) end,
-            overrides = {
-                rust_analyzer = { name = "rust-analyzer" },
-            },
         },
     },
     notification = {
@@ -62,35 +59,9 @@ require("fidget").setup({
     },
 }) -- lsp progress bar
 
--- LSP on_attach function for buffer-local keybindings
-local function on_attach(client, bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-
-    -- Essential LSP keybindings
-    vim.keymap.set('n', '<leader>gd', require("telescope.builtin").lsp_definitions, opts)
-    vim.keymap.set('n', '<leader>fr', require("telescope.builtin").lsp_references, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-    vim.keymap.set('n', '<leader>fmt', function() vim.lsp.buf.format { async = true } end, opts)
-    vim.keymap.set('n', '<A-CR>', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-    vim.keymap.set('n', '<leader>do', vim.diagnostic.open_float, opts)
-
-    -- Enable inlay hints
-    if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-    end
-
-    -- Format on save
-    if client.supports_method("textDocument/formatting") then
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            group = vim.api.nvim_create_augroup("LspFormat." .. bufnr, {}),
-            buffer = bufnr,
-            callback = function() vim.lsp.buf.format({ async = false }) end,
-        })
-    end
-end
+-- Import shared LSP utilities
+local lsp_utils = require('lsp-utils')
+local on_attach = lsp_utils.on_attach
 
 -- Set up LSP servers
 local servers = {
@@ -121,7 +92,6 @@ local servers = {
     'solargraph',                      -- Ruby
     'zls',                             -- Zig
     'cmake',                           -- CMake
-    'rust_analyzer',                   -- Rust
 }
 
 -- Server-specific configurations
@@ -139,14 +109,6 @@ local server_configs = {
                 hint = { enable = true },
             },
         },
-    },
-    rust_analyzer = {
-        settings = {
-            ['rust-analyzer'] = {
-                checkOnSave = true,
-                check = { command = "clippy" },
-            }
-        }
     },
 }
 

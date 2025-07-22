@@ -96,6 +96,12 @@ return {
 
   -- Language specific
   { "saecki/crates.nvim" }, -- rust cargo.toml
+  { 
+    "mrcjkb/rustaceanvim",
+    version = "^5",
+    lazy = false,
+    ft = { "rust" },
+  },
   { "tikhomirov/vim-glsl" }, -- glsl shaders
 
   -- Note taking

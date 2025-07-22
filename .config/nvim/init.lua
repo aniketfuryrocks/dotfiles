@@ -21,4 +21,5 @@ require('noti')
 require('lsp')
 
 -- language specific
+require('rust')
 require('debg')
