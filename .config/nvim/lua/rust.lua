@@ -30,13 +30,13 @@ vim.g.rustaceanvim = {
                 },
                 cachePriming = {
                     enable = true,
-                    numThreads = 0,
+                    numThreads = 14,
                 },
                 -- Use temporary directory for generated files
                 workspace = {
                     symbol = {
                         search = {
-                            scope = "workspace_and_dependencies",
+                            scope = "workspace",
                             kind = "only_types",
                         },
                     },
