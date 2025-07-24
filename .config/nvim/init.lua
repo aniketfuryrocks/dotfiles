@@ -18,8 +18,9 @@ require('noti')
 
 -- syntax highlighting and lsp
 --require('treesitter')
+require('debg')
+require('test')
 require('lsp')
 
 -- language specific
 require('rust')
-require('debg')

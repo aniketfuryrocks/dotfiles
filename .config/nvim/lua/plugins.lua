@@ -9,27 +9,27 @@ return {
     { "kyazdani42/nvim-web-devicons" },
 
     -- UI/Aesthetics
-    { "kaicataldo/material.vim" }, -- material theme
+    { "kaicataldo/material.vim" },   -- material theme
     { "nvim-lualine/lualine.nvim" }, -- status line
-    { "goolord/alpha-nvim" },      -- dashboard
+    { "goolord/alpha-nvim" },        -- dashboard
     {
         "akinsho/bufferline.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" }
     }, -- tabs
 
     -- Tools
-    { "s1n7ax/nvim-terminal" },   -- terminal
+    { "s1n7ax/nvim-terminal" },     -- terminal
     { "folke/todo-comments.nvim" }, -- todo comments
-    { "j-hui/fidget.nvim" },      -- lsp progress bar
+    { "j-hui/fidget.nvim" },        -- lsp progress bar
     { "lewis6991/gitsigns.nvim" },
     { "kyazdani42/nvim-tree.lua" }, -- file tree
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" }
-    },                          -- fzf finder
+    },                            -- fzf finder
     { "nvim-telescope/telescope-ui-select.nvim" },
     { "mg979/vim-visual-multi" }, -- better editing
-    { "npxbr/glow.nvim" },      -- markdown preview
+    { "npxbr/glow.nvim" },        -- markdown preview
     {
         "timtro/glslView-nvim",
         ft = "glsl"
@@ -55,7 +55,7 @@ return {
 
     -- LSP
     { "neovim/nvim-lspconfig" },
-    { "hrsh7th/nvim-cmp" },   -- Autocompletion plugin
+    { "hrsh7th/nvim-cmp" },     -- Autocompletion plugin
     { "hrsh7th/cmp-nvim-lsp" }, -- LSP source for nvim-cmp
     { "hrsh7th/cmp-vsnip" },
     { "hrsh7th/cmp-path" },
