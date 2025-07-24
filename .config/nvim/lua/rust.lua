@@ -3,10 +3,6 @@
 local lsp_utils = require('lsp-utils')
 local on_attach = lsp_utils.on_attach
 
--- Set up temporary directory for Rust artifacts using system /tmp
-local temp_dir = '/tmp/rust-artifacts-' .. vim.fn.getpid()
-vim.fn.mkdir(temp_dir, 'p')
-
 vim.g.rustaceanvim = {
     server = {
         on_attach = on_attach,
@@ -18,21 +14,14 @@ vim.g.rustaceanvim = {
                     allFeatures = true,
                     loadOutDirsFromCheck = true,
                     buildScripts = { enable = true },
-                    -- Use temporary directory for build artifacts
-                    targetDir = temp_dir .. '/target',
                 },
                 procMacro = {
                     enable = true,
-                },
-                -- Configure temporary directories for various rust-analyzer features
-                files = {
-                    excludeDirs = { temp_dir },
                 },
                 cachePriming = {
                     enable = true,
                     numThreads = 14,
                 },
-                -- Use temporary directory for generated files
                 workspace = {
                     symbol = {
                         search = {
@@ -58,7 +47,6 @@ vim.g.rustaceanvim = {
     },
     -- Additional rustaceanvim specific configurations
     tools = {
-        -- Use temporary directory for tool outputs
         executor = require('rustaceanvim.executors').termopen,
         reload_workspace_from_cargo_toml = true,
         inlay_hints = {
@@ -76,7 +64,6 @@ vim.g.rustaceanvim = {
         hover_actions = {
             auto_focus = false,
         },
-        -- Configure debugger to use temp directory
         debuggables = {
             use_telescope = true,
         },
@@ -84,7 +71,7 @@ vim.g.rustaceanvim = {
             use_telescope = true,
         },
     },
-    -- DAP configuration with temporary directory support
+    -- DAP configuration
     dap = {
         adapter = {
             type = 'server',
@@ -105,19 +92,8 @@ vim.g.rustaceanvim = {
                 end,
                 cwd = '${workspaceFolder}',
                 stopOnEntry = false,
-                -- Use temporary directory for debug artifacts
-                sourceMap = {
-                    [temp_dir] = '${workspaceFolder}',
-                },
             },
         },
     },
 }
 
--- Clean up temporary directory on exit
-vim.api.nvim_create_autocmd("VimLeavePre", {
-    callback = function()
-        -- Clean up temp directory on exit
-        vim.fn.delete(temp_dir, 'rf')
-    end,
-})
