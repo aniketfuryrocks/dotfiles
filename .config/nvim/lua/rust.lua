@@ -14,14 +14,13 @@ vim.g.rustaceanvim = {
                     extraArgs = { "--no-deps" }, -- Skip dependency checking for faster analysis
                 },
                 cargo = {
-                    allFeatures = true,
+                    allFeatures = false, -- Let Cargo.toml control features
+                    features = "all",    -- Use features specified in Cargo.toml
                     loadOutDirsFromCheck = true,
                     buildScripts = {
                         enable = true,
                         useRustcWrapper = false, -- Disable wrapper for faster builds
                     },
-                    -- Limit features for faster analysis
-                    features = "all",
                 },
                 procMacro = {
                     enable = true,
@@ -43,18 +42,40 @@ vim.g.rustaceanvim = {
                 },
                 -- Memory optimization
                 memoryUsage = {
-                    -- Set memory limits
-                    analysis = 2048, -- 2GB max for analysis
                 },
-                -- Disable some heavy features
+                -- Only show build errors and clippy diagnostics
                 diagnostics = {
-                    disabled = { -- Disable less critical diagnostics
+                    enable = true,
+                    disabled = {
+                        -- Disable all rust-analyzer specific diagnostics, keep only build errors and clippy
                         "unresolved-proc-macro",
-                        "missing-unsafe",
+                        "unresolved-macro-call",
+                        "macro-error",
+                        "unresolved-import",
+                        "unresolved-extern-crate",
+                        "unresolved-module",
+                        "unlinked-file",
+                        "type-mismatch",
+                        "missing-fields",
+                        "missing-match-arms",
+                        "break-outside-of-loop",
+                        "mismatched-arg-count",
+                        "invalid-derive-target",
+                        "replace-filter-map-next",
+                        "inactive-code",
+                        "need-mut",
+                        "unused-mut",
+                        "unreachable-label",
+                        "no-such-field",
+                        "private-assoc-item",
+                        "private-field",
                     },
                     experimental = {
                         enable = false, -- Disable experimental diagnostics
                     },
+                    -- Only enable diagnostics from external commands (build errors and clippy)
+                    enableExperimental = false,
+                    remapPrefix = {},
                 },
                 -- Workspace symbol search optimization
                 workspace = {
@@ -96,6 +117,13 @@ vim.g.rustaceanvim = {
                     actions = {
                         enable = false, -- Disable hover actions
                     },
+                },
+                -- Ensure only build errors and clippy warnings are shown
+                check = {
+                    command = "clippy",
+                    extraArgs = { "--no-deps" },
+                    allTargets = false,
+                    features = "all", -- Use features from Cargo.toml
                 },
             },
         },
