@@ -85,6 +85,16 @@ The setup prioritizes:
 - **Keyboard-driven** - Minimal mouse usage with vim motions
 - **Git integration** - Lazygit for complex operations, built-in git awareness
 
+### Window Managers & Desktop Environments
+
+The repository includes configurations for various window managers and desktop environments:
+- **Tiling WMs**: i3, bspwm, awesome, sway (Wayland)
+- **Status bars**: polybar, xmobar, waybar
+- **Compositors**: picom (X11), built-in for Wayland
+- **Launchers**: rofi
+- **Notifications**: dunst (X11), mako (Wayland)
+- **Display management**: kanshi (Wayland auto-randr)
+
 ## Customization
 
 Personal configurations are set in `setup_dev_toolbox`:
@@ -97,12 +107,18 @@ Personal configurations are set in `setup_dev_toolbox`:
 ```
 .dotfiles/
 ├── .config/
-│   ├── alacritty/      # Terminal emulator config
-│   ├── fish/            # Shell configurations
+│   ├── alacritty/       # Terminal emulator config
+│   ├── fish/            # Shell configurations  
 │   ├── nvim/            # Neovim setup & plugins
-│   └── ranger/          # File manager config
+│   ├── i3/, bspwm/, awesome/, sway/  # Window managers
+│   ├── polybar/, xmobar/, waybar/    # Status bars
+│   ├── rofi/            # Application launcher
+│   ├── dunst/, mako/    # Notification daemons
+│   └── picom/, kanshi/  # Compositor & display config
 ├── config.toml          # Cargo/Rust optimizations
-└── setup scripts        # Automated installation
+├── setup_fedora         # Base Fedora setup script
+├── setup_dev_toolbox    # Development environment setup
+└── setup_lsp            # Language server installation
 ```
 
 ## Philosophy

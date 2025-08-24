@@ -14,7 +14,6 @@ git submodule update
 ln -s $(pwd)/.config/fish ~/.config/fish
 ln -s $(pwd)/.config/nvim ~/.config/nvim
 ln -s $(pwd)/.config/alacritty ~/.config/alacritty
-ln -s $(pwd)/.config/ranger ~/.config/ranger
 
 #### --------- git config --------------
 
@@ -75,4 +74,4 @@ curl -s "https://get.sdkman.io" | bash
 
 red_echo "installing rust tools"
 fish -c 'cargo install cargo-expand cargo-edit cargo-update cargo-watch --locked'
-fish -c 'cargo install exa ripgrep fd-find starship bat topgrade miniserve --locked' 
+fish -c 'cargo install eza ripgrep fd-find starship bat topgrade miniserve --locked' 
