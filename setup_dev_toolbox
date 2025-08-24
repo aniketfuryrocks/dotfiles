@@ -1,0 +1,78 @@
+#!/bin/bash
+
+red_echo() {
+    echo ""
+    echo -e "\x1b[1;31m $1\e[0m"
+    echo ""
+}
+
+#### ----------- setup dotfiles ---------
+
+red_echo "initializing dot files"
+git submodule init
+git submodule update
+ln -s $(pwd)/.config/fish ~/.config/fish
+ln -s $(pwd)/.config/nvim ~/.config/nvim
+ln -s $(pwd)/.config/alacritty ~/.config/alacritty
+ln -s $(pwd)/.config/ranger ~/.config/ranger
+
+#### --------- git config --------------
+
+red_echo "configuring git"
+git config --global user.name "aniketfuryrocks"
+git config --global user.email "contact@aniketprajapati.me" 
+git config --global core.editor "nvim"
+git config --global init.defaultBranch main
+git config --global credential.helper store
+git config --list
+
+
+#### --------- install tools ---------
+
+red_echo "upgrading system"
+sudo dnf upgrade -y
+red_echo "installing terminal utils"
+sudo dnf install neovim fish util-linux-user fzf gh z -y   
+red_echo "installing essential compilers and linkers"
+sudo dnf install @development-tools mold gcc g++ cmake clang openssl-devel meson -y
+red_echo "installing lazygit"
+sudo dnf copr enable atim/lazygit -y
+sudo dnf install lazygit -y
+
+
+#### --------- shell ---------
+
+red_echo "changing default shell to fish"
+sudo chsh ${USER} -s /usr/bin/fish
+red_echo "installing omf"
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
+fish install --noninteractive
+rm install
+red_echo "installing omf plugins"
+fish -c 'omf install bass fzf sdk nvm z'
+
+
+
+#### --------- imp languages ---------
+
+red_echo "installing rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+mkdir -p ~/.cargo 
+cp ./config.toml ~/.cargo/ 
+
+red_echo "installing nvm"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+fish -c 'nvm install node'
+
+red_echo "installing bun"
+curl -fsSL https://bun.sh/install | bash
+
+red_echo "installing sdkman"
+curl -s "https://get.sdkman.io" | bash 
+
+
+#### ------------ rust tools ------------
+
+red_echo "installing rust tools"
+fish -c 'cargo install cargo-expand cargo-edit cargo-update cargo-watch --locked'
+fish -c 'cargo install exa ripgrep fd-find starship bat topgrade miniserve --locked' 

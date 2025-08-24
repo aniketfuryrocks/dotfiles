@@ -1,0 +1,59 @@
+#! /bin/sh
+
+#_________________________________Startup Applications__________________________________
+
+WALLPAPER="~/Pictures/wallpaper.jpg"
+
+#_________________________________Startup Applications__________________________________
+
+# keyboard
+sxhkd &
+# wallpaper
+feh --bg-fill $WALLPAPER
+
+# Utils
+# auto start https://github.com/jceb/dex
+dex -vae i3 &
+
+#exec --no-startup-id xfce4-session         # XFCE4 startup apps
+~/.config/polybar/launch.sh &               #polybar
+dunst &                                     # notifications
+
+# My Apps
+firefox &                                   # Firefox (On Workspace 1-5)
+alacritty -t ncspot -e ncspot &             # Spotify (On Workspace 2-5)
+
+# compositor picom
+__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia picom --experimental-backends --vsync &
+
+# dock
+plank &
+
+# tray icons
+clipit &                                    # clipboard manager
+cbatticono                                  # chargin 
+nm-applet &                                 # network
+optimus-manager-qt &                        # graphics switch
+pasystray &                                 # audio
+blueman-tray &                              # bluetooth
+mictray &                                   # mic
+kdeconnect-indicator &                      # kde connect
+
+# desktops
+bspc monitor -d 1 2 3 4 5
+if [[ $(xrandr -q | grep 'HDMI-1 connected') ]]; then
+    bspc monitor eDP-1-1 -d 6 7 8 9 0
+fi
+
+bspc config border_width         1
+bspc config window_gap          15
+
+bspc config split_ratio          0.55
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Firefox desktop="^2"
+
+# dock
+bspc rule -a Plank layer=above manage=on border=off
+

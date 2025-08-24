@@ -1,0 +1,70 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "modules-left": ["sway/workspaces", "sway/mode","custom/media"],
+    "modules-right": ["tray","idle_inhibitor","network", "battery", "pulseaudio", "clock"],
+    "clock": {
+        "format": "{:%H:%M}",
+        "format-alt": "{:%a %b %d}",
+        "tooltip": false
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-discharging": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": " {essid}",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "",
+        "tooltip-format-wifi": "{signalStrength}%",
+        "max-length": 20,
+        "on-click": "alacritty -e nmtui"
+    },
+    "custom/media": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "$HOME/.config/waybar/get_media.sh",
+        "on-click-middle": "playerctl play-pause -a",
+        "on-click-right": "playerctl next",
+        "on-click": "playerctl previous",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+    },
+}

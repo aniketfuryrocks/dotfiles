@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=com.rafaelmardojai.Blanket
+Exec=flatpak run --command=blanket ''\\''com.rafaelmardojai.Blanket'\\''' --hidden
+X-Flatpak=com.rafaelmardojai.Blanket

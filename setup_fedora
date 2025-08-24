@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+#### ----------- setup dotfiles ---------
+
+git submodule init
+git submodule update
+make gnome-terminal-config-restore 
+rm -rf ~/.config/fish
+ln -s $(pwd)/.config/alacritty ~/.config
+ln -s $(pwd)/.config/spotifyd ~/.config
+
+#### --------- install tools ---------
+
+# terminal utils
+sudo dnf install -y neovim fd-find ripgrep fish starship util-linux-user gh &
+
+# oh my fish
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
+
+
+#### ----------- extra tools -------------
+
+# multimedia
+sudo dnf groupupdate core -y
+sudo dnf groupupdate multimedia --setop="install_weak_deps=False" --exclude=PackageKit-gstreamer-plugin -y
+sudo dnf groupupdate sound-and-video -y
+sudo dnf install -y mpv yt-dlp
+
+
+
+#### ----------- setup shell ------------
+
+sudo chsh $USER -s /usr/bin/fish
+

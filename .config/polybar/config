@@ -1,0 +1,135 @@
+[colors]
+background = ${xrdb:background}
+foreground = ${xrdb:foreground}
+primary = ${xrdb:color11}
+secondary = #e60053
+alert = ${xrdb:color1}
+
+;_________________________________ Bar ________________________________
+
+
+[bar/monitor]
+width = 100%
+height = 30
+fixed-center = true
+background = #000000FF
+foreground = ${colors.foreground}
+line-size = 3
+line-color = #f00
+border-size = 0
+border-color = #00000000
+padding = 3
+wm-restack = i3
+
+font-0 = fixed:pixelsize=11;2;
+font-1 = "Siji:pixelsize=11;2"
+font-2 = "Font Awesome 5 Free:size=11;2"
+font-3 = "Font Awesome 5 Free Solid:size=11;2"
+font-4 = "Font Awesome 5 Free Regular:size=11;2"
+font-5 = "Font Awesome 5 Brands:size=11;2"
+
+tray-position = right
+tray-padding = 2
+
+modules-left = i3 player-mpris-tail
+modules-center = 
+modules-right = date
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+;____________________________ Workspaces ________________________________
+
+
+
+[module/i3]
+type = internal/i3
+
+label-dimmed-underline = ${root.background}
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 0
+label-mode-background = #e60053
+
+label-focused =  %index%
+label-focused-foreground = #ffffff
+label-focused-background = #000000ff
+label-focused-underline = #fba922
+label-focused-padding = 4
+
+label-unfocused = %index%
+label-unfocused-padding = 4
+
+label-visible = %index%
+label-visible-underline = #555555
+label-visible-padding = 4
+
+label-urgent = %index%
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-padding = 4
+
+[module/bspwm]
+type = internal/bspwm
+format = <label-state>
+index-sort = true
+enable-click = true
+reverse-scroll = false
+enable-scroll = true
+
+label-separator = |
+label-separator-padding = 1
+label-separator-foreground = #212121
+
+; focused = Active workspace on focused monitor
+label-focused = %name%
+label-focused-underline= ${colors.primary}
+label-focused-foreground= ${colors.primary}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %name%
+
+; visible = Active workspace on unfocused monitor
+label-visible = %name%
+label-visible-underline = ${self.label-focused-underline}
+
+; urgent = Workspace with urgency hint set
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+
+
+;_________________________________ Date __________________________________
+
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = "%Y-%m-%d"
+
+time = %I:%M %p
+time-alt = %H:%M:%S
+
+format-prefix =
+
+label-font = 2
+label = %date% %time%
+
+
+
+;_________________________________ Media __________________________________
+
+
+[module/player-mpris-tail]
+type = custom/script
+exec = ~/.config/polybar/player-mpris-tail.py -f '{icon} {artist} - {title}'
+tail = true
+click-left = ~~/.config/polybar/player-mpris-tail.py previous &
+click-right = ~~/.config/polybar/player-mpris-tail.py next &
+click-middle = ~~/.config/polybar/player-mpris-tail.py play-pause &
+

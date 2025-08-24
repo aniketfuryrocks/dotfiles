@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export XDG_CURRENT_DESKTOP=gnome
+
+eval $(gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+#dbus-launch --exit-with-session sway --my-next-gpu-wont-be-nvidia
+sway --my-next-gpu-wont-be-nvidia

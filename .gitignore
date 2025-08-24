@@ -1,0 +1,468 @@
+# =====================================
+# SECURITY & CONFIDENTIAL DATA
+# =====================================
+
+# SSH Keys and Certificates
+*.pem
+*.key
+*.pub
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+known_hosts
+authorized_keys
+.ssh/id_*
+.ssh/*_rsa
+.ssh/*_dsa
+.ssh/*_ecdsa
+.ssh/*_ed25519
+.ssh/known_hosts
+.ssh/authorized_keys
+.ssh/config.d/*
+
+# GPG/PGP Keys
+*.gpg
+*.pgp
+*.asc
+.gnupg/
+secring.*
+pubring.*
+trustdb.gpg
+random_seed
+
+# API Keys and Tokens
+*.token
+*.api_key
+*_token
+*_api_key
+.env
+.env.*
+.env.local
+.env.*.local
+.envrc
+.direnv/
+
+# AWS Credentials
+.aws/credentials
+.aws/config
+*.pem
+aws_access_key_id
+aws_secret_access_key
+.boto
+.s3cfg
+
+# Google Cloud Credentials
+gcloud/
+.config/gcloud/
+*-key.json
+service-account-*.json
+client_secret*.json
+client_id*.json
+
+# Azure Credentials
+.azure/
+azure-cli/
+
+# Docker Credentials
+.docker/config.json
+.dockercfg
+
+# Kubernetes Configs
+.kube/config
+.kube/cache/
+*.kubeconfig
+kubeconfig*
+
+# Database Credentials
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+*.db3
+database.yml
+mongoid.yml
+secrets.yml
+database.json
+db.json
+
+# Password Files
+*.password
+*.passwd
+*password*
+*passwd*
+.netrc
+.authinfo
+.authinfo.gpg
+passwords.txt
+passwords.json
+passwords.xml
+
+# Tokens and Secrets
+*.secret
+*secret*
+*token*
+*.token
+tokens.txt
+secrets.txt
+credentials
+credentials.json
+credentials.xml
+credentials.yml
+
+# =====================================
+# APPLICATION SECRETS
+# =====================================
+
+# Node.js
+.npmrc
+.yarnrc
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+*.pyc
+__pycache__/
+.python_history
+pip.log
+pip-delete-this-directory.txt
+.venv/
+venv/
+.virtualenv/
+
+# Ruby
+.bundle/
+.gem/
+.rvmrc
+.ruby-version
+.ruby-gemset
+
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+.terraform/
+terraform.tfvars
+
+# Ansible
+*.vault
+ansible-vault-password
+vault-password*
+
+# =====================================
+# BROWSER DATA
+# =====================================
+
+# Chrome/Chromium
+.config/google-chrome/
+.config/chromium/
+.config/BraveSoftware/
+
+# Firefox
+.mozilla/
+
+# Safari
+Library/Safari/
+Library/Cookies/
+
+# Browser Session/Cookies
+cookies.txt
+cookies.json
+*.cookie
+*.cookies
+session.json
+sessions/
+
+# =====================================
+# SYSTEM & CACHE FILES
+# =====================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+._*
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Thumbnails
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Cache and Temporary
+*.cache
+*.tmp
+*.temp
+*.swp
+*.swo
+*.swn
+*.bak
+*.backup
+*.old
+.cache/
+tmp/
+temp/
+cache/
+
+# Logs
+*.log
+logs/
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# =====================================
+# PERSONAL DATA
+# =====================================
+
+# History Files
+.*_history
+.history
+.bash_history
+.zsh_history
+.fish_history
+.node_repl_history
+.python_history
+.irb_history
+.psql_history
+.mysql_history
+.sqlite_history
+.lesshst
+.viminfo
+.wget-hsts
+.recently-used
+.xsession-errors*
+
+# Personal Documents
+Documents/
+Downloads/
+Pictures/
+Music/
+Videos/
+Desktop/
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+
+# Mail
+.mail/
+.mutt/
+.thunderbird/
+Mail/
+mail/
+
+# Chat/Messaging
+.purple/
+.weechat/
+.irssi/
+.config/discord/
+.config/slack/
+.config/Signal/
+.config/Element/
+
+# Cryptocurrency Wallets
+.bitcoin/
+.ethereum/
+.electrum/
+wallet.dat
+*.wallet
+
+# =====================================
+# IDE & EDITOR FILES
+# =====================================
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Vim
+*.swp
+*.swo
+*.swn
+.netrwhist
+Session.vim
+
+# Emacs
+*~
+\#*\#
+.\#*
+.emacs.desktop
+.emacs.desktop.lock
+
+# =====================================
+# APPLICATION SPECIFIC
+# =====================================
+
+# 1Password
+.config/1Password/
+.config/op/
+
+# Bitwarden
+.config/Bitwarden/
+
+# KeePass
+*.kdb
+*.kdbx
+
+# RClone
+.config/rclone/rclone.conf
+
+# Restic
+.restic/
+
+# Duplicity
+.cache/duplicity/
+
+# Pass
+.password-store/
+
+# =====================================
+# NETWORK & VPN
+# =====================================
+
+# OpenVPN
+*.ovpn
+*.conf
+.config/openvpn/
+
+# WireGuard
+*.conf
+wg*.conf
+.config/wireguard/
+
+# Network Manager
+.config/NetworkManager/
+
+# =====================================
+# CUSTOM PATTERNS
+# =====================================
+
+# Backup files
+*.backup
+*.bk
+*.orig
+*_backup
+*_bk
+
+# Archive files (may contain sensitive data)
+*.tar
+*.tar.gz
+*.tar.bz2
+*.zip
+*.rar
+*.7z
+
+# Core dumps
+core
+core.*
+*.core
+vgcore.*
+
+# Sensitive config files
+config.ini
+config.json
+config.yml
+config.yaml
+settings.ini
+settings.json
+settings.yml
+settings.yaml
+conf.d/
+configs/
+
+# Session files
+session_*
+*_session
+.session
+.sessions/
+
+# Temporary editor files
+.*.sw[a-z]
+*~
+.#*
+
+# OAuth tokens
+.oauth*
+oauth*
+
+# Stripe
+.stripe/
+
+# Twilio
+.twilio-cli/
+
+# GitHub CLI
+.config/gh/hosts.yml
+
+# GitLab
+.gitlab-ci-local/
+
+# Homebrew
+.config/homebrew/
+
+# NPM/Yarn/PNPM
+.npm/
+.yarn/
+.pnpm-store/
+
+# Rust
+.cargo/credentials
+
+# Go
+.config/go/
+
+# Flutter/Dart
+.pub-cache/
+.dart_tool/
+
+# =====================================
+# FISH SHELL SPECIFIC
+# =====================================
+.config/fish/fish_variables
+.config/fish/fishd.*
+.config/fish/completions/
+.config/fish/conf.d/local.fish
+.config/fish/functions/local_*.fish
+
+# =====================================
+# NEOVIM SPECIFIC
+# =====================================
+.config/nvim/spell/
+.config/nvim/.netrwhist
+.config/nvim/undo/
+.config/nvim/sessions/
+.config/nvim/shada/
+.local/share/nvim/
+.local/state/nvim/
+
+# =====================================
+# EXCEPTIONS (files to track)
+# =====================================
+# Use ! to explicitly track files if needed
+# Example: !.config/git/config

@@ -1,0 +1,94 @@
+# Media controls
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume @DEFAULT_SINK@ +1000
+
+XF86AudioLowerVolume
+	pactl set-sink-volume @DEFAULT_SINK@ -1000
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+XF86AudioMicMute
+    pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioNext
+	playerctl next
+
+# Screenshot
+Print
+    flameshot screen --path ~/Pictures
+
+shift + Print
+    flameshot gui
+
+# terminal (alacritty) 
+super + Return
+	alacritty
+
+# dmenu
+super + shift + Return
+	rofi -show drun -e
+
+# close and kill
+super + shift + q
+	bspc node -c
+
+# set the window state
+super + {t,space,f}
+	bspc node -t {tiled,floating,fullscreen}
+
+# focus or move (with shift) the node in the given direction
+super + {_,shift + } {Up,Left,Down,Right}
+    bspc node -{f,s} {north,west,south,east}
+    
+# move windpw to preselcted node
+super + m
+    bspc node -n "last.!automatic.local"
+
+# swap the current node and the biggest node
+super + g
+	bspc node -s biggest.local
+
+# resize window
+super + ctrl + {Left, Down, Up, Right}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}' --follow
+
+# preselect the direction
+super + {h,v}
+	bspc node -p {east,south}
+
+# cancel the preselection for the focused desktop
+super + Escape
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+# lock screen
+super + l
+	betterlockscreen -l -b
+
+# dunst notification
+super + {shift,_,ctrl} + grave
+    dunstctl {action,history-pop,close}
+
+# files
+super + f
+    alacritty -e ranger
+
+# firefox
+super + b
+    firefox 
+
+# spotify (ncspot)
+super + ctrl + s
+    alacritty -e ncspot
+

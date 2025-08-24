@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# screen share
+gsettings set org.gnome.desktop.remote-desktop.rdp screen-share-mode extend
+
+# scaling
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+
+# dark mode and adw3
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark' 
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
+# over amplification
+gsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'truegsettings set org.gnome.desktop.sound allow-volume-above-100-percent 'true''

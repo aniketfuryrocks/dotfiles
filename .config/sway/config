@@ -1,0 +1,220 @@
+# enable xwayland
+xwayland enable
+
+# Super Key
+set $mod Mod4
+
+#font pango:DejaVu Sans Mono 11
+
+## wallpaper
+set $wallpaper ~/Pictures/wallpaper.jpg
+output "*" bg $wallpaper fill
+
+set $screen_lock swaylock -e -i $wallpaper -l
+set $terminal alacritty
+
+output eDP-1 scale 1.25 pos 1920 0
+output HDMI-A-1 pos 0 0 
+focus output HDMI-A-1
+
+#____________________Launch Application key bindings__________________________________
+
+
+# Screenshot
+bindsym Print exec grim -g "$(slurp)" - | swappy -f - -o "$(date +'scr_%d-%m-%y-%H-%M-%S.png')"
+
+# Terminal
+bindsym $mod+Return exec $terminal
+
+# Lock
+bindsym $mod+l exec $screen_lock 
+
+# launcher
+bindsym Mod1+Shift+space exec albert show
+bindsym Mod1+space exec bemenu-run
+
+#_________________________________Startup Applications__________________________________
+
+# Essential Utils
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=unity
+exec /usr/libexec/polkit-gnome-authentication-agent-1 -r
+exec "sh -c 'sleep 5;exec /usr/libexec/xdg-desktop-portal -r'"
+exec /usr/libexec/xdg-desktop-portal-gtk
+exec /usr/libexec/xdg-desktop-portal-wlr
+exec /usr/bin/pipewire
+exec wireplumber
+exec playerctld daemon
+exec eval $(gnome-keyring-daemon --start)
+exec export SSH_AUTH_SOCK
+
+
+## user apps
+exec "sh -c 'sleep 10; exec spotifyd --no-daemon --autoplay -b pulseaudio'"
+exec albert
+exec /usr/libexec/kdeconnectd 
+exec flatpak run com.nextcloud.desktopclient.nextcloud
+exec "sh -c 'sleep 5;exec kdeconnect-indicator'"
+exec blueman-tray
+exec nm-applet --indicator
+
+# Idle behaviour
+exec swayidle -w \
+    timeout 1200 'swaylock -f -c 000000' \
+    timeout 300 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"'
+
+# util windows
+exec --no-startup-id waybar
+exec --no-startup-id mako
+
+#____________________Input Devices__________________________________
+
+# touchpad
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+
+# mouse
+focus_follows_mouse no
+
+input type:mouse {
+    pointer_accel 0
+}
+
+
+#____________________Clipboard__________________________________
+
+exec wl-paste -t text --watch clipman store
+
+#____________________Window and i3 Specific Key bindings__________________________________
+
+## audio
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+## media-playback
+bindsym XF86AudioPlay exec playerctl play-pause -a
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+## Brightness
+bindsym XF86MonBrightnessDown exec light -U 2
+bindsym XF86MonBrightnessUp exec light -A 4
+# Kill Focused Window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r swaymsg reload
+
+#____________________________________Workspaces_____________________________
+
+# variables
+# monitor
+set $ws1-1 1
+set $ws1-2 2
+set $ws1-3 3
+set $ws1-4 4
+set $ws1-5 5
+set $ws1-6 6
+set $ws1-7 7
+set $ws1-8 9
+set $ws1-9 9
+set $ws1-10 10
+
+# switch to workspace
+# monitor
+bindsym $mod+1 workspace $ws1-1
+bindsym $mod+2 workspace $ws1-2
+bindsym $mod+3 workspace $ws1-3
+bindsym $mod+4 workspace $ws1-4
+bindsym $mod+5 workspace $ws1-5
+bindsym $mod+6 workspace $ws1-6
+bindsym $mod+7 workspace $ws1-7
+bindsym $mod+8 workspace $ws1-8
+bindsym $mod+9 workspace $ws1-9
+bindsym $mod+0 workspace $ws1-10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1-1
+bindsym $mod+Shift+2 move container to workspace $ws1-2
+bindsym $mod+Shift+3 move container to workspace $ws1-3
+bindsym $mod+Shift+4 move container to workspace $ws1-4
+bindsym $mod+Shift+5 move container to workspace $ws1-5
+bindsym $mod+Shift+6 move container to workspace $ws1-6
+bindsym $mod+Shift+7 move container to workspace $ws1-7
+bindsym $mod+Shift+8 move container to workspace $ws1-8
+bindsym $mod+Shift+9 move container to workspace $ws1-9
+bindsym $mod+Shift+0 move container to workspace $ws1-10
+
+#_______________________________Modes__________________________________
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+#_______________________________borders_________________________________
+
+default_border none
+client.focused #FF0000 #CC0000 #ffffff #3c6f73   #3e4e4f
+for_window [class="^.*"] border pixel 1
+gaps inner 10
+gaps outer 0
+
+for_window [class="jetbrains-.*" title="win0"] floating enable border
+
+#_______________________________theme_________________________________
+
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme adw-gtk3-dark
+    gsettings set $gnome-schema icon-theme 'Adwaita'
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+#    gsettings set $gnome-schema cursor-theme 'cursor theme name'
+#    gsettings set $gnome-schema font-name 'Sans 10'
+}

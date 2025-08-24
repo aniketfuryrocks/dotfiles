@@ -1,0 +1,257 @@
+# Super Key
+set $mod Mod4
+
+font pango:DejaVu Sans Mono 11
+
+# swaymsg -t get_outputs
+# internal monitor
+set $laptop eDP-1
+# external monitor
+set $monitor HDMI-1 
+# wallpaper
+set $wallpaper ~/Pictures/wallpaper.jpg
+
+exec --no-startup-id xrandr --auto
+exec --no-startup-id xrandr --output $laptop --right-of $monitor --mode 1600x900
+exec --no-startup-id xrandr --output $monitor --primary --mode 1920x1080
+
+exec_always feh --bg-fill $wallpaper
+exec_always --no-startup-id i3-auto-layout
+
+#____________________Launch Application key bindings__________________________________
+
+
+# Screenshot
+bindsym Print exec flameshot gui 
+
+# Terminal
+bindsym $mod+Return exec alacritty
+
+# Lock
+bindsym $mod+F12 exec betterlockscreen -l
+
+# albert
+bindsym Mod1+space exec albert toggle
+
+#____________________Window and i3 Specific Key bindings__________________________________
+
+# special keys
+bindsym XF86AudioRaiseVolume exec i3-volume -y -n up 5
+bindsym XF86AudioLowerVolume exec i3-volume -y -n down 5
+bindsym XF86AudioMute exec i3-volume -y -n mute 
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec bemenu-run
+
+# Kill Focused Window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+ctrl+h split h 
+
+# split in vertical orientation
+bindsym $mod+ctrl+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+#____________________________________Workspaces_____________________________
+
+# variables
+# monitor
+set $ws1-1 1
+set $ws1-2 2
+set $ws1-3 3
+set $ws1-4 4
+set $ws1-5 5
+set $ws1-6 6
+set $ws1-7 7
+set $ws1-8 8
+set $ws1-9 9
+set $ws1-10 10
+# laptop
+set $ws2-1 11
+set $ws2-2 12
+set $ws2-3 13
+set $ws2-4 14
+set $ws2-5 15
+set $ws2-6 16
+set $ws2-7 17
+set $ws2-8 18
+set $ws2-9 19
+set $ws2-10 20
+
+
+# switch to workspace
+# monitor
+bindsym $mod+1 workspace $ws2-1, workspace $ws1-1
+bindsym $mod+2 workspace $ws2-2, workspace $ws1-2
+bindsym $mod+3 workspace $ws2-3, workspace $ws1-3
+bindsym $mod+4 workspace $ws2-4, workspace $ws1-4
+bindsym $mod+5 workspace $ws2-5, workspace $ws1-5
+bindsym $mod+6 workspace $ws2-6, workspace $ws1-6
+bindsym $mod+7 workspace $ws2-7, workspace $ws1-7
+bindsym $mod+8 workspace $ws2-8, workspace $ws1-8
+bindsym $mod+9 workspace $ws2-9, workspace $ws1-9
+bindsym $mod+0 workspace $ws2-10, workspace $ws1-10
+
+bindsym $mod+ctrl+1 workspace $ws2-1
+bindsym $mod+ctrl+2 workspace $ws2-2
+bindsym $mod+ctrl+3 workspace $ws2-3
+bindsym $mod+ctrl+4 workspace $ws2-4
+bindsym $mod+ctrl+5 workspace $ws2-5
+bindsym $mod+ctrl+6 workspace $ws2-6
+bindsym $mod+ctrl+7 workspace $ws2-7
+bindsym $mod+ctrl+8 workspace $ws2-8
+bindsym $mod+ctrl+9 workspace $ws2-9
+bindsym $mod+ctrl+0 workspace $ws2-10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1-1
+bindsym $mod+Shift+2 move container to workspace $ws1-2
+bindsym $mod+Shift+3 move container to workspace $ws1-3
+bindsym $mod+Shift+4 move container to workspace $ws1-4
+bindsym $mod+Shift+5 move container to workspace $ws1-5
+bindsym $mod+Shift+6 move container to workspace $ws1-6
+bindsym $mod+Shift+7 move container to workspace $ws1-7
+bindsym $mod+Shift+8 move container to workspace $ws1-8
+bindsym $mod+Shift+9 move container to workspace $ws1-9
+bindsym $mod+Shift+0 move container to workspace $ws1-10
+
+bindsym $mod+Shift+ctrl+1 move container to workspace $ws2-1
+bindsym $mod+Shift+ctrl+2 move container to workspace $ws2-2
+bindsym $mod+Shift+ctrl+3 move container to workspace $ws2-3
+bindsym $mod+Shift+ctrl+4 move container to workspace $ws2-4
+bindsym $mod+Shift+ctrl+5 move container to workspace $ws2-5
+bindsym $mod+Shift+ctrl+6 move container to workspace $ws2-6
+bindsym $mod+Shift+ctrl+7 move container to workspace $ws2-7
+bindsym $mod+Shift+ctrl+8 move container to workspace $ws2-8
+bindsym $mod+Shift+ctrl+9 move container to workspace $ws2-9
+bindsym $mod+Shift+ctrl+0 move container to workspace $ws2-10
+
+
+#monitor
+workspace $ws1-1 output $monitor
+workspace $ws1-2 output $monitor
+workspace $ws1-3 output $monitor
+workspace $ws1-4 output $monitor
+workspace $ws1-5 output $monitor
+workspace $ws1-6 output $monitor
+workspace $ws1-7 output $monitor
+workspace $ws1-8 output $monitor
+workspace $ws1-9 output $monitor
+workspace $ws1-10 output $monitor
+
+workspace $ws2-1 output $laptop
+workspace $ws2-2 output $laptop
+workspace $ws2-3 output $laptop
+workspace $ws2-4 output $laptop
+workspace $ws2-5 output $laptop
+workspace $ws2-6 output $laptop
+workspace $ws2-7 output $laptop
+workspace $ws2-8 output $laptop
+workspace $ws2-9 output $laptop
+workspace $ws2-10 output $laptop
+
+#_______________________________Modes__________________________________
+
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+#_______________________________borders_________________________________
+
+default_border none
+client.focused #FF0000 #CC0000 #ffffff #3f898f #3e4e4f
+for_window [class="^.*"] border pixel 1
+gaps inner 20
+gaps outer 10
+
+for_window [class="jetbrains-.*" title="win0"] floating enable border
+for_window [class="albert"] floating enable, border 1px, focus, move absolute center
+#_________________________________Workspaces__________________________________
+# Assign Workspaces:
+
+assign [class="Steam"] $ws1-9
+assign [class="epicgameslauncher.exe"] $ws1-8
+assign [class="Lutris"] $ws1-8
+assign [class="Brave-browser"] $ws1-5
+
+
+assign [class="firefox"] $ws1-2
+assign [title="ncspot"] $ws2-3
+assign [title="lyrics"] $ws2-3
+assign [title="cava"] $ws2-3
+assign [title="tock"] $ws1-3
+
+for_window [class="Spotify"] move to workspace $ws2-2
+assign [class="discord"] $ws2-10
+assign [class="zoom"] $ws1-10
+
+
+#_________________________________Startup Applications__________________________________
+
+# Utils
+# auto start https://github.com/jceb/dex
+exec --no-startup-id dex -vae i3
+# authentication agent
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#startup apps
+exec --no-startup-id picom --experimental-backends 
+exec --no-startup-id dunst
+exec --no-startup-id mictray
+exec --no-startup-id pasystray
+exec --no-startup-id cbatticon
+exec --no-startup-id clipit
+exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id nm-applet
+exec_always ~/.config/polybar/launch.sh
+
+# My Apps
+exec --no-startup-id firefox                                # Firefox (On Workspace 2)
+exec --no-startup-id alacritty -t ncspot -e ncspot          # Spotify (On Workspace 13)
+exec --no-startup-id alacritty -t lyrics -e lyrics          # Lyrics  (On Workspace 13)
+exec --no-startup-id alacritty -t cava -e cava              # Visualizer (On Workspace 13)
+exec --no-startup-id alacritty -t tock -e tock -c -C 255,255,255               # Visualizer (On Workspace 13)
+
