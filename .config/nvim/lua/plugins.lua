@@ -62,10 +62,9 @@ return {
     { "hrsh7th/cmp-buffer" },
     { "f3fora/cmp-spell" },
     { "hrsh7th/vim-vsnip" },
-    { "wuelnerdotexe/vim-astro" },
 
-    -- GitHub Copilot
-    { "github/copilot.vim" },
+    -- AU Auto Complete
+    { 'milanglacier/minuet-ai.nvim' },
 
     -- Debugging
     { "mfussenegger/nvim-dap" },
@@ -86,7 +85,7 @@ return {
 
     -- Snippets
     { "L3MON4D3/LuaSnip",        run = "make install_jsregexp" }, -- Snippets plugin
-    { "saadparwaiz1/cmp_luasnip" },                        -- Snippets source for nvim-cmp
+    { "saadparwaiz1/cmp_luasnip" },                               -- Snippets source for nvim-cmp
 
     -- Language specific
     { "saecki/crates.nvim" }, -- rust cargo.toml

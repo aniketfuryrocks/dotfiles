@@ -76,13 +76,3 @@ nmap("<leader>tt", ":NvimTreeToggle<cr>")
 ---
 nmap("]b", ":BufferLineCycleNext<cr>")
 nmap("[b", ":BufferLineCyclePrev<cr>")
-
----
---- Copilot
----
-vim.keymap.set(
-    "i",
-    "<C-j>",
-    "copilot#Accept('<CR>')",
-    { noremap = true, silent = true, expr = true, replace_keycodes = false }
-)

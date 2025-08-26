@@ -67,8 +67,6 @@ local on_attach = lsp_utils.on_attach
 local servers = {
     'asm_lsp',
     'biome',
-    'vimls',
-    'cssmodules_ls',
     'pyright',
     'bashls',
     'lua_ls',
@@ -78,7 +76,6 @@ local servers = {
     'cssls',
     'html',
     'ts_ls',
-    'eslint',
     'jsonls',
     'tailwindcss',
     'marksman',                        -- Markdown
@@ -165,14 +162,21 @@ cmp.setup({
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
+       ["<C-j>"] = require('minuet').make_cmp_map()
     }),
-    sources = cmp.config.sources({
+    sources = {
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
         { name = 'path' },
         { name = 'buffer' },
-    }),
+        { name = 'spell' },
+        { name = 'minuet' },
+    },
+    performance = {
+        -- It is recommended to increase the timeout duration due to
+        -- the typically slower response speed of LLMs compared to
+        -- other completion sources. This is not needed when you only
+        -- need manual completion.
+        fetching_timeout = 2000,
+    },
 })
-
--- Crates.nvim setup for Rust Cargo.toml support
-require('crates').setup()

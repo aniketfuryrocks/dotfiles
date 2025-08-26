@@ -3,6 +3,9 @@
 local lsp_utils = require('lsp-utils')
 local on_attach = lsp_utils.on_attach
 
+-- Supports for crates versioning
+require('crates').setup({})
+
 vim.g.rustaceanvim = {
     server = {
         on_attach = on_attach,

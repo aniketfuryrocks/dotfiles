@@ -21,6 +21,7 @@ require('noti')
 require('debg')
 require('test')
 require('lsp')
+require('ai')
 
 -- language specific
 require('rust')
