@@ -1,6 +1,11 @@
 require('minuet').setup {
     cmp = {
-        enable_auto_complete = true,
+        enable_auto_complete = false,
+    },
+    virtual_text = {
+        keymap = {
+            dismiss = '<A-e>',
+        },
     },
     provider = 'openai_fim_compatible',
     n_completions = 1,

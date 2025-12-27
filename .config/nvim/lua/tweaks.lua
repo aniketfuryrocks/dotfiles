@@ -28,9 +28,9 @@ vim.o.softtabstop = 4
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 
--- js tabs
+-- web project tabs (2 spaces)
 vim.cmd [[
-  autocmd FileType javascript,typescript,typescriptreact,javascriptreact,yaml setlocal shiftwidth=2 tabstop=2 expandtab
+  autocmd FileType javascript,typescript,typescriptreact,javascriptreact,vue,svelte,css,scss,sass,less,html,xml,json,jsonc,yaml,yml setlocal shiftwidth=2 tabstop=2 expandtab
 ]]
 
 -- UI

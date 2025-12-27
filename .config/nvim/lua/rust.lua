@@ -17,24 +17,39 @@ vim.g.rustaceanvim = {
                     extraArgs = { "--no-deps" }, -- Skip dependency checking for faster analysis
                 },
                 cargo = {
-                    allFeatures = false, -- Let Cargo.toml control features
-                    features = "all",    -- Use features specified in Cargo.toml
+                    allFeatures = true, -- Enable all features for better analysis
                     loadOutDirsFromCheck = true,
                     buildScripts = {
                         enable = true,
-                        useRustcWrapper = false, -- Disable wrapper for faster builds
+                        useRustcWrapper = true, -- Enable wrapper for better macro support
                     },
+                    runBuildScripts = true, -- Enable build script execution
                 },
                 procMacro = {
                     enable = true,
-                    ignored = { -- Ignore some proc macros that may be slow
-                        -- Add any problematic proc macros here
+                    attributes = {
+                        enable = true,
                     },
+                    ignored = {}, -- Don't ignore proc macros by default
                 },
-                -- Cache optimization
+                -- Cache optimization with better defaults
                 cachePriming = {
                     enable = true,
-                    numThreads = math.min(4, vim.loop.available_parallelism() or 4), -- Limit threads to avoid CPU overload
+                    numThreads = math.min(6, vim.loop.available_parallelism() or 4),
+                },
+                -- Improve workspace symbol performance
+                completion = {
+                    autoimport = {
+                        enable = true,
+                    },
+                    callable = {
+                        snippets = "fill_arguments",
+                    },
+                },
+                -- Better incremental compilation support
+                rustfmt = {
+                    extraArgs = {},
+                    overrideCommand = nil,
                 },
                 -- Filesystem watching optimization
                 files = {
@@ -42,91 +57,56 @@ vim.g.rustaceanvim = {
                     excludeDirs = {     -- Exclude directories that don't need watching
                         ".git", "target", "node_modules", "build", "dist"
                     },
+                    watcherExclude = {}, -- Don't exclude Cargo.toml and related files
                 },
                 -- Memory optimization
                 memoryUsage = {
                 },
-                -- Only show build errors and clippy diagnostics
+                -- Balanced diagnostics configuration
                 diagnostics = {
                     enable = true,
                     disabled = {
-                        -- Disable all rust-analyzer specific diagnostics, keep only build errors and clippy
-                        "unresolved-proc-macro",
-                        "unresolved-macro-call",
-                        "macro-error",
-                        "unresolved-import",
-                        "unresolved-extern-crate",
-                        "unresolved-module",
-                        "unlinked-file",
-                        "type-mismatch",
-                        "missing-fields",
-                        "missing-match-arms",
-                        "break-outside-of-loop",
-                        "mismatched-arg-count",
-                        "invalid-derive-target",
-                        "replace-filter-map-next",
-                        "inactive-code",
-                        "need-mut",
-                        "unused-mut",
-                        "unreachable-label",
-                        "no-such-field",
-                        "private-assoc-item",
-                        "private-field",
+                        -- Only disable truly noisy diagnostics
+                        "inactive-code", -- Can be noisy in conditional compilation
+                        "unreachable-label", -- Usually not critical
                     },
                     experimental = {
-                        enable = false, -- Disable experimental diagnostics
+                        enable = false,
                     },
-                    -- Only enable diagnostics from external commands (build errors and clippy)
                     enableExperimental = false,
                     remapPrefix = {},
-                },
-                -- Workspace symbol search optimization
-                workspace = {
-                    symbol = {
-                        search = {
-                            scope = "workspace_and_dependencies",
-                            kind = "only_types",
-                            limit = 1000, -- Limit results
-                        },
+                    refresh = {
+                        enable = true,
+                        workspace = true, -- Refresh diagnostics on workspace changes
                     },
                 },
                 -- Inlay hints with performance considerations
                 inlayHints = {
                     bindingModeHints = { enable = false },
                     chainingHints = { enable = false },                   -- Disable for performance
-                    closingBraceHints = { enable = false, minLines = 0 }, -- Disable
-                    closureReturnTypeHints = { enable = "never" },
-                    lifetimeElisionHints = { enable = "never" },
                     maxLength = 20,                      -- Shorter hints
                     parameterHints = { enable = false }, -- Disable parameter hints
                     reborrowHints = { enable = "never" },
-                    renderColons = false,                -- Disable colon rendering
                     typeHints = {
                         enable = true,
                         hideClosureInitialization = true,
                         hideNamedConstructor = true,
                     },
                 },
-                -- Additional performance tweaks
-                completion = {
-                    autoimport = {
-                        enable = true,
-                    },
-                },
                 lens = {
-                    enable = false, -- Disable code lens for better performance
+                    enable = true, -- Disable code lens for better performance
                 },
                 hover = {
                     actions = {
-                        enable = false, -- Disable hover actions
+                        enable = true, -- Enable hover actions
                     },
                 },
-                -- Ensure only build errors and clippy warnings are shown
+                -- Check configuration for clippy
                 check = {
                     command = "clippy",
                     extraArgs = { "--no-deps" },
-                    allTargets = false,
-                    features = "all", -- Use features from Cargo.toml
+                    allTargets = true, -- Check all targets for comprehensive analysis
+                    allFeatures = true, -- Match cargo.allFeatures setting
                 },
             },
         },
@@ -136,15 +116,27 @@ vim.g.rustaceanvim = {
                 didChangeWatchedFiles = {
                     dynamicRegistration = true,
                 },
+                didChangeConfiguration = {
+                    dynamicRegistration = true,
+                },
+                configuration = true,
+                workspaceFolders = true,
+            },
+            textDocument = {
+                completion = {
+                    completionItem = {
+                        snippetSupport = true,
+                    },
+                },
             },
         },
     },
     -- Tools configuration optimized for performance
     tools = {
         executor = require('rustaceanvim.executors').termopen,
-        reload_workspace_from_cargo_toml = false, -- Disable to prevent frequent reloads
+        reload_workspace_from_cargo_toml = true, -- Enable to detect Cargo.toml changes
         inlay_hints = {
-            auto = false,                         -- Disable auto inlay hints for better performance
+            auto = true,                         -- Disable auto inlay hints for better performance
             only_current_line = true,             -- Only show hints for current line
             show_parameter_hints = false,
             parameter_hints_prefix = "<- ",
@@ -166,31 +158,31 @@ vim.g.rustaceanvim = {
         },
     },
     -- DAP configuration
-    dap = {
-        adapter = {
-            type = 'server',
-            port = '${port}',
-            host = '127.0.0.1',
-            executable = {
-                command = 'codelldb',
-                args = { '--port', '${port}' },
-            }
-        },
-        configuration = {
-            {
-                name = "Launch file",
-                type = "codelldb",
-                request = "launch",
-                program = function()
-                    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                end,
-                cwd = '${workspaceFolder}',
-                stopOnEntry = false,
-                -- Optimize debugger performance
-                env = {
-                    RUST_BACKTRACE = "0", -- Disable full backtrace unless needed
-                },
-            },
-        },
-    },
+    -- dap = {
+    --     adapter = {
+    --         type = 'server',
+    --         port = '${port}',
+    --         host = '127.0.0.1',
+    --         executable = {
+    --             command = 'codelldb',
+    --             args = { '--port', '${port}' },
+    --         }
+    --     },
+    --     configuration = {
+    --         {
+    --             name = "Launch file",
+    --             type = "codelldb",
+    --             request = "launch",
+    --             program = function()
+    --                 return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    --             end,
+    --             cwd = '${workspaceFolder}',
+    --             stopOnEntry = false,
+    --             -- Optimize debugger performance
+    --             env = {
+    --                 RUST_BACKTRACE = "0", -- Disable full backtrace unless needed
+    --             },
+    --         },
+    --     },
+    -- },
 }

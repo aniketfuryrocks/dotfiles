@@ -38,6 +38,10 @@ set  PATH "/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 set -gx LDFLAGS "-L/opt/homebrew/opt/ruby/lib"
 set -gx CPPFLAGS "-I/opt/homebrew/opt/ruby/include"
 
+# LLVM/Clang for Rust builds (rocksdb, etc.)
+set -gx LIBCLANG_PATH "/opt/homebrew/opt/llvm/lib"
+set -gx DYLD_LIBRARY_PATH "/opt/homebrew/opt/llvm/lib" $DYLD_LIBRARY_PATH
+
 
 # ____________fish
 
@@ -55,13 +59,18 @@ fzf --fish | source                                 # use fzf with fish
 
 # ____________aliases
 
-alias ls="exa"
 alias l="exa -la"
 alias dir="yazi"
 alias ports="sudo lsof -i -P -n | grep LISTEN"
-alias edit="neovide --multigrid" 
+alias edit="neovide . --no-tabs"
 alias notes="edit ~/Nextcloud/Notes"
 alias pinentry="pinentry-mac"
+alias lc="git add . && lazycommit commit | fzf --prompt='Pick commit> ' | xargs -r -I {} git commit -S -m '{}'"
+alias lg="lazygit"
+alias ld="lazydocker"
+alias node="bun"
+alias npm="bun"
+alias npx="bun x"
 
 # Added by LM Studio CLI (lms)
 set -gx PATH $PATH /Users/aniketprajapati/.lmstudio/bin

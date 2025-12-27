@@ -6,7 +6,7 @@ return {
 
     -- Common deps
     { "nvim-lua/plenary.nvim" },
-    { "kyazdani42/nvim-web-devicons" },
+    { "nvim-tree/nvim-web-devicons" },
 
     -- UI/Aesthetics
     { "kaicataldo/material.vim" },   -- material theme
@@ -22,7 +22,7 @@ return {
     { "folke/todo-comments.nvim" }, -- todo comments
     { "j-hui/fidget.nvim" },        -- lsp progress bar
     { "lewis6991/gitsigns.nvim" },
-    { "kyazdani42/nvim-tree.lua" }, -- file tree
+    { "nvim-tree/nvim-tree.lua" }, -- file tree
     {
         "nvim-telescope/telescope.nvim",
         dependencies = { "nvim-lua/plenary.nvim" }
@@ -84,16 +84,15 @@ return {
     },
 
     -- Snippets
-    { "L3MON4D3/LuaSnip",        run = "make install_jsregexp" }, -- Snippets plugin
+    { "L3MON4D3/LuaSnip",        build = "make install_jsregexp" }, -- Snippets plugin
     { "saadparwaiz1/cmp_luasnip" },                               -- Snippets source for nvim-cmp
 
     -- Language specific
     { "saecki/crates.nvim" }, -- rust cargo.toml
     {
         "mrcjkb/rustaceanvim",
-        version = "^5",
+        -- version = "^6",
         lazy = false,
-        ft = { "rust" },
     },
     { "tikhomirov/vim-glsl" }, -- glsl shaders
 

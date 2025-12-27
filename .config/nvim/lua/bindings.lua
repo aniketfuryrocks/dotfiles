@@ -76,3 +76,9 @@ nmap("<leader>tt", ":NvimTreeToggle<cr>")
 ---
 nmap("]b", ":BufferLineCycleNext<cr>")
 nmap("[b", ":BufferLineCyclePrev<cr>")
+
+---
+-- AI Completion (Minuet)
+---
+imap("<A-y>", "<cmd>lua require('minuet').make_cmp_map()<cr>")
+imap("<A-e>", "<cmd>lua require('minuet').dismiss()<cr>")
