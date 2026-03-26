@@ -98,6 +98,7 @@ local servers = {
     'solargraph',                      -- Ruby
     'zls',                             -- Zig
     'cmake',                           -- CMake
+    'sourcekit-lsp'
 }
 
 -- Base config applied to all servers
@@ -119,6 +120,14 @@ local server_configs = {
                 telemetry = { enable = false },
                 hint = { enable = true },
             },
+        },
+    },
+    ['sourcekit-lsp'] = {
+        cmd = { vim.fn.trim(vim.fn.system("xcrun -f sourcekit-lsp")) },
+        filetypes = { 'swift', 'objc', 'objcpp' },
+        root_markers = { 'Package.swift', '.git', '*.xcodeproj', '*.xcworkspace' },
+        init_options = {
+            backgroundIndexingEnabled = true,
         },
     },
 }
