@@ -44,7 +44,7 @@ return {
         branch = 'main',
         lazy = false,
         build = ":TSUpdate",
-        setup = function()
+        config = function()
             require('treesitter')
         end
     },

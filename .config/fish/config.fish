@@ -78,3 +78,11 @@ set -gx PATH $PATH /Users/aniketprajapati/.lmstudio/bin
 
 set -gx CLAUDE_CODE_DISABLE_TERMINAL_TITLE 0
 set -gx CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR 1
+
+# Mole shell completion
+set -l output (mole completion fish 2>/dev/null); and echo "$output" | source
+
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :

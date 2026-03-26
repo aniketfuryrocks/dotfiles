@@ -1,4 +1,3 @@
-local nvim_lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Enhanced LSP logging for debugging
@@ -63,7 +62,17 @@ require("fidget").setup({
 local lsp_utils = require('lsp-utils')
 local on_attach = lsp_utils.on_attach
 
--- Set up LSP servers
+-- Set up on_attach via LspAttach autocmd (new Neovim 0.11+ way)
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+        if client then
+            on_attach(client, args.buf)
+        end
+    end,
+})
+
+-- LSP servers to enable
 local servers = {
     'asm_lsp',
     'biome',
@@ -91,6 +100,11 @@ local servers = {
     'cmake',                           -- CMake
 }
 
+-- Base config applied to all servers
+local base_config = {
+    capabilities = capabilities,
+}
+
 -- Server-specific configurations
 local server_configs = {
     lua_ls = {
@@ -109,23 +123,14 @@ local server_configs = {
     },
 }
 
-for _, lsp in ipairs(servers) do
-    local config = {
-        capabilities = capabilities,
-        on_attach = on_attach,
-        flags = {
-            debounce_text_changes = 150,
-        },
-    }
-
-    -- Merge server-specific config if it exists
-    if server_configs[lsp] then
-        config = vim.tbl_deep_extend("force", config, server_configs[lsp])
-    end
-
-    nvim_lsp[lsp].setup(config)
+-- Configure each server using vim.lsp.config (Neovim 0.11+)
+for _, server in ipairs(servers) do
+    local config = vim.tbl_deep_extend("force", base_config, server_configs[server] or {})
+    vim.lsp.config[server] = config
 end
 
+-- Enable all servers
+vim.lsp.enable(servers)
 
 -- Diagnostic configuration
 vim.diagnostic.config({
@@ -136,9 +141,13 @@ vim.diagnostic.config({
     severity_sort = true,
 })
 
-
 vim.lsp.inlay_hint.enable(true)
-vim.cmd("autocmd BufRead,BufEnter *.astro set filetype=astro")
+vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
+    pattern = "*.astro",
+    callback = function()
+        vim.bo.filetype = "astro"
+    end
+})
 
 -- Mason setup
 require("mason").setup()
