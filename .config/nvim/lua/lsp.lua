@@ -98,6 +98,7 @@ local servers = {
     'solargraph',                      -- Ruby
     'zls',                             -- Zig
     'cmake',                           -- CMake
+    'svelte',                          -- Svelte
     'sourcekit-lsp'
 }
 
