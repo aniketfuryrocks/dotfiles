@@ -71,6 +71,7 @@ return {
     { "rcarriga/nvim-dap-ui" },
     { "theHamsta/nvim-dap-virtual-text" }, -- inline
     { "nvim-telescope/telescope-dap.nvim" },
+    { "leoluz/nvim-dap-go" },              -- Go debugger (delve)
 
     -- Testing
     {
@@ -79,7 +80,8 @@ return {
             "nvim-neotest/nvim-nio",
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
-            "nvim-treesitter/nvim-treesitter"
+            "nvim-treesitter/nvim-treesitter",
+            "fredrikaverpil/neotest-golang",
         }
     },
 

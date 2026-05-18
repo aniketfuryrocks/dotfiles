@@ -36,3 +36,4 @@ end
 
 
 require("nvim-dap-virtual-text").setup()
+require("dap-go").setup()

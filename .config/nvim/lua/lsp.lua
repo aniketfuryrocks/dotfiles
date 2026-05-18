@@ -1,7 +1,7 @@
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Enhanced LSP logging for debugging
-vim.lsp.set_log_level("warn")
+vim.lsp.log.set_level("warn")
 
 -- Add better error handling
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -123,6 +123,32 @@ local server_configs = {
             },
         },
     },
+    gopls = {
+        settings = {
+            gopls = {
+                gofumpt = true,
+                completeUnimported = true,
+                usePlaceholders = true,
+                staticcheck = true,
+                analyses = {
+                    unusedparams = true,
+                    shadow = true,
+                    nilness = true,
+                    unusedwrite = true,
+                    useany = true,
+                },
+                hints = {
+                    assignVariableTypes = true,
+                    compositeLiteralFields = true,
+                    compositeLiteralTypes = true,
+                    constantValues = true,
+                    functionTypeParameters = true,
+                    parameterNames = true,
+                    rangeVariableTypes = true,
+                },
+            },
+        },
+    },
     ['sourcekit-lsp'] = {
         cmd = { vim.fn.trim(vim.fn.system("xcrun -f sourcekit-lsp")) },
         filetypes = { 'swift', 'objc', 'objcpp' },
@@ -132,6 +158,26 @@ local server_configs = {
         },
     },
 }
+
+-- Mason must be set up before vim.lsp.enable so installed servers are on PATH
+require("mason").setup()
+
+-- Servers not managed by Mason (provided by the system toolchain)
+local non_mason_servers = {
+    ['sourcekit-lsp'] = true,
+}
+
+local mason_servers = {}
+for _, server in ipairs(servers) do
+    if not non_mason_servers[server] then
+        table.insert(mason_servers, server)
+    end
+end
+
+require("mason-lspconfig").setup({
+    ensure_installed = mason_servers,
+    automatic_installation = true,
+})
 
 -- Configure each server using vim.lsp.config (Neovim 0.11+)
 for _, server in ipairs(servers) do
@@ -159,10 +205,20 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufEnter" }, {
     end
 })
 
--- Mason setup
-require("mason").setup()
-require("mason-lspconfig").setup({
-    automatic_installation = true,
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.go" },
+    callback = function()
+        local params = vim.lsp.util.make_range_params(0, "utf-8")
+        params.context = { only = { "source.organizeImports" } }
+        local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 1000)
+        for _, res in pairs(result or {}) do
+            for _, action in pairs(res.result or {}) do
+                if action.edit then
+                    vim.lsp.util.apply_workspace_edit(action.edit, "utf-8")
+                end
+            end
+        end
+    end,
 })
 
 -- Auto complete

@@ -1,5 +1,5 @@
 require('nvim-treesitter').setup({
-    ensure_installed = { 'rust', 'lua', 'vim', 'vimdoc', 'query', 'swift', 'svelte' },
+    ensure_installed = { 'rust', 'lua', 'vim', 'vimdoc', 'query', 'swift', 'svelte', 'go', 'gomod', 'gosum', 'gowork' },
 })
 
 -- Enable treesitter-based highlighting (built into Neovim)
