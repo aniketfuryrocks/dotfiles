@@ -1,3 +1,6 @@
+[scrolling]
+history = 50000
+
 [[colors.indexed_colors]]
 color = "0xf78c6c"
 index = 16
