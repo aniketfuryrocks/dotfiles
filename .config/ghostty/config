@@ -1,0 +1,49 @@
+scrollback-limit = 50000000
+term = xterm-256color
+
+font-family = "FiraCode Nerd Font Mono"
+font-family-bold = "FiraCode Nerd Font Mono"
+font-family-italic = "FiraCode Nerd Font Mono"
+font-family-bold-italic = "FiraCode Nerd Font Mono"
+
+font-style = Medium
+font-style-bold = Bold
+font-style-italic = Retina
+font-style-bold-italic = SemiBold
+font-size = 12
+
+background = #212121
+foreground = #eeffff
+cursor-color = #eeffff
+cursor-text = #212121
+
+palette = 0=#212121
+palette = 1=#f07178
+palette = 2=#c3e88d
+palette = 3=#ffcb6b
+palette = 4=#82aaff
+palette = 5=#c792ea
+palette = 6=#89ddff
+palette = 7=#eeffff
+palette = 8=#4a4a4a
+palette = 9=#f07178
+palette = 10=#c3e88d
+palette = 11=#ffcb6b
+palette = 12=#82aaff
+palette = 13=#c792ea
+palette = 14=#89ddff
+palette = 15=#ffffff
+palette = 16=#f78c6c
+palette = 17=#ff5370
+palette = 18=#303030
+palette = 19=#353535
+palette = 20=#b2ccd6
+palette = 21=#eeffff
+
+background-opacity = 0.88
+background-opacity-cells = true
+window-padding-x = 5
+window-padding-y = 5
+
+keybind = ctrl+shift+enter=new_window
+keybind = shift+enter=text:\x1b\r

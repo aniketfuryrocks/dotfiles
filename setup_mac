@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 red_echo() {
     echo ""
     echo -e "\x1b[1;31m $1\e[0m"
@@ -34,61 +36,81 @@ link_config nvim
 link_config alacritty
 link_config ghostty
 
+#### --------- homebrew --------------
+
+if ! command -v brew >/dev/null 2>&1; then
+    red_echo "installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+red_echo "updating homebrew"
+brew update
+
 #### --------- git config --------------
 
 red_echo "configuring git"
 git config --global user.name "aniketfuryrocks"
-git config --global user.email "contact@aniketprajapati.me" 
+git config --global user.email "contact@aniketprajapati.me"
 git config --global core.editor "nvim"
 git config --global init.defaultBranch main
 git config --global credential.helper store
 git config --list
 
-
 #### --------- install tools ---------
 
-red_echo "upgrading system"
-sudo dnf upgrade -y
-red_echo "installing terminal utils"
-sudo dnf install neovim fish util-linux-user fzf gh z golang -y
-red_echo "installing essential compilers and linkers"
-sudo dnf install @development-tools mold gcc g++ cmake clang openssl-devel meson -y
-red_echo "installing lazygit"
-sudo dnf copr enable atim/lazygit -y
-sudo dnf install lazygit -y
+red_echo "installing terminal apps and fonts"
+brew install --cask ghostty alacritty neovide-app orbstack font-fira-code-nerd-font
 
+red_echo "installing terminal utils"
+brew install neovim neovide fish fzf gh git lazygit lazydocker pinentry-mac yazi go
+
+red_echo "installing modern cli tools"
+brew install starship eza ripgrep fd bat topgrade miniserve gnu-tar
+
+red_echo "installing compilers and build tools"
+brew install ruby llvm gcc cmake meson mold openssl@3
 
 #### --------- shell ---------
 
 red_echo "changing default shell to fish"
-sudo chsh ${USER} -s /usr/bin/fish
+fish_path="$(brew --prefix)/bin/fish"
+if ! grep -qx "$fish_path" /etc/shells; then
+    echo "$fish_path" | sudo tee -a /etc/shells >/dev/null
+fi
+chsh -s "$fish_path" "$USER"
+
 red_echo "installing omf"
 omf_install=$(mktemp)
 curl -fsSL https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install -o "$omf_install"
 fish "$omf_install" --noninteractive
 rm "$omf_install"
+
 red_echo "installing omf plugins"
 fish -c 'omf install bass fzf nvm z'
-
-
 
 #### --------- imp languages ---------
 
 red_echo "installing rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-mkdir -p ~/.cargo 
-cp ./config.toml ~/.cargo/ 
+if ! command -v rustup >/dev/null 2>&1; then
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+fi
+mkdir -p "$HOME/.cargo"
+cp ./config.toml "$HOME/.cargo/config.toml"
 
 red_echo "installing nvm"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 fish -c 'nvm install node'
 
 red_echo "installing bun"
 curl -fsSL https://bun.sh/install | bash
 
-
 #### ------------ rust tools ------------
 
 red_echo "installing rust tools"
 fish -c 'cargo install cargo-expand cargo-edit cargo-update cargo-watch --locked'
-fish -c 'cargo install eza ripgrep fd-find starship bat topgrade miniserve --locked' 

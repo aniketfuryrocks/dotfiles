@@ -30,7 +30,7 @@ This is a dotfiles repository for configuring development environments on Fedora
 - **Package Managers**:
   - Rust: Cargo with custom config from `config.toml`
   - Node.js: NVM (Node Version Manager) and Bun
-  - Java/JVM: SDKMAN
+  - Go: system/Homebrew Go toolchain
 - **Search Tools**: ripgrep, fd-find, fzf
 - **File Manager**: ranger (config symlinked from `.config/ranger`)
 

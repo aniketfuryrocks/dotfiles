@@ -53,7 +53,7 @@ Fast, GPU-accelerated terminal with:
 #### Additional Languages
 - Python with Pyright LSP
 - Bash with language server
-- SDKMAN for JVM languages
+- Go with gopls
 
 ## Installation
 
