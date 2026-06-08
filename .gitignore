@@ -109,6 +109,12 @@ credentials
 credentials.json
 credentials.xml
 credentials.yml
+.git-credentials
+.git-credential
+git-credentials
+.config/git/credentials
+.config/git/credential
+.config/git/credential-store
 
 # =====================================
 # APPLICATION SECRETS
