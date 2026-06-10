@@ -80,13 +80,13 @@ red_echo "installing apps and fonts"
 brew install --cask ghostty alacritty neovide-app orbstack markedit font-fira-code-nerd-font
 
 red_echo "installing terminal utils"
-brew install neovim neovide fish fzf gh git lazygit lazydocker pinentry-mac yazi go tmux
+brew install neovim neovide fish fzf gh git lazygit lazydocker pinentry-mac yazi go tmux wget
 
 red_echo "installing modern cli tools"
 brew install starship eza ripgrep fd bat topgrade miniserve gnu-tar
 
 red_echo "installing compilers and build tools"
-brew install ruby llvm gcc cmake meson mold openssl@3
+brew install ruby llvm gcc cmake meson mold openssl@3 zig
 
 #### --------- MarkEdit extensions ---------
 
