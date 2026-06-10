@@ -39,6 +39,10 @@ set -gx LDFLAGS "-L/opt/homebrew/opt/ruby/lib"
 set -gx CPPFLAGS "-I/opt/homebrew/opt/ruby/include"
 
 # LLVM/Clang for Rust builds (rocksdb, etc.)
+fish_add_path /opt/homebrew/opt/llvm/bin
+set -gx LDFLAGS "-L/opt/homebrew/opt/llvm/lib" $LDFLAGS
+set -gx CPPFLAGS "-I/opt/homebrew/opt/llvm/include" $CPPFLAGS
+set -gx CMAKE_PREFIX_PATH "/opt/homebrew/opt/llvm" $CMAKE_PREFIX_PATH
 set -gx LIBCLANG_PATH "/opt/homebrew/opt/llvm/lib"
 set -gx DYLD_LIBRARY_PATH "/opt/homebrew/opt/llvm/lib" $DYLD_LIBRARY_PATH
 

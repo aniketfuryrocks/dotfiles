@@ -208,6 +208,7 @@ on-mode-changed = []
     alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
+    alt-semicolon = 'mode service'
     alt-shift-semicolon = 'mode service'
 
 # 'service' binding mode declaration.
@@ -225,3 +226,7 @@ on-mode-changed = []
     alt-shift-j = ['join-with down', 'mode main']
     alt-shift-k = ['join-with up', 'mode main']
     alt-shift-l = ['join-with right', 'mode main']
+    alt-shift-left = ['join-with left', 'mode main']
+    alt-shift-down = ['join-with down', 'mode main']
+    alt-shift-up = ['join-with up', 'mode main']
+    alt-shift-right = ['join-with right', 'mode main']
