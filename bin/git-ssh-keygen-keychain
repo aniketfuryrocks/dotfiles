@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$(uname -s)" = "Darwin" ] && command -v ssh-add >/dev/null 2>&1; then
+    ssh-add --apple-load-keychain -q >/dev/null 2>&1 || true
+fi
+
+exec /usr/bin/ssh-keygen "$@"

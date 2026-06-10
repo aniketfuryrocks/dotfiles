@@ -71,6 +71,7 @@ git config --global user.email "contact@aniketprajapati.me"
 git config --global core.editor "nvim"
 git config --global init.defaultBranch main
 git config --global credential.helper store
+git config --global gpg.ssh.program "$(pwd)/bin/git-ssh-keygen-keychain"
 git config --list
 
 #### --------- install tools ---------
