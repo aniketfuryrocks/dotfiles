@@ -33,6 +33,7 @@ link_config fish
 link_config nvim
 link_config alacritty
 link_config ghostty
+link_config tmux
 
 #### --------- git config --------------
 
@@ -50,7 +51,7 @@ git config --list
 red_echo "upgrading system"
 sudo dnf upgrade -y
 red_echo "installing terminal utils"
-sudo dnf install neovim fish util-linux-user fzf gh z golang -y
+sudo dnf install neovim fish util-linux-user fzf gh z golang tmux -y
 red_echo "installing essential compilers and linkers"
 sudo dnf install @development-tools mold gcc g++ cmake clang openssl-devel meson -y
 red_echo "installing lazygit"

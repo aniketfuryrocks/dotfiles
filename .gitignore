@@ -472,3 +472,4 @@ oauth*
 # =====================================
 # Use ! to explicitly track files if needed
 # Example: !.config/git/config
+!.config/tmux/tmux.conf

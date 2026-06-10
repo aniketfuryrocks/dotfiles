@@ -9,6 +9,7 @@ A curated collection of dotfiles and configurations optimized for:
 - **JavaScript/TypeScript** with React and modern frameworks
 - **Neovim** as primary editor with LSP support
 - **Alacritty** GPU-accelerated terminal
+- **Tmux** terminal multiplexing with Vim-friendly keybindings
 - **Fish** shell with productivity enhancements
 
 ## Configurations Included
@@ -25,6 +26,13 @@ Fast, GPU-accelerated terminal with:
 - Custom color scheme
 - Optimized font rendering
 - Keybinding configurations
+
+### Tmux
+Terminal multiplexing optimized for Neovim workflows:
+- Mouse support for panes, resizing, and copy mode
+- Vim-style pane movement and copy-mode selections
+- Truecolor support for modern terminal themes
+- Current-directory splits and new windows
 
 ### Shell Environment
 **Fish** shell enhanced with:
@@ -108,6 +116,7 @@ Personal configurations are set in `setup_dev_toolbox`:
 .dotfiles/
 ├── .config/
 │   ├── alacritty/       # Terminal emulator config
+│   ├── tmux/            # Terminal multiplexer config
 │   ├── fish/            # Shell configurations  
 │   ├── nvim/            # Neovim setup & plugins
 │   ├── i3/, bspwm/, awesome/, sway/  # Window managers

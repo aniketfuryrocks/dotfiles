@@ -27,12 +27,13 @@ link_config fish
 link_config nvim
 link_config alacritty
 link_config ghostty
+link_config tmux
 ln -s $(pwd)/.config/spotifyd ~/.config
 
 #### --------- install tools ---------
 
 # terminal utils
-sudo dnf install -y neovim fd-find ripgrep fish starship util-linux-user gh golang &
+sudo dnf install -y neovim fd-find ripgrep fish starship util-linux-user gh golang tmux &
 
 # oh my fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish

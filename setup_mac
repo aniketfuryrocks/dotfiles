@@ -26,6 +26,14 @@ link_config() {
     ln -s "$src" "$dest"
 }
 
+backup_legacy_aerospace_config() {
+    local legacy="$HOME/.aerospace.toml"
+
+    if [ -e "$legacy" ] || [ -L "$legacy" ]; then
+        mv "$legacy" "$legacy.backup-$(date +%Y%m%d%H%M%S)"
+    fi
+}
+
 #### ----------- setup dotfiles ---------
 
 red_echo "initializing dot files"
@@ -35,6 +43,9 @@ link_config fish
 link_config nvim
 link_config alacritty
 link_config ghostty
+link_config tmux
+backup_legacy_aerospace_config
+link_config aerospace
 
 #### --------- homebrew --------------
 
@@ -64,17 +75,27 @@ git config --list
 
 #### --------- install tools ---------
 
-red_echo "installing terminal apps and fonts"
-brew install --cask ghostty alacritty neovide-app orbstack font-fira-code-nerd-font
+red_echo "installing apps and fonts"
+brew install --cask ghostty alacritty neovide-app orbstack markedit font-fira-code-nerd-font
 
 red_echo "installing terminal utils"
-brew install neovim neovide fish fzf gh git lazygit lazydocker pinentry-mac yazi go
+brew install neovim neovide fish fzf gh git lazygit lazydocker pinentry-mac yazi go tmux
 
 red_echo "installing modern cli tools"
 brew install starship eza ripgrep fd bat topgrade miniserve gnu-tar
 
 red_echo "installing compilers and build tools"
 brew install ruby llvm gcc cmake meson mold openssl@3
+
+#### --------- MarkEdit extensions ---------
+
+red_echo "installing MarkEdit extensions"
+markedit_scripts_dir="$HOME/Library/Containers/app.cyan.markedit/Data/Documents/scripts"
+mkdir -p "$markedit_scripts_dir"
+curl -fsSL "https://raw.githubusercontent.com/MarkEdit-app/MarkEdit-preview/main/dist/markedit-preview.js" \
+    -o "$markedit_scripts_dir/markedit-preview.js"
+curl -fsSL "https://raw.githubusercontent.com/MarkEdit-app/MarkEdit-ai-writer/main/dist/markedit-ai-writer.js" \
+    -o "$markedit_scripts_dir/markedit-ai-writer.js"
 
 #### --------- shell ---------
 
